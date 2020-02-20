@@ -24,7 +24,8 @@
   <div class="container">
     <ul class="nav">
         <li><a href="/" use:link use:active>Home</a></li>
-        <li><a href="/hello/svelte" use:link use:active={{path: '/hello/*', className: 'active'}}>Hello</a></li>
+        <li><a href="/hello/" use:link use:active={{path: '/hello/*', className: 'active'}}>Hello</a></li>
+        <li><a href="/quiz/" use:link use:active={{path: '/quiz/*', className: 'active'}}>Start quiz</a></li>
         <li><a href="/does/not/exist" use:link use:active>Not found</a></li>
     </ul>
   </div>
