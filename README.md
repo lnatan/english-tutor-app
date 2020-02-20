@@ -1,11 +1,10 @@
-# tutor-app
+# english-tutor-app
 
-App for preparing to an english exam.
-Svelte web apps with Tailwindcss(https://tailwindcss.com/) and Svelte-spa-router(https://github.com/ItalyPaleAle/svelte-spa-router)
+Svelte web apps with Tailwindcss (https://tailwindcss.com/) and Svelte-spa-router (https://github.com/ItalyPaleAle/svelte-spa-router)
 
 ## Getting Started
 
-Then, install the dependencies:
+Install the dependencies:
 
 ```bash
 npm install
