@@ -17,7 +17,9 @@ module.exports = {
       processor: "svelte3/svelte3"
     }
   ],
-  rules: {},
+  rules: {
+    quotes:  ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }]
+  },
   settings: {
     "svelte3/ignore-styles": () => true
   }

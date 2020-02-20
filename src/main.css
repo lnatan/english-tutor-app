@@ -1,10 +1,5 @@
-/* @custom-selector :--links a:link,a:visited,a:hover,a:focus,a:active;
-@custom-selector :--headings h1, h2, h3, h4, h5, h6; */
-
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 *,
@@ -27,11 +22,6 @@ body {
   background-color: #fafafa;
 }
 
-/* :--links {
-    color: blue;
-    text-decoration: underline;
+a {
+  @apply text-primary;
 }
-
-:--headings {
-    margin: .75rem 0;
-} */
