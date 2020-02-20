@@ -1,0 +1,14 @@
+{
+  "version": 3,
+  "file": "components.css",
+  "sources": [
+    "../Button.svelte",
+    "../Nav.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  let clicks = 0;\n\n  const handleClick = () => (clicks += 1);\n</script>\n\n<style>.space {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n\n.color {\n  color: #fff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb21wb25lbnRzL0J1dHRvbi5zdmVsdGUiLCI8bm8gc291cmNlPiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQ0RGLG1CQUFBO0VBQUEsb0JBQUE7RUFBQSxvQkFBQTtFQUFBLHVCQUFBO0FER0U7O0FBQ0E7RUNKRixZQUFBO0FETUUiLCJmaWxlIjoic3JjL2NvbXBvbmVudHMvQnV0dG9uLnN2ZWx0ZSIsInNvdXJjZXNDb250ZW50IjpbIlxuICAuc3BhY2Uge1xuICAgIEBhcHBseSBweC00IHB5LTI7XG4gIH1cbiAgLmNvbG9yIHtcbiAgICBAYXBwbHkgdGV4dC13aGl0ZTtcbiAgfVxuIixudWxsXX0= */</style>\n\n<button\n  class=\"color space border-none bg-blue-700 hover:bg-blue-400 rounded\"\n  on:click={handleClick}>\n  Clicked {clicks} {clicks === 1 ? 'time' : 'times'}\n</button>\n",
+    "<script>\n  let clicks = 0;\n\n  const handleClick = () => (clicks += 1);\n</script>\n\n<style>.space {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 1.5rem;\n  padding-bottom: 1.5rem;\n}\n\n.bg-color {\n  background-color: #fff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb21wb25lbnRzL05hdi5zdmVsdGUiLCI8bm8gc291cmNlPiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQ0RGLG1CQUFBO0VBQUEsb0JBQUE7RUFBQSxvQkFBQTtFQUFBLHVCQUFBO0FER0U7O0FBQ0E7RUNKRix1QkFBQTtBRE1FIiwiZmlsZSI6InNyYy9jb21wb25lbnRzL05hdi5zdmVsdGUiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgLnNwYWNlIHtcbiAgICBAYXBwbHkgcHgtNCBweS02O1xuICB9XG4gIC5iZy1jb2xvciB7XG4gICAgQGFwcGx5IGJnLXdoaXRlO1xuICB9XG4iLG51bGxdfQ== */</style>\n\n\n<nav class=\"space bg-color\">\n  <div class=\"container\">\n    Navigation\n  </div>\n</nav>\n"
+  ],
+  "names": [],
+  "mappings": "AAMO,MAAM,cAAC,CAAC,AACb,YAAY,CAAE,IAAI,CAClB,aAAa,CAAE,IAAI,CACnB,WAAW,CAAE,MAAM,CACnB,cAAc,CAAE,MAAM,AACxB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,KAAK,CAAE,IAAI,AACb,CAAC;ACTM,MAAM,eAAC,CAAC,AACb,YAAY,CAAE,IAAI,CAClB,aAAa,CAAE,IAAI,CACnB,WAAW,CAAE,MAAM,CACnB,cAAc,CAAE,MAAM,AACxB,CAAC,AAED,SAAS,eAAC,CAAC,AACT,gBAAgB,CAAE,IAAI,AACxB,CAAC"
+}
