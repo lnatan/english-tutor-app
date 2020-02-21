@@ -8,17 +8,5 @@
 
 <main>
   <Nav/>
-  <div class="container">
-    <div class="border p-4 mt-6">
-      <!-- Show the current path -->
-      <p>
-        Current path: <code id="currentpath">{$location}</code>
-        <br/>
-        Querystring: <code id="currentqs">{$querystring}</code>
-      </p>
-    </div>
-    <div class="container border p-4 mt-6">
-      <Router {routes}/>
-    </div>
-  </div>
+  <Router {routes}/>
 </main>

@@ -1,4 +1,5 @@
-<h2 class="routetitle">Hi there!</h2>
+<div class="container border bg-white mt-8 p-4">
+  <h2 class="routetitle">Hi there!</h2>
 
 <p id="nameparams">Your name is: <b>{params.first}</b> <b>{#if params.last}{params.last}{/if}</b></p>
 <p><em>Hint:</em> Try changing the URL and add your name, e.g. <code>/hello/jane/doe</code></p>
@@ -12,10 +13,11 @@
   <button type="submit" class="bg-primary mt-4 px-6 py-1">submit</button>
 </form>
 </div>
+</div>
 
 <script>
 export let params = {}
-params.first = "name"
+params.first = "not set"
 </script>
 
 <style>
