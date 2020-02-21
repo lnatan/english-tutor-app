@@ -1,6 +1,9 @@
 # english-tutor-app
 
-Svelte web apps with Tailwindcss (https://tailwindcss.com/) and Svelte-spa-router (https://github.com/ItalyPaleAle/svelte-spa-router)
+Web app for English exam preparation.  
+Build with:  
+* Tailwindcss (https://tailwindcss.com/)
+* Svelte-spa-router (https://github.com/ItalyPaleAle/svelte-spa-router)
 
 ## Getting Started
 
