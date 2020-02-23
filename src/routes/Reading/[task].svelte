@@ -5,32 +5,27 @@
 <script>
   import { onMount } from 'svelte';
   export let params = {};
-  console.log(params);
-  // const URL = "./tests/the-moons-of-jupiter.json";
+
   const URL = `data/tasks/${params.task}.json`;
+  let tasks = getTasks();
 
-  let promise = getTest();
-  let test;
-
- 	async function getTest() {
-    const res = await fetch(URL);
-    test = await res.json();
-
-		if (res.ok) {
-			return test;
-		} else {
-      // push to NotFound
-			throw new Error(test);
-		}
+ 	async function getTasks() {
+    try {
+      const res = await fetch(URL);
+      const data = await res.json();
+      return data;
+    } catch(err) {    
+      throw new Error(err);
+    }
 	}
 </script>
 
 <!-- <div class="container border bg-white mt-8 p-4" id="progress">Progress Bar</div> -->
 <div class="container border bg-white mt-8 p-4">
-  {#await promise then test}
-    <h1 class="text-center text-2xl mt-6">{test.title}</h1>
+  {#await tasks then data}
+    <h1 class="text-center text-2xl mt-6">{data.title}</h1>
       <div class="test">
-        <div class="test__question">{test.questions[0].title}</div>
+        <div class="test__question">{data.questions[0].title}</div>
         <div class="test__variants">
           Variants
         </div>
@@ -44,6 +39,6 @@
         </div>
       </div>
   {:catch error}
-    <p>{error.message}</p>
+    <p>{error}</p>
   {/await}
 </div>
