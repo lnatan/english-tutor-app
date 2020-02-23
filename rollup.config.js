@@ -15,7 +15,7 @@ export default {
     format: "iife",
     sourcemap: true,
     name: "app",
-    file: "dist/main.js"
+    file: "dist/build/bundle.js"
   },
   plugins: [
     svelte({
@@ -26,14 +26,14 @@ export default {
         }
       }),
       css: css => {
-        css.write("dist/components.css");
+        css.write("dist/build/bundle.css");
       }
     }),
     resolve(),
     commonjs(),
     postcss({
       plugins: require("./postcss.config.js")(production),
-      extract: path.resolve(__dirname, "./dist/main.css")
+      extract: path.resolve(__dirname, "./dist/global.css")
     }),
     !production && livereload("dist"),
     production && terser()

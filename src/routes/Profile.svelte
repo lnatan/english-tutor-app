@@ -1,1 +1,7 @@
-<div class="container border bg-white mt-8 p-4">Hello, </div>
+<script>
+  import Layout from "./_layout.svelte";
+</script>
+
+<Layout>
+  <h1>Hello</h1>
+</Layout>

@@ -22,6 +22,6 @@ body {
   background-color: #fafafa;
 }
 
-a {
-  @apply text-primary;
+main {
+  @apply flex-auto;
 }

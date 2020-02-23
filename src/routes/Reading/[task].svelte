@@ -5,8 +5,9 @@
 <script>
   import { onMount } from 'svelte';
   export let params = {};
+  console.log(params);
   // const URL = "./tests/the-moons-of-jupiter.json";
-  const URL = `./tests/${params.title}.json`;
+  const URL = `data/tasks/${params.task}.json`;
 
   let promise = getTest();
   let test;
@@ -24,7 +25,7 @@
 	}
 </script>
 
-<div class="container border bg-white mt-8 p-4" id="progress">Progress Bar</div>
+<!-- <div class="container border bg-white mt-8 p-4" id="progress">Progress Bar</div> -->
 <div class="container border bg-white mt-8 p-4">
   {#await promise then test}
     <h1 class="text-center text-2xl mt-6">{test.title}</h1>

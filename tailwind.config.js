@@ -29,12 +29,7 @@ module.exports = {
       auto: "1 1 auto",
       initial: "0 1 auto",
       none: "none",
-      "1": "1 1 0%",
-      "2": "1 0 50%",
-      "3": "0 1 33%",
-      "4": "1 0 25%",
-      "80": "1 0 80%",
-      "100": "1 0 100%"
+      "1": "1 1 0%"
     },
     maxWidth: {
       ...defaultMaxWidth,

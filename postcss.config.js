@@ -9,7 +9,8 @@ module.exports = (production = false) => {
       require("@fullhuman/postcss-purgecss")({
         extractor: require("purgecss-from-svelte"),
         content: ["./**/*.html", "./**/*.svelte"],
-        whitelist: []
+        whitelist: [],
+        whitelistPatterns: [/^md/]
       }),
     production && require("cssnano")
   ].filter(Boolean);

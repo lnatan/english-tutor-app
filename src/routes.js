@@ -1,8 +1,7 @@
 // Routes
 import Hello from "./routes/Hello.svelte";
-import Home from "./routes/Home.svelte";
-import readingMain from "./routes/Reading/Main.svelte";
-import readingTest from "./routes/Reading/Test.svelte";
+import Reading from "./routes/Reading/index.svelte";
+import Task from "./routes/Reading/[task].svelte";
 import Profile from "./routes/Profile.svelte";
 import NotFound from "./routes/NotFound.svelte";
 
@@ -11,8 +10,8 @@ const routes = {
   // Using named parameters, with last being optional
   "/hello": Hello,
   "/hello/:first/:last?": Hello,
-  "/reading": readingMain,
-  "/reading/:title": readingTest,
+  "/reading": Reading,
+  "/reading/:task": Task,
   // Catch-all, must be last
   "*": NotFound
 };

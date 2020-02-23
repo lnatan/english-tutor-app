@@ -1,1 +1,0 @@
-<div class="container border bg-white mt-8 p-4">Home</div>
