@@ -1,17 +1,15 @@
  <script>
-	import Sidebar from '../components/Sidebar.svelte';
-	const links = [
-    ['/', 'Profile'],
-    ['/reading', 'Home Tasks']
-  ];
-  const name = "Xiaolin";
+  // const name = "Xiaolin";
 </script>
 
 <div class="container flex py-12">
-  <Sidebar {links} {name} />
-  <main>
-    <div class="container border bg-white p-4">
-      <slot></slot>
-    </div>
+  <!-- Left Sidebar -->
+  <div class="sidebar hidden md:block">
+    <div class="mb-6">Welcome, Xiao!</div>
+	  <slot name="sidebar"></slot>
+  </div>
+  <!-- Main Area -->
+  <main class="main flex-auto">
+    <slot name="main"></slot>    
   </main>
 </div>

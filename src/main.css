@@ -22,6 +22,12 @@ body {
   background-color: #fafafa;
 }
 
-main {
-  @apply flex-auto;
+a.active {
+  @apply font-bold;
+}
+
+/* Layout */
+
+.sidebar {
+  @apply px-4 mr-8;
 }

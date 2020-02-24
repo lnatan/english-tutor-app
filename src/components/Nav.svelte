@@ -23,18 +23,3 @@
     {/each}
   </ul>
 </nav>
-
-<style>
-  /* .shadow {
-    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.15);
-  }
-  .space {
-    @apply px-4 py-6;
-  }
-  .bg-color {
-    @apply bg-white;
-  } */
-  :global(a.active) {
-    @apply font-bold;
-   }
-</style>

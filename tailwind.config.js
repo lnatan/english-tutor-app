@@ -12,7 +12,7 @@ module.exports = {
     colors: {
       ...defaultColors,
       primary: "#40A9FF",
-      black: "#2f2f2f",
+      black: "#262626",
       grey: "#4d4d4d",
       "grey-light": "#c4c1c1",
       "grey-dark": "#797979"
