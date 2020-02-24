@@ -6,16 +6,15 @@ const {
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ["'Roboto'", "sans-serif"],
-      secondary: ["'Merriweather'", "sans-serif"]
+      sans: ["SF Pro Display", "sans-serif"]
+      // secondary: ["'Merriweather'", "sans-serif"]
     },
     colors: {
       ...defaultColors,
       primary: "#40A9FF",
-      black: "#262626",
-      grey: "#4d4d4d",
-      "grey-light": "#c4c1c1",
-      "grey-dark": "#797979"
+      bgcolor: "#F5F5F5",
+      textcolor: "#595959",
+      black: "#262626"
     },
     screens: {
       sm: "640px",

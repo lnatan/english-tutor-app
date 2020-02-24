@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 
+  Fonts
+*/
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+  src: local("SF Pro Display"), local("SF Pro Display"),
+    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff2) format("woff2"),
+    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff) format("woff2");
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: local("SF Pro Display"), local("SF Pro Display"),
+    url(/fonts/SFProDisplay/SFProDisplay-Semibold.woff) format("woff2"),
+    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff) format("woff2");
+}
+
 *,
 *:before,
 *:after {
@@ -16,17 +40,19 @@ body {
 }
 
 body {
-  font-family: system-ui;
+  /* font-family: system-ui; */
   font-size: 1em;
   line-height: 1.5;
-  background-color: #fafafa;
+  @apply text-textcolor bg-bgcolor font-sans;
 }
 
 a.active {
-  @apply font-bold;
+  @apply font-bold text-black;
 }
 
-/* Layout */
+/* 
+  Layout 
+*/
 
 .sidebar {
   @apply px-4 mr-8;
