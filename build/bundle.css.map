@@ -1,8 +1,12 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [],
-  "sourcesContent": [],
+  "sources": [
+    "../../Button.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\n  export let disabled = false;\n</script>\n\n<style>.space {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n  margin-left: 1rem;\n  margin-right: 1rem;\n}\n\n.color {\n  color: #fff;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb21wb25lbnRzL1VJL0J1dHRvbi5zdmVsdGUiLCI8bm8gc291cmNlPiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDRTtFQ0RGLG1CQUFBO0VBQUEsb0JBQUE7RUFBQSxvQkFBQTtFQUFBLHVCQUFBO0VBQUEsa0JBQUE7RUFBQSxtQkFBQTtBREdFOztBQUNBO0VDSkYsWUFBQTtBRE1FIiwiZmlsZSI6InNyYy9jb21wb25lbnRzL1VJL0J1dHRvbi5zdmVsdGUiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgLnNwYWNlIHtcbiAgICBAYXBwbHkgcHgtNCBweS0yIG14LTQ7XG4gIH1cbiAgLmNvbG9yIHtcbiAgICBAYXBwbHkgdGV4dC13aGl0ZTtcbiAgfVxuIixudWxsXX0= */</style>\n\n<button\n  {disabled}\n  on:click\n  class=\"color bg-primary disabled:opacity-25 space hover:bg-blue-400 rounded\"\n>\n  <slot/>\n</button>\n"
+  ],
   "names": [],
-  "mappings": ""
+  "mappings": "AAIO,MAAM,cAAC,CAAC,AACb,YAAY,CAAE,IAAI,CAClB,aAAa,CAAE,IAAI,CACnB,WAAW,CAAE,MAAM,CACnB,cAAc,CAAE,MAAM,CACtB,WAAW,CAAE,IAAI,CACjB,YAAY,CAAE,IAAI,AACpB,CAAC,AAED,MAAM,cAAC,CAAC,AACN,KAAK,CAAE,IAAI,AACb,CAAC"
 }
