@@ -14136,29 +14136,25 @@ video {
 @font-face {
   font-family: "SF Pro Display";
 
-  font-display: swap;
+  src: local("SF Pro Display Semibold"), local("SFProDisplay-Semibold"),
+    url("/fonts/SFProDisplay/SFProDisplay-Semibold.woff2") format("woff2"),
+    url("/fonts/SFProDisplay/SFProDisplay-Semibold.woff") format("woff");
+
+  font-weight: 600;
 
   font-style: normal;
-
-  font-weight: 400;
-
-  src: local("SF Pro Display"), local("SF Pro Display"),
-    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff2) format("woff2"),
-    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff) format("woff2");
 }
 
 @font-face {
   font-family: "SF Pro Display";
 
-  font-display: swap;
+  src: local("SF Pro Display Regular"), local("SFProDisplay-Regular"),
+    url("/fonts/SFProDisplay/SFProDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/SFProDisplay/SFProDisplay-Regular.woff") format("woff");
+
+  font-weight: normal;
 
   font-style: normal;
-
-  font-weight: 600;
-
-  src: local("SF Pro Display"), local("SF Pro Display"),
-    url(/fonts/SFProDisplay/SFProDisplay-Semibold.woff) format("woff2"),
-    url(/fonts/SFProDisplay/SFProDisplay-Regular.woff) format("woff2");
 }
 
 *,
@@ -14176,11 +14172,10 @@ body {
 
 body {
   /* font-family: system-ui; */
-  font-size: 1em;
-  line-height: 1.5;
+  /* font-size: 1em;
+  line-height: 1.5; */
   color: #595959;
   background-color: #F5F5F5;
-  font-family: SF Pro Display, sans-serif;
 }
 
 a.active {
