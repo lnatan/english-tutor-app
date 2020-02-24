@@ -1,12 +1,8 @@
 {
   "version": 3,
   "file": "bundle.css",
-  "sources": [
-    "../../Home.svelte"
-  ],
-  "sourcesContent": [
-    "<script>\n  import Layout from \"./_layout.svelte\";\n  import Nav from '../components/Nav.svelte';\n  const links = [\n    ['/home', 'Home tasks'],\n    ['/reading', 'Reading']\n  ];\n</script>\n\n<Layout>\n  <div slot=\"sidebar\">\n    <Nav {links} />\n  </div>\n\t<div slot=\"main\">\n    <h2 class=\"title\">Active</h2>\n    <div class=\"tasks_active\">\n      Here active cards\n    </div>\n    <h2 class=\"title\">Completed</h2>\n    <div class=\"tasks_comleted\">\n      Here done cards\n    </div>\n  </div>\n</Layout>\n\n<style>.title {\n  font-weight: 700;\n  font-size: 1.5rem;\n  color: #262626;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9yb3V0ZXMvSG9tZS5zdmVsdGUiLCI8bm8gc291cmNlPiJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTtFQ0RBLGlCQUFBO0VBQUEsa0JBQUE7RUFBQSxlQUFBO0FER0EiLCJmaWxlIjoic3JjL3JvdXRlcy9Ib21lLnN2ZWx0ZSIsInNvdXJjZXNDb250ZW50IjpbIlxuLnRpdGxlIHtcbiAgQGFwcGx5IGZvbnQtYm9sZCB0ZXh0LTJ4bCB0ZXh0LWJsYWNrO1xufVxuIixudWxsXX0= */</style>\n\n"
-  ],
+  "sources": [],
+  "sourcesContent": [],
   "names": [],
-  "mappings": "AAyBO,MAAM,eAAC,CAAC,AACb,WAAW,CAAE,GAAG,CAChB,SAAS,CAAE,MAAM,CACjB,KAAK,CAAE,OAAO,AAChB,CAAC"
+  "mappings": ""
 }
