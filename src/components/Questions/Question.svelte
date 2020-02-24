@@ -4,6 +4,7 @@
   import Insert from "./types/Insert.svelte";
   import Word from "./types/Word.svelte";
   export let question = {};
+  export let activeQuestion = 0;
 
   const options = {
     "select": Select,
@@ -15,4 +16,6 @@
 </script>
 
 <h1 class="text-black text-xl mb-6">{question.title}</h1>
-<svelte:component this={options[question.type]}/>
+Type: <svelte:component this={options[question.type]}/>
+<br/>
+Number: {activeQuestion + 1}

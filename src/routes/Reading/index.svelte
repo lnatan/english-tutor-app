@@ -1,10 +1,7 @@
 <script>
   import Layout from "../_layout.svelte";
   import Nav from  "../../components/Nav.svelte";
-  const links = [
-    ["/home", "Home tasks"],
-    ["/reading", "Reading"],
-  ]
+  import { links } from "../../config.js";
   import { link, push, pop, replace, location, querystring } from 'svelte-spa-router'; 
 </script>
 
@@ -14,9 +11,9 @@
     <Nav {links} />
   </div>
   <div slot="main" class="container border bg-white p-8">
-    <h1 class="title">Reading</h1>
+    <h1 class="title">Lessons</h1>
     <ul>
-      <li><a href="/reading/the-moons-of-jupiter" class="underline" use:link>The Moons of Jupiter</a></li>   
+      <li><a href="/lessons/the-moons-of-jupiter" class="underline" use:link>The Moons of Jupiter</a></li>   
     </ul>
   </div>  
 </Layout>

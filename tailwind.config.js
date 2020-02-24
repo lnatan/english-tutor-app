@@ -37,6 +37,8 @@ module.exports = {
       "3/4": "75%"
     }
   },
-  variants: {},
+  variants: {
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+  },
   plugins: []
 };

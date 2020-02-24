@@ -1,11 +1,8 @@
 <script>
   import Layout from "./_layout.svelte";
   import Nav from  "../components/Nav.svelte";
+  import { links } from "../config.js";
   export let params = {};
-  const links = [
-    ["/home", "Home tasks"],
-    ["/reading", "Reading"],
-  ]
 </script>
 
 <Layout>
