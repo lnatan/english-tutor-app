@@ -4,7 +4,7 @@ module.exports = {
     sourceType: "module"
   },
   extends: "eslint:recommended",
-  parser: "babel-eslint", // https://github.com/babel/babel-eslint
+  // parser: "babel-eslint", // https://github.com/babel/babel-eslint
   env: {
     es6: true,
     node: true,
@@ -13,12 +13,12 @@ module.exports = {
   plugins: ["svelte3", "babel"],
   overrides: [
     {
-      files: "*.svelte",
+      files: "**/*.svelte",
       processor: "svelte3/svelte3"
     }
   ],
   rules: {
-    quotes:  ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }]
+    quotes:  ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": false }]
   },
   settings: {
     "svelte3/ignore-styles": () => true

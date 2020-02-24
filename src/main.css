@@ -55,3 +55,7 @@ a.active {
 .sidebar {
   @apply px-4 mr-8;
 }
+
+.title {
+  @apply font-bold text-2xl text-black;
+}

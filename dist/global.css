@@ -14193,6 +14193,12 @@ a.active {
   margin-right: 2rem;
 }
 
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #262626;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

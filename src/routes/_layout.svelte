@@ -4,8 +4,7 @@
 
 <div class="container flex py-12">
   <!-- Left Sidebar -->
-  <div class="sidebar hidden md:block">
-    <div class="mb-6">Welcome, Xiao!</div>
+  <div class="sidebar hidden md:block">   
 	  <slot name="sidebar"></slot>
   </div>
   <!-- Main Area -->

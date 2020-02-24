@@ -1,3 +1,7 @@
+<script>
+  export let params = {} 
+</script>
+
 <div class="container border bg-white mt-8 p-4">
   <h2 class="routetitle">Hi there!</h2>
   <p id="nameparams">Your name is: <b>{params.first}</b> <b>{#if params.last}{params.last}{/if}</b></p>
@@ -13,11 +17,3 @@
     </form>
   </div>
 </div>
-
-<script>
-export let params = {}
-params.first = "not set"
-</script>
-
-<style>
-</style>
