@@ -11,10 +11,15 @@ module.exports = {
     },
     colors: {
       ...defaultColors,
-      primary: "#40A9FF",
+      primary: "#1890FF",
       bgcolor: "#F5F5F5",
       textcolor: "#595959",
-      black: "#262626"
+      black: "#262626",
+      "grey-3": "#f5f5f5",
+      "grey-4": "#e8e8e8",
+      "grey-5": "#d9d9d9",
+      "grey-6": "#bfbfbf",
+      "blue-5": "#40A9FF"
     },
     screens: {
       sm: "640px",

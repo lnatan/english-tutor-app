@@ -14,13 +14,15 @@
   }
 </script>
 
-{#each data.questions as question, index}
-    {#if index === activeQuestion}      
-      <Question {question} {activeQuestion}/>
-    {/if}
-{/each}
+<div class="container border bg-white p-8">
+  {#each data.questions as question, index}
+      {#if index === activeQuestion}      
+        <Question {question} {activeQuestion}/>
+      {/if}
+  {/each}
+</div>
 <!-- Controls Prev Next -->
-<div class="controls p-4 flex justify-center md:justify-end">
-  <Button disabled={activeQuestion === 0} on:click={prevQuestion}>Previous</Button>
-  <Button disabled={activeQuestion === questionsCount - 1} on:click={nextQuestion}>Next</Button>
+<div class="controls p-8 flex justify-center md:justify-end">
+  <Button type="secondary" disabled={activeQuestion === 0} on:click={prevQuestion}>Previous</Button>
+  <Button type="primary" disabled={activeQuestion === questionsCount - 1} on:click={nextQuestion}>Next</Button>
 </div>

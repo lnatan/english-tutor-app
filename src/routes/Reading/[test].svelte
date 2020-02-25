@@ -28,13 +28,11 @@
     <br/>
     Sidebar for Test Page
   </div>
-  <div slot="main">
-    <div class="container border bg-white p-8">
-      {#await test then data}
-        <QuestionArea {data} /> 
-      {:catch error}
-        <p>{error}</p>
-      {/await}
-    </div>
+  <div slot="main"> 
+    {#await test then data}
+      <QuestionArea {data} /> 
+    {:catch error}
+      <p>{error}</p>
+    {/await}
   </div>
 </Layout>
