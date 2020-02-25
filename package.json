@@ -22,6 +22,7 @@
    "homepage": "soixiio.github.io/english-tutor-app",
    "devDependencies": {
       "@fullhuman/postcss-purgecss": "^1.3.0",
+      "@rollup/plugin-alias": "^3.0.1",
       "autoprefixer": "^9.7.4",
       "babel-eslint": "^8.2.6",
       "cssnano": "^4.1.10",

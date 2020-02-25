@@ -3,6 +3,7 @@ import livereload from "rollup-plugin-livereload";
 import postcss from "rollup-plugin-postcss";
 import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
+import alias from "@rollup/plugin-alias";
 import { terser } from "rollup-plugin-terser";
 import sveltePreprocess from "svelte-preprocess";
 import path from "path";
@@ -27,6 +28,14 @@ export default {
       }),
       css: css => {
         css.write("dist/build/bundle.css");
+      }
+    }),
+    alias({
+      resolve: [".js", ".json", ".svelte"],
+      entries: {
+        // dist: path.resolve(__dirname, "dist"),
+        //helpers: path.resolve(__dirname, "src/helpers"),
+        components: path.resolve(__dirname, "src/components")
       }
     }),
     resolve(),

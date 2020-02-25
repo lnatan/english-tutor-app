@@ -1,5 +1,5 @@
 <script>
-  import Button from "../../components/UI/Button.svelte";
+  import Button from "components/UI/Button.svelte";
   import Question from "./Question.svelte";
   export let data = {};
 

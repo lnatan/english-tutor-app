@@ -1,8 +1,8 @@
 <script>
   import Layout from "../_layout.svelte";
-  import Sidebar from "../../components/Sidebar.svelte";
-  import QuestionArea from "../../components/Questions/QuestionArea.svelte";
-  import QuestionsNav from "../../components/Questions/QuestionsNav.svelte";
+  import Sidebar from "components/Sidebar.svelte";
+  import QuestionArea from "components/Questions/QuestionArea.svelte";
+  import QuestionsNav from "components/Questions/QuestionsNav.svelte";
   import { link, push, pop, replace, location, querystring } from 'svelte-spa-router'; 
   import { pathToTests } from "../../config.js";
   export let params = {};
