@@ -1,6 +1,6 @@
 const links = [
-  ["/home", "Hometasks"],
-  ["/lessons", "Lessons"],
+  ["/home", "Hometask"],
+  ["/lesson", "Lesson"],
 ];
 const pathToTests = "./data/tests";
 

@@ -14,7 +14,7 @@
   }
 </script>
 
-<div class="container border bg-white p-8">
+<div class="container rounded border bg-white p-8">
   {#each data.questions as question, index}
       {#if index === activeQuestion}      
         <Question {question} {activeQuestion}/>

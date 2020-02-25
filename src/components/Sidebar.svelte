@@ -1,8 +1,9 @@
   <script>
-    import Nav from '../components/Nav.svelte';
-    export let links = [];
-    export let heading;
-    export let nav;
+    // import Nav from '../components/Nav.svelte';
+    // export let links = [];
+    // export let heading;
+    // export let nav;
+    let user = "Name";
   </script>
   
   <!-- <div class="sidebar space hidden md:block">
@@ -10,5 +11,10 @@
     <Nav {links}/>
   </div> -->
 
-  {heading}
-  {nav}
+<slot name="heading">
+  <div class="mb-4">Welcome, {user}!</div>
+</slot>
+
+<slot name="navigation">
+  default nav
+</slot>

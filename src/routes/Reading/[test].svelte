@@ -15,8 +15,7 @@
       const res = await fetch(URL);
       const data = await res.json();
       return data;
-    } catch(err) {  
-      // not found or ?  
+    } catch(err) {   
       throw new Error(err);
     }
 	}
@@ -24,11 +23,14 @@
 
 <Layout>
   <div slot="sidebar">
-    <Sidebar 
-      heading="heading"
-      nav="nav"
-     />
-    <!-- <a href="/lessons" use:link class="underline">Back</a> -->
+    <div class="sidebar-panel mb-6">
+      <a href="/lesson" use:link>Back</a> 
+    </div> 
+    <div class="sidebar-panel">      
+      {#await test then data}
+        <QuestionsNav questions={data.questions} title={data.title}/>
+      {/await}
+    </div>
   </div>
   <div slot="main"> 
     {#await test then data}

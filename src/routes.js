@@ -11,8 +11,8 @@ const routes = {
   "/home/:name": Home,
   "/hello": Hello,
   "/hello/:first/:last?": Hello,
-  "/lessons/": Reading,
-  "/lessons/:test": Test,
+  "/lesson/": Reading,
+  "/lesson/:test": Test,
   // "/reading/": Reading,
   // "/reading/:quiz": Quiz,
   // Catch-all, must be last
