@@ -5,13 +5,12 @@ module.exports = (production = false) => {
     require("tailwindcss")("./tailwind.config.js"),
     require("postcss-nesting")(),
     require("autoprefixer")(),
-    production &&
-      require("@fullhuman/postcss-purgecss")({
-        extractor: require("purgecss-from-svelte"),
-        content: ["./**/*.html", "./**/*.svelte"],
-        whitelist: [],
-        whitelistPatterns: [/^md/]
-      }),
+    production && require('@fullhuman/postcss-purgecss')({
+      content: ['./**/*.html', './**/*.svelte'],
+      whitelist: ["md\:block"],
+      whitelistPatterns: [],
+      defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+    }),
     production && require("cssnano")
   ].filter(Boolean);
 };
