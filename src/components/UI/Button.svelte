@@ -31,7 +31,7 @@
     @apply bg-blue-5;
   }
   .btn-secondary {
-    @apply border border-dashed border-grey-5;
+    @apply border border-grey-5;
     @apply text-textcolor bg-white;
   }
   .btn-secondary:not(:disabled):hover {
