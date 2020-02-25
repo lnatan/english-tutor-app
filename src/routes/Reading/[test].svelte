@@ -1,10 +1,10 @@
 <script>
   import Layout from "../_layout.svelte";
-  // import Button from "../../components/UI/Button.svelte";
+  import Sidebar from "../../components/Sidebar.svelte";
   import QuestionArea from "../../components/Questions/QuestionArea.svelte";
+  import QuestionsNav from "../../components/Questions/QuestionsNav.svelte";
   import { link, push, pop, replace, location, querystring } from 'svelte-spa-router'; 
   import { pathToTests } from "../../config.js";
-  import { onMount } from "svelte";
   export let params = {};
   
   const URL = `${pathToTests}/${params.test}.json`;
@@ -24,9 +24,11 @@
 
 <Layout>
   <div slot="sidebar">
-    <a href="/lessons" use:link class="underline">Back</a>
-    <br/>
-    Sidebar for Test Page
+    <Sidebar 
+      heading="heading"
+      nav="nav"
+     />
+    <!-- <a href="/lessons" use:link class="underline">Back</a> -->
   </div>
   <div slot="main"> 
     {#await test then data}

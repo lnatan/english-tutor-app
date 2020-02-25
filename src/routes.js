@@ -1,4 +1,3 @@
-// Routes
 import Hello from "./routes/Hello.svelte";
 import Reading from "./routes/Reading/index.svelte";
 import Test from "./routes/Reading/[test].svelte";

@@ -1,4 +1,3 @@
-// Sidebar Navigation
 const links = [
   ["/home", "Hometasks"],
   ["/lessons", "Lessons"],
