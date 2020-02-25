@@ -3,11 +3,10 @@
   export let type;
 </script>
 
-<button
-  {disabled}
+<button  
   on:click
-  class="btn {type}"
->
+  class="btn btn-{type}"
+  disabled={disabled}>
   <slot/>
 </button>
 
@@ -25,18 +24,17 @@
     @apply border border-grey-5;
   }
   /* btn types */
-  .primary {
+  .btn-primary {
     @apply bg-primary;
   }
-  .primary:not(:disabled):hover {
+  .btn-primary:not(:disabled):hover {
     @apply bg-blue-5;
   }
-
-  .secondary {
+  .btn-secondary {
     @apply border border-dashed border-grey-5;
     @apply text-textcolor bg-white;
   }
-  .secondary:not(:disabled):hover {
+  .btn-secondary:not(:disabled):hover {
     @apply text-primary border-primary;
   }
 </style>
