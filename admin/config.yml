@@ -3,7 +3,7 @@ backend:
   # name: git-gateway
   name: github
   repo: soixiio/english-tutor-app
-  base_url: https://api.netlify.com
+  base_url: https://myownghuboauthprovider.herokuapp.com/
   branch: master # Branch to update (optional; defaults to master)
   extension: json
 # Uncomment below to enable drafts
