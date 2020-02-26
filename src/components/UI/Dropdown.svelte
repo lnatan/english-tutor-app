@@ -1,5 +1,5 @@
 <script>
-  import { link } from "svelte-spa-router"; 
+  import { link, location } from "svelte-spa-router"; 
   import active from "svelte-spa-router/active";  
   export let menu = [];
   export let title;
@@ -8,23 +8,19 @@
 </script>
 
 <div class="dropdown {state}">
-  <div class="dropdown-trigger">
+  <div class="border px-4 py-2">
       {title} 
-      <button class="float-right">
+      <!-- <button class="float-right">
         <span class="icon"><i class="icon-arrow-up" /></span>
-      </button>
+      </button> -->
   </div>
-  <div class="dropdown-menu">
-    <ul>
-      {#each menu as item, index}
-        <li class="py-2 text-sm">
-          <a href="/lessson/123" use:link use:active>
-            <span class="pr-2">{index+1}</span>
-            <span>{@html item}</span>      
-          </a>
-        </li>
-      {/each}
-    </ul>
+  <div class="dropdown-menu">  
+    {#each menu as item, index}
+      <a class="dropdown-item" href={$location} use:link>
+        <span class="px-2">{index+1}</span>
+        <span>{@html item}</span>      
+      </a>
+    {/each}
   </div>    
 </div>
 
@@ -33,6 +29,12 @@
     @apply border px-4 py-2;
   }
   .dropdown-menu {
-    @apply px-4 py-2;
+    @apply pr-4 pl-2 py-2;
+  }
+  .dropdown-item {
+    @apply block py-2 text-sm;
+  }
+  .dropdown-item:hover {
+    @apply bg-blue-1 rounded;
   }
 </style>

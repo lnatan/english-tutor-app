@@ -2,20 +2,21 @@
   import Button from "components/UI/Button.svelte";
   import Question from "./Question.svelte";
   import { link, push, pop, replace, location, querystring } from "svelte-spa-router";
+  import { test } from "src/stores/test.js";
   export let data = {};
 
-  $: console.log($location, $querystring);
-
   const questionsCount = data.questions.length;
-  let activeQuestion = 0;
+  let activeQuestion;
 
+  const unsubscribe = test.subscribe(({active}) => {
+		activeQuestion = active;
+  });
+  
   function nextQuestion() {
-    activeQuestion += 1;
-    replace(`${$location}?q=${activeQuestion}`);
+    test.changeActive(activeQuestion + 1);
   }
   function prevQuestion() {
-    activeQuestion -= 1;
-    replace(`${$location}?q=${activeQuestion}`);
+    test.changeActive(activeQuestion - 1);
   }
 </script>
 
@@ -29,8 +30,8 @@
 <!-- Controls Prev Next -->
 <div class="controls p-8 flex justify-center md:justify-end">
   <Button type="secondary" disabled={activeQuestion === 0} on:click={prevQuestion}>Previous</Button>
-  <Button type="primary" on:click={nextQuestion}>
-    {activeQuestion === questionsCount-1 ? "Finish" : "Next"}
-  </Button>
-   <!-- <button on:click={() => replace("/ww")}>Replace current page</button> -->
+  <Button type="primary" on:click={nextQuestion} disabled={activeQuestion === questionsCount-1}>
+    <!-- {activeQuestion === questionsCount-1 ? "Finish" : "Next"} -->
+    Next
+  </Button>   
 </div>

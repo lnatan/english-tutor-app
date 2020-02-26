@@ -33,8 +33,8 @@ export default {
     alias({
       resolve: [".js", ".json", ".svelte"],
       entries: {
-        // dist: path.resolve(__dirname, "dist"),
-        //helpers: path.resolve(__dirname, "src/helpers"),
+        dist: path.resolve(__dirname, "dist"),
+        src: path.resolve(__dirname, "src"),
         components: path.resolve(__dirname, "src/components")
       }
     }),

@@ -25,7 +25,7 @@
   <Layout>
     <div slot="sidebar">  
       <div class="sidebar-panel px-4 py-2 mb-6">
-        <button class="flex items-center" on:click={() => pop()}>
+        <button class="flex items-center" on:click={pop}>
           <span class="icon">
             <i class="icon-arrow-left"/>
           </span>
@@ -33,7 +33,7 @@
         </button>
       </div>
       <div class="sidebar-panel">
-        <QuestionsNav questions={data.questions.map(({title}) => title)} topic={data.title}/>
+        <QuestionsNav questions={data.questions.map(({title}) => title)} title={data.title}/>
       </div>
     </div>
     <div slot="main">

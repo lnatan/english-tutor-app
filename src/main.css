@@ -44,7 +44,7 @@ body {
   @apply text-textcolor bg-bgcolor;
 }
 
-a.active {
+nav a.active {
   @apply font-bold text-black;
 }
 
