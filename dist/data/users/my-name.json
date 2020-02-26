@@ -1,0 +1,14 @@
+{
+  "title": "My name",
+  "Hometask": [
+    {
+      "date": "2020-02-26T21:02:11.842Z",
+      "plan": [
+        "The Moons of Jupiter"
+      ]
+    }
+  ],
+  "login": "something",
+  "password": "something",
+  "role": "student"
+}
