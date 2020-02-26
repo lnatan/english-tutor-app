@@ -1,0 +1,76 @@
+# This file is generated automatically — do not edit it!
+backend:
+  # name: git-gateway
+  name: github
+  repo: soixiio/english-tutor-app
+  branch: master # Branch to update (optional; defaults to master)
+  extension: json
+# Uncomment below to enable drafts
+# publish_mode: editorial_workflow
+
+media_folder: "dist/images" # Media files will be stored in the repo under dist/images
+public_folder: "/images"
+
+collections:
+  # Blog posts
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Tests" # Used in the UI
+    editor:
+      preview: false
+    extension: json
+    folder: "dist/data/tests" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Text title", name: "title", widget: "string" }
+      - label: "Questions"
+        name: "questions"
+        widget: "list"
+        types:
+          - label: "Select one variant"
+            name: "select"
+            widget: object
+            fields:
+              - {label: Question, name: title, widget: string}
+              - label: variants
+                name: variants
+                widget: list
+                fields: 
+                  - {label: variant, name: Variant, widget: string}
+                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}
+          - label: "Select one or few variants"
+            name: "Check"
+            widget: object
+            fields:
+              - {label: Question, name: question, widget: string}
+              - label: variants
+                name: variants
+                widget: list
+                fields: 
+                  - {label: variant, name: Variant, widget: string}
+                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}
+          - label: "Word meaning"
+            name: "word"
+            widget: object
+            fields:
+              - {label: Question, name: question, widget: string, default: "This word in this paragraph is closest in meaning to"}
+              - {label: Word, name: word, widget: string}
+              - label: variants
+                name: variants
+                widget: list
+                fields: 
+                  - {label: variant, name: Variant, widget: string}
+                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false} 
+          - label: "Insert sentence"
+            name: "insert"
+            widget: object
+            fields:
+              - {label: Question, name: question, widget: string, default: "Examine in the selection below and indicate at which block the following sentence could be inserted into the passage"}
+              - {label: Sentence, name: sentence, widget: string}
+              - label: variants
+                name: variants
+                widget: list
+                fields: 
+                  - {label: variant, name: Variant, widget: string}
+                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}                                
+      - { label: Body, name: text, widget: markdown }
