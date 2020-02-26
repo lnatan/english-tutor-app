@@ -1,4 +1,6 @@
 {
+  "title": "Tutor login",
+  "password": "Tutor",
   "name": "my name",
   "Hometask": [
     {
@@ -8,7 +10,5 @@
       ]
     }
   ],
-  "title": "Tutor",
-  "password": "Tutor",
   "role": "tutor"
 }
