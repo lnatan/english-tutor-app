@@ -14,7 +14,7 @@
   <div slot="main" class="container border bg-white p-8">
     <h1 class="title">Lessons</h1>
     <ul>
-      <li><a href="/lesson/the-moons-of-jupiter" class="underline" use:link>The Moons of Jupiter</a></li>   
+      <li><a href="/lesson/the-moons-of-jupiter?q=0" class="underline" use:link>The Moons of Jupiter</a></li>   
     </ul>
   </div>  
 </Layout>

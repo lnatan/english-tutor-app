@@ -1,16 +1,21 @@
 <script>
   import Button from "components/UI/Button.svelte";
   import Question from "./Question.svelte";
+  import { link, push, pop, replace, location, querystring } from "svelte-spa-router";
   export let data = {};
+
+  $: console.log($location, $querystring);
 
   const questionsCount = data.questions.length;
   let activeQuestion = 0;
 
   function nextQuestion() {
-    activeQuestion += 1;   
+    activeQuestion += 1;
+    replace(`${$location}?q=${activeQuestion}`);
   }
   function prevQuestion() {
     activeQuestion -= 1;
+    replace(`${$location}?q=${activeQuestion}`);
   }
 </script>
 
@@ -27,4 +32,5 @@
   <Button type="primary" on:click={nextQuestion}>
     {activeQuestion === questionsCount-1 ? "Finish" : "Next"}
   </Button>
+   <!-- <button on:click={() => replace("/ww")}>Replace current page</button> -->
 </div>

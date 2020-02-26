@@ -1,21 +1,31 @@
 <script>
-  import { link } from 'svelte-spa-router'; 
-  import active from 'svelte-spa-router/active';
+  import Dropdown from "components/UI/Dropdown.svelte"
+  import { link } from "svelte-spa-router";
   export let questions = [];
-  export let title;
+  export let topic;
 
-  questions = questions.map(q => q.title.split(" ").slice(0,6).join(" "));
+  questions = questions.map(q => {
+    let qSliced = q.split(" ").slice(0, 6).join(" ");
+    qSliced += "&hellip;";
+    return qSliced;
+  })
 </script>
 
-<div class="font-semibold">Lesson plan</div>
-<div>{title}</div>
- <ul>
-  {#each questions as q, index}
-    <li class="py-2 text-sm">
-      <a href="/:index" use:link use:active>
-        <span class="pr-2">{index+1}</span>
-        <span>{q}...</span>      
-      </a>
-    </li>
-  {/each}
-</ul>
+
+<div class="font-semibold text-black space">
+  Lesson plan
+</div>
+<Dropdown title={topic} menu={questions}/>
+
+
+<style>
+  .space {
+    @apply px-4 py-2;
+  }
+  .q-panel {
+    @apply bg-white border rounded;
+  }
+  .q-nav-title {
+    @apply font-semibold text-black;
+  }
+</style>

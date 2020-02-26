@@ -14589,20 +14589,12 @@ a.active {
   color: #262626;
 }
 
-/* 
-  Layout 
-*/
-
 .sidebar {
   margin-right: 2rem;
 }
 
 .sidebar-panel {
   background-color: #fff;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   display: block;
   border-width: 1px;
   border-radius: 0.25rem;
@@ -14612,6 +14604,24 @@ a.active {
   font-weight: 600;
   font-size: 1.5rem;
   color: #262626;
+}
+
+/* Icons */
+
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon-arrow-up {
+  content: url('images/icons/arrow-up.svg')
+}
+
+.icon-arrow-left {
+  content: url('images/icons/arrow-left.svg')
 }
 
 @media (min-width: 640px) {

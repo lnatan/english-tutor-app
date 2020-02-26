@@ -48,18 +48,31 @@ a.active {
   @apply font-bold text-black;
 }
 
-/* 
-  Layout 
-*/
-
 .sidebar {
   @apply mr-8;
 }
 
 .sidebar-panel {
-  @apply bg-white px-4 py-2 block border rounded;
+  @apply bg-white block border rounded;
 }
 
 .title {
   @apply font-semibold text-2xl text-black;
+}
+
+/* Icons */
+
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.icon-arrow-up {
+  content: url('images/icons/arrow-up.svg')
+}
+.icon-arrow-left {
+  content: url('images/icons/arrow-left.svg')
 }
