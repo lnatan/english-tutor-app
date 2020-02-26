@@ -10,7 +10,7 @@
     "select": Select,
     "check": Check,
     "word": Word,
-    "insert":  Insert
+    "insert": Insert
   };
 </script>
 

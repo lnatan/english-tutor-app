@@ -1,7 +1,7 @@
-const links = [
-  ["/home", "Hometask"],
+const activities = [
   ["/lesson", "Lesson"],
+  ["/hometask", "Hometask"]
 ];
-const pathToTests = "./data/tests";
 
-export { links, pathToTests };
+const pathToTests = "./data/tests";
+export { activities, pathToTests };

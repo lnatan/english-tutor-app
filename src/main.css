@@ -58,6 +58,7 @@ nav a.active {
 
 .title {
   @apply font-semibold text-2xl text-black;
+  @apply capitalize;
 }
 
 /* Icons */

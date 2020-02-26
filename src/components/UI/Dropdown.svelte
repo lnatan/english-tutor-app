@@ -8,7 +8,7 @@
 </script>
 
 <div class="dropdown {state}">
-  <div class="border px-4 py-2">
+  <div class="border-b border-t px-4 py-2">
       {title} 
       <!-- <button class="float-right">
         <span class="icon"><i class="icon-arrow-up" /></span>
@@ -25,6 +25,9 @@
 </div>
 
 <style>
+  .space {
+    @apply px-4 py-2;
+  }
   .dropdown-trigger {
     @apply border px-4 py-2;
   }
@@ -33,6 +36,9 @@
   }
   .dropdown-item {
     @apply block py-2 text-sm;
+  }
+  .dropdown-item.active {
+    @apply text-primary;
   }
   .dropdown-item:hover {
     @apply bg-blue-1 rounded;

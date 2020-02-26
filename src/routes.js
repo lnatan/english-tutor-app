@@ -1,18 +1,17 @@
-import Hello from "./routes/Hello.svelte";
-import Reading from "./routes/Reading/index.svelte";
-import Test from "./routes/Reading/[test].svelte";
 import Index from "./routes/Index.svelte";
+// import Hometasks from "./routes/Hometask/index.svelte";
+import Lesson from "./routes/Lesson/index.svelte";
+import Test from "./routes/Lesson/[test].svelte";
 import NotFound from "./routes/NotFound.svelte";
-import Home from "./routes/Home.svelte";
+import Activities from "./routes/[Activities]/index.svelte";
 
 const routes = {
   "/": Index,
-  "/home/": Home,
-  "/home/:name": Home,
-  "/hello": Hello,
-  "/hello/:first/:last?": Hello,
-  "/lesson/": Reading,
-  "/lesson/:test": Test,
+  "/:activities": Activities,
+  "/:activities/:test": Test,
+  // "/hometask/": Hometasks,
+  // "/hometask/:name": Hometasks,
+  // "/lesson/": Lesson,
   // "/reading/": Reading,
   // "/reading/:quiz": Quiz,
   // Catch-all, must be last

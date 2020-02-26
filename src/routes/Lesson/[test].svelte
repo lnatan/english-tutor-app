@@ -1,6 +1,6 @@
 <script>
   import Layout from "../_layout.svelte";
-  import Sidebar from "components/Sidebar.svelte";
+  // import Sidebar from "components/Sidebar.svelte";
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
   import { pop } from "svelte-spa-router"; 

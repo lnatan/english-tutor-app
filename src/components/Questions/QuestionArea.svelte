@@ -6,11 +6,12 @@
   export let data = {};
 
   const questionsCount = data.questions.length;
-  let activeQuestion;
+  $: activeQuestion = $test.active;
 
-  const unsubscribe = test.subscribe(({active}) => {
-		activeQuestion = active;
-  });
+  // let activeQuestion;
+  // const unsubscribe = test.subscribe(({active}) => {
+	// 	activeQuestion = active;
+  // });
   
   function nextQuestion() {
     test.changeActive(activeQuestion + 1);
