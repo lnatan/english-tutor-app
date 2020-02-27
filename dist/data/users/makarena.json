@@ -1,0 +1,14 @@
+{
+  "name": "Makarena",
+  "lesson": [
+    {
+      "date": "2020-02-27T08:05:43.034Z",
+      "plan": [
+        "The Moons of Jupiter"
+      ]
+    }
+  ],
+  "login": "makarena",
+  "password": "makare",
+  "role": "student"
+}
