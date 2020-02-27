@@ -1,0 +1,14 @@
+{
+  "login": "login",
+  "name": "Makar",
+  "hometask": [
+    {
+      "date": "2020-02-27T08:15:32.256Z",
+      "plan": [
+        "The Moons of Jupiter"
+      ]
+    }
+  ],
+  "password": "123456",
+  "role": "student"
+}
