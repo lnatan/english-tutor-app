@@ -86,7 +86,7 @@ collections:
     fields: # The fields for each document, usually in front matter
           - { label: "User name", name: "name", widget: "string" }
           - label: Hometask
-            name: Hometask
+            name: hometask
             widget: list
             fields: 
               - {label: Due date, name: date, widget: date}
@@ -101,7 +101,7 @@ collections:
                 multiple: true,
               }
           - label: Lesson
-            name: Lesson
+            name: lesson
             widget: list
             fields: 
               - {label: Date, name: date, widget: date}
