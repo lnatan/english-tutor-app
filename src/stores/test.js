@@ -8,7 +8,7 @@ function createTestStore() {
 
 	return {
 		subscribe,
-    changeActive: (val) => {
+    update: (val) => {
       update((store) => {
         return {
           active: val,

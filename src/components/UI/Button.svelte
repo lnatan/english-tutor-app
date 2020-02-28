@@ -1,6 +1,6 @@
 <script>
   export let disabled = false;
-  export let type;
+  export let type = "primary";
 </script>
 
 <button  
@@ -36,5 +36,9 @@
   }
   .btn-secondary:not(:disabled):hover {
     @apply text-primary border-primary;
+  }
+  .btn-link {
+    @apply flex text-textcolor items-center;
+    @apply p-0;
   }
 </style>

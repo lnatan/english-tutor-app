@@ -1,14 +1,14 @@
 <script>
-  import Layout from "../_layout.svelte";
-  // import Sidebar from "components/Sidebar.svelte";
+  // import { onMount } from "svelte"; 
+  import Button from "components/UI/Button.svelte";
+  import Layout from "src/routes/_layout.svelte";
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import { pop } from "svelte-spa-router"; 
-  import { pathToTests } from "../../config.js";
+  import { pop } from 'svelte-spa-router';
   export let params = {};
-  
-  const URL = `${pathToTests}/${params.test}.json`;
-  const test = getTest();
+
+  const URL = `./data/tests/${params.test}.json`;
+  const promise = getTest();
 
  	async function getTest(){
     try {
@@ -18,28 +18,31 @@
     } catch(err) {   
       throw new Error(err);
     }
-	}
+  }
 </script>
 
-{#await test then data}
+{#await promise then test}
   <Layout>
     <div slot="sidebar">  
       <div class="sidebar-panel px-4 py-2 mb-6">
-        <button class="flex items-center" on:click={pop}>
+        <Button type="link" on:click={pop}>
           <span class="icon">
             <i class="icon-arrow-left"/>
-          </span>
+          </span>  
           Back
-        </button>
-      </div>
+        </Button>        
+       </div>
       <div class="sidebar-panel">
-        <QuestionsNav questions={data.questions.map(({title}) => title)} title={data.title}/>
+        {params.lesson}
+        <!-- <QuestionsNav nav={test.questions} title={test.title} on/> -->
       </div>
-    </div>
+    </div>    
     <div slot="main">
-      <QuestionArea {data} /> 
+      <!-- <Question {question} />
+      <Controls on:next={} on:prev={} /> -->
+      <!-- <QuestionArea {test} /> -->
     </div>
-</Layout>
+  </Layout>
 {:catch error}
 <!-- _error.svelte -->
   <p>{error}</p>

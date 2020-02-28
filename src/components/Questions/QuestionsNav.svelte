@@ -1,24 +1,20 @@
 <script>
-  // import Dropdown from "components/UI/Dropdown.svelte"
-  // import { link, location } from "svelte-spa-router"; 
-  import { test } from "src/stores/test.js";
+  import { createEventDispatcher } from "svelte";
+  // import { store, updateActive } from "./store.js";
   export let title;
-  export let questions = [];
+  export let nav = [];
+  const dispatch = createEventDispatcher();
 
-  questions = questions.map(q => {
-    return q.split(" ").slice(0, 6).join(" ");
-  })
-
-  // let activeQuestion;
-  // const unsubscribe = test.subscribe(({active}) => {
-	// 	activeQuestion = active;
-  // }); 
-
-  $: activeQuestion = $test.active;
+  // $: active = $store.active;
+  // $: answers = $store.answers;
 
   function changeQuestion(i){
-    test.changeActive(i);
+    updateActive(i);
   }
+
+  const shortTitle = (title) => {
+    return str.split(" ").slice(0, 6).join(" ");
+  };
 </script>
 
 <div class="font-semibold text-black px-4 py-2">
@@ -32,10 +28,10 @@
       </button> -->
   </div>
   <div class="pr-4 pl-2 py-2">  
-    {#each questions as q, i}
-      <a class="item" class:active={i === activeQuestion} href="#{i}" on:click|preventDefault={() => changeQuestion(i)}>
+    {#each nav as item, i}
+      <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => changeQuestion(i)}>
         <span class="px-2">{i+1}</span>
-        <span>{q}...</span>      
+        <span>{shortTitle(item.title)}...</span>      
       </a>
     {/each}
   </div>    

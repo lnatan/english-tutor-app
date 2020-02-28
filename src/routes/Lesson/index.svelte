@@ -1,20 +1,33 @@
 <script>
-  import Layout from "../_layout.svelte";
-  import Nav from  "../../components/Nav.svelte";
-  //import { links } from "../../config.js";
-  import { link, push, pop, replace, location, querystring } from 'svelte-spa-router'; 
+  import Layout from "src/routes/_layout.svelte";
+  import Nav from  "components/Nav.svelte";
+  import { link, push } from 'svelte-spa-router'; 
   export let params = {};
+
+  const links = [
+    ["/lesson", "Lesson"],
+    ["/hometask", "Hometask"]
+  ];
+  // Get the tests (done/undone, by users)
+  const tests = ["the-moons-of-jupiter", "the-jupiters-of-moon"];
 </script>
 
-<Layout> 
+<Layout>
   <div slot="sidebar">
     <div class="mb-6">Welcome, {params.name ? params.name : "Xiao"}!</div>
-    <!-- <Nav {links} /> -->
+    <Nav links={links} />
   </div>
-  <div slot="main" class="container border bg-white p-8">
-    <h1 class="title">Lessons</h1>
-    <ul>
-      <li><a href="/lesson/the-moons-of-jupiter" class="underline" use:link>The Moons of Jupiter</a></li>   
-    </ul>
-  </div>  
+  <div slot="main">
+    <h2 class="title">{params.activities}</h2>
+    <div class="tasks_active">
+      {#each tests as test}
+        <button on:click={() => push(`/${params.lesson}/${test}`)}>{test}</button>
+        <br/>
+      {/each}
+    </div>
+    <h2 class="title">Completed</h2>
+    <div class="tasks_comleted">
+      Here done cards
+    </div>
+  </div>
 </Layout>

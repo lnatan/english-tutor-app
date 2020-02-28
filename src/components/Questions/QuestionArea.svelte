@@ -1,38 +1,68 @@
 <script>
   import Button from "components/UI/Button.svelte";
-  import Question from "./Question.svelte";
   import { link, push, pop, replace, location, querystring } from "svelte-spa-router";
-  import { test } from "src/stores/test.js";
-  export let data = {};
+  import { store, updateActive, updateAnswers } from "./store.js";
+  export let test = {};
 
-  const questionsCount = data.questions.length;
-  $: activeQuestion = $test.active;
+  const { title, questions, context } = test;
+  const questionsCount = questions.length;
 
-  // let activeQuestion;
-  // const unsubscribe = test.subscribe(({active}) => {
-	// 	activeQuestion = active;
-  // });
-  
+  $: active = $store.active;
+  // $: answers = $store.answers;
+  // $: console.log("store", $store);
+
+  let selected;
+
+  const controls = {
+    select: "radio",
+    check: "checkbox",
+    word: "radio",
+    insert: "button"
+  };
+
+  // const types = questions.map(({type}) => controls[type]);
+  //console.log(types);
+
   function nextQuestion() {
-    test.changeActive(activeQuestion + 1);
+    updateAnswers(questions[active].variants[selected].answer);
+    updateActive(active+1);    
   }
   function prevQuestion() {
-    test.changeActive(activeQuestion - 1);
+    updateActive(active-1);
   }
 </script>
 
 <div class="container rounded border bg-white p-8">
-  {#each data.questions as question, index}
-      {#if index === activeQuestion}      
-        <Question {question} {activeQuestion}/>         
-      {/if}
-  {/each}
+  {#each questions as question, index}
+    {#if index === active} 
+      <h1 class="text-black text-xl mb-6">{question.title}</h1>
+      <div class="variants">
+        {#each question.variants as v, i}
+          <label for={i} class="custom-label block py-2">
+            <span>
+               <input id={i} type=radio bind:group={selected} value={i}>
+               <span class="custom-radio"></span>
+            </span>           
+            <span>{v.variant}</span>
+          </label>
+        {/each}
+      </div>      
+    {/if}
+    <div class="mt-4">Context</div>
+  {/each}  
 </div>
-<!-- Controls Prev Next -->
-<div class="controls p-8 flex justify-center md:justify-end">
-  <Button type="secondary" disabled={activeQuestion === 0} on:click={prevQuestion}>Previous</Button>
-  <Button type="primary" on:click={nextQuestion} disabled={activeQuestion === questionsCount-1}>
-    <!-- {activeQuestion === questionsCount-1 ? "Finish" : "Next"} -->
-    Next
-  </Button>   
-</div>
+
+{#if active < questionsCount}
+  <div class="flex p-8 justify-center md:justify-end">
+    <Button type="secondary" disabled={active === 0} on:click={prevQuestion}>Previous</Button>
+    <Button type="primary" on:click={nextQuestion}>
+      {active === questionsCount-1 ? "Finish" : "Next"} 
+    </Button>   
+  </div>
+{/if}
+
+<style>
+   .custom-label {
+     cursor: pointer;
+   }
+</style>
