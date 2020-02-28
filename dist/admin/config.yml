@@ -43,11 +43,11 @@ collections:
                     requied: false
                     default: false
           - label: Select one or few variants
-            name: Check
+            name: check
             widget: object
             fields:
               - label: Question
-                name: question
+                name: title
                 widget: string
               - label: variants
                 name: variants
@@ -66,7 +66,7 @@ collections:
             widget: object
             fields:
               - label: Question
-                name: question
+                name: title
                 widget: string
                 default: This word in this paragraph is closest in meaning to
               - label: Word
