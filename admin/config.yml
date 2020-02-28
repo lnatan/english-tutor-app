@@ -1,92 +1,130 @@
-# This file is generated automatically — do not edit it!
 backend:
-  # name: git-gateway
   name: github
   repo: soixiio/english-tutor-app
-  branch: master # Branch to update (optional; defaults to master
-  base_url: https://myownghuboauthprovider.herokuapp.com/
+  branch: master
+  base_url: 'https://myownghuboauthprovider.herokuapp.com/'
   extension: json
-# Uncomment below to enable drafts
-# publish_mode: editorial_workflow
-
-media_folder: "dist/images" # Media files will be stored in the repo under dist/images
-public_folder: "/images"
-
+media_folder: dist/images
+public_folder: /images
 collections:
-  # Blog posts
-  - name: "Tests" # Used in routes, e.g., /admin/collections/blog
-    label: "Tests" # Used in the UI
+  - name: Tests
+    label: Tests
     editor:
       preview: false
     extension: json
-    folder: "dist/data/tests" # The path to the folder where the documents are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - { label: "Text title", name: "title", widget: "string" }
-      - label: "Questions"
-        name: "questions"
-        widget: "list"
+    folder: dist/data/tests
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - label: Text title
+        name: title
+        widget: string
+      - label: Questions
+        name: questions
+        widget: list
         types:
-          - label: "Select one variant"
-            name: "select"
+          - label: Select one variant
+            name: select
             widget: object
             fields:
-              - {label: Question, name: title, widget: string}
+              - label: Question
+                name: title
+                widget: string
               - label: variants
                 name: variants
                 widget: list
-                fields: 
-                  - {label: variant, name: Variant, widget: string}
-                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}
-          - label: "Select one or few variants"
-            name: "Check"
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Select one or few variants
+            name: Check
             widget: object
             fields:
-              - {label: Question, name: question, widget: string}
+              - label: Question
+                name: question
+                widget: string
               - label: variants
                 name: variants
                 widget: list
-                fields: 
-                  - {label: variant, name: Variant, widget: string}
-                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}
-          - label: "Word meaning"
-            name: "word"
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Word meaning
+            name: word
             widget: object
             fields:
-              - {label: Question, name: question, widget: string, default: "This word in this paragraph is closest in meaning to"}
-              - {label: Word, name: word, widget: string}
+              - label: Question
+                name: question
+                widget: string
+                default: This word in this paragraph is closest in meaning to
+              - label: Word
+                name: word
+                widget: string
               - label: variants
                 name: variants
                 widget: list
-                fields: 
-                  - {label: variant, name: Variant, widget: string}
-                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false} 
-          - label: "Insert sentence"
-            name: "insert"
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Insert sentence
+            name: insert
             widget: object
             fields:
-              - {label: Question, name: question, widget: string, default: "Examine in the selection below and indicate at which block the following sentence could be inserted into the passage"}
-              - {label: Sentence, name: sentence, widget: string}
+              - label: Question
+                name: question
+                widget: string
+                default: >-
+                  Examine in the selection below and indicate at which block the
+                  following sentence could be inserted into the passage
+              - label: Sentence
+                name: sentence
+                widget: string
               - label: variants
                 name: variants
                 widget: list
-                fields: 
-                  - {label: variant, name: Variant, widget: string}
-                  - {label: Correct answer, name: answer, widget: boolean, requied: false, default: false}                                
-      - { label: Body, name: text, widget: markdown }
-  - name: "Users" # Used in routes, e.g., /admin/collections/blog
-    label: "Users" # Used in the UI
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+      - label: Body
+        name: text
+        widget: markdown
+  - name: Users
+    label: Users
     editor:
       preview: false
     extension: json
     folder: "dist/data/users" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    #slug: "{{login}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
+          - { label: "Login", name: "login", widget: "string" }
           - { label: "User name", name: "name", widget: "string" }
           - label: Hometask
-            name: Hometask
+            name: hometask
             widget: list
             fields: 
               - {label: Due date, name: date, widget: date}
@@ -96,12 +134,12 @@ collections:
                 widget: "relation", # Relate to data from collection categories
                 collection: "Tests",
                 searchFields: "questions",
-                valueField: "questions",
+                valueField: "title",
                 displayFields: "title",
                 multiple: true,
               }
           - label: Lesson
-            name: Lesson
+            name: lesson
             widget: list
             fields: 
               - {label: Date, name: date, widget: date}
@@ -111,11 +149,39 @@ collections:
                 widget: "relation", # Relate to data from collection categories
                 collection: "Tests",
                 searchFields: "questions",
-                valueField: "questions",
+                valueField: "title",
                 displayFields: "title",
                 multiple: true,
-              }    
-          - { label: "Login", name: "login", widget: "string" }
+              }
           - { label: "Password", name: "password", widget: "string" }
-          - { label: "Role", name: "role", widget: "select",   options: ["admin", "tutor", "master"] }              
-            
+          - { label: "Role", name: "role", widget: "select",   options: ["student", "tutor", "master"] }    
+  - name: "Journal"
+    editor:
+      preview: false
+    label: "Journal"
+    extension: json
+    files:
+      - file: "dist/data/journal.json"
+        label: "Journal"
+        name: "Journal"
+        fields:
+            - {
+                label: "Reading test",
+                name: "alltests",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Tests",
+                searchFields: "questions",
+                valueField: "title",
+                displayFields: "title",
+                multiple: true,
+              }
+            - {
+                label: "Users list",
+                name: "allusers",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Users",
+                searchFields: ["name", "login"],
+                valueField: "login",
+                displayFields: ["name", "login"],
+                multiple: true,
+              }  
