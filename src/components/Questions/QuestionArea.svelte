@@ -24,8 +24,10 @@
   //console.log(types);
 
   function nextQuestion() {
-    updateAnswers(questions[active].variants[selected].answer);
-    updateActive(active+1);    
+    if (selected !== undefined) {
+      updateAnswers(questions[active].variants[selected].answer);
+    }
+    updateActive(active+1);
   }
   function prevQuestion() {
     updateActive(active-1);
@@ -33,23 +35,19 @@
 </script>
 
 <div class="container rounded border bg-white p-8">
-  {#each questions as question, index}
-    {#if index === active} 
-      <h1 class="text-black text-xl mb-6">{question.title}</h1>
-      <div class="variants">
-        {#each question.variants as v, i}
-          <label for={i} class="custom-label block py-2">
-            <span>
-               <input id={i} type=radio bind:group={selected} value={i}>
-               <span class="custom-radio"></span>
-            </span>           
-            <span>{v.variant}</span>
-          </label>
-        {/each}
-      </div>      
-    {/if}
-    <div class="mt-4">Context</div>
-  {/each}  
+  <h1 class="text-black text-xl mb-6">{questions[active].title}</h1>
+  <div class="variants">
+    {#each questions[active].variants as v, i}
+      <label for={i} class="custom-label block py-2">
+        <span>
+            <input id={i} type=radio bind:group={selected} value={i}>
+            <span class="custom-radio"></span>
+        </span>           
+        <span>{v.variant}</span>
+      </label>
+    {/each}
+  </div>
+  <div class="mt-4">Context</div>
 </div>
 
 {#if active < questionsCount}

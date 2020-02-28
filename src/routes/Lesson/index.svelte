@@ -5,8 +5,8 @@
   export let params = {};
 
   const links = [
-    ["/lesson", "Lesson"],
-    ["/hometask", "Hometask"]
+    ["/Lesson", "Lesson"],
+    ["/Hometask", "Hometask"]
   ];
   // Get the tests (done/undone, by users)
   const tests = ["the-moons-of-jupiter", "the-jupiters-of-moon"];

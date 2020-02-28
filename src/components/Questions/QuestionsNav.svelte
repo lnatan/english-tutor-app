@@ -1,25 +1,20 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  // import { store, updateActive } from "./store.js";
+  import { store, updateActive } from "./store.js";
   export let title;
   export let nav = [];
-  const dispatch = createEventDispatcher();
-
-  // $: active = $store.active;
+ 
+  $: active = $store.active;
   // $: answers = $store.answers;
-
+  
   function changeQuestion(i){
     updateActive(i);
-  }
+  } 
 
   const shortTitle = (title) => {
-    return str.split(" ").slice(0, 6).join(" ");
+    return title.split(" ").slice(0, 6).join(" ");
   };
 </script>
 
-<div class="font-semibold text-black px-4 py-2">
-  Lesson plan
-</div>
 <div class="questions">
   <div class="border px-4 py-2">
       {title} 
@@ -31,7 +26,8 @@
     {#each nav as item, i}
       <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => changeQuestion(i)}>
         <span class="px-2">{i+1}</span>
-        <span>{shortTitle(item.title)}...</span>      
+        <span>{shortTitle(item.title)}...</span> 
+        <span class="px-2">+</span>     
       </a>
     {/each}
   </div>    

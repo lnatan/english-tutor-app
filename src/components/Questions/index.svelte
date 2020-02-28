@@ -33,14 +33,14 @@
         </Button>        
        </div>
       <div class="sidebar-panel">
-        {params.lesson}
-        <!-- <QuestionsNav nav={test.questions} title={test.title} on/> -->
+        <div class="font-semibold text-black px-4 py-2">
+          {params.lesson} plan
+        </div>
+        <QuestionsNav nav={test.questions} title={test.title}/>
       </div>
     </div>    
     <div slot="main">
-      <!-- <Question {question} />
-      <Controls on:next={} on:prev={} /> -->
-      <!-- <QuestionArea {test} /> -->
+     <QuestionArea {test} />
     </div>
   </Layout>
 {:catch error}
