@@ -7,23 +7,19 @@
       "variants": [
         {
           "answer": true,
-          "variant": "During sleep the diaphragm requires increased movement of the rib cage.",
-          "Variant": "During sleep the diaphragm requires increased movement of the rib cage."
+          "variant": "During sleep the diaphragm requires increased movement of the rib cage."
         },
         {
           "answer": false,
-          "variant": "The diaphragm helps with breathing as movements of the rib cage decrease during sleep.",
-          "Variant": "The diaphragm helps with breathing as movements of the rib cage decrease during sleep."
+          "variant": "The diaphragm helps with breathing as movements of the rib cage decrease during sleep."
         },
         {
           "answer": false,
-          "variant": "The diaphragm requires a great amount of pressure to function properly.",
-          "Variant": "The diaphragm requires a great amount of pressure to function properly."
+          "variant": "The diaphragm requires a great amount of pressure to function properly."
         },
         {
           "answer": false,
-          "variant": "The diaphragm contributes to the effective functioning of the rib cage.",
-          "Variant": "The diaphragm contributes to the effective functioning of the rib cage."
+          "variant": "The diaphragm contributes to the effective functioning of the rib cage."
         }
       ]
     },
@@ -33,23 +29,19 @@
       "variants": [
         {
           "answer": true,
-          "variant": "It has its control center in the brain stem.",
-          "Variant": "It has its control center in the brain stem."
+          "variant": "It has its control center in the brain stem."
         },
         {
           "answer": false,
-          "variant": "It controls breathing for a number of activities during wakefulness.",
-          "Variant": "It controls breathing for a number of activities during wakefulness."
+          "variant": "It controls breathing for a number of activities during wakefulness."
         },
         {
           "answer": false,
-          "variant": "It is able to bypass the automatic system.",
-          "Variant": "It is able to bypass the automatic system."
+          "variant": "It is able to bypass the automatic system."
         },
         {
           "answer": true,
-          "variant": "It produces an irregular breathing pattern.",
-          "Variant": "It produces an irregular breathing pattern."
+          "variant": "It produces an irregular breathing pattern."
         }
       ]
     },
@@ -60,23 +52,19 @@
       "variants": [
         {
           "answer": true,
-          "variant": "Consistent",
-          "Variant": "Consistent"
+          "variant": "Consistent"
         },
         {
           "answer": false,
-          "variant": "Perfect",
-          "Variant": "Perfect"
+          "variant": "Perfect"
         },
         {
           "answer": false,
-          "variant": "Partial",
-          "Variant": "Partial"
+          "variant": "Partial"
         },
         {
           "answer": false,
-          "variant": "Sole",
-          "Variant": "Sole"
+          "variant": "Sole"
         }
       ]
     },
@@ -86,19 +74,19 @@
       "variants": [
         {
           "answer": false,
-          "Variant": "The automatic, metabolic system may increase its dependence on air exchanges."
+          "variant": "The automatic, metabolic system may increase its dependence on air exchanges."
         },
         {
           "answer": true,
-          "Variant": "Breathing can stop for a short time as a person falls asleep."
+          "variant": "Breathing can stop for a short time as a person falls asleep."
         },
         {
           "answer": false,
-          "Variant": "An increase in the oxygen level in the blood can occur as sleep becomes fully obtained."
+          "variant": "An increase in the oxygen level in the blood can occur as sleep becomes fully obtained."
         },
         {
           "answer": false,
-          "Variant": "The level of carbon dioxide in the blood may drop suddenly."
+          "variant": "The level of carbon dioxide in the blood may drop suddenly."
         }
       ]
     },
@@ -108,19 +96,19 @@
       "variants": [
         {
           "answer": false,
-          "Variant": "To refute the argument that additional effort is necessary for breathing during sleep"
+          "variant": "To refute the argument that additional effort is necessary for breathing during sleep"
         },
         {
           "answer": true,
-          "Variant": "To argue that REM sleep is more important than NREM sleep"
+          "variant": "To argue that REM sleep is more important than NREM sleep"
         },
         {
           "answer": false,
-          "Variant": "To illustrate the difficulty of breathing during sleep"
+          "variant": "To illustrate the difficulty of breathing during sleep"
         },
         {
           "answer": false,
-          "Variant": "To illustrate how blockage of narrow passages can be prevented during sleep"
+          "variant": "To illustrate how blockage of narrow passages can be prevented during sleep"
         }
       ]
     },
@@ -130,19 +118,19 @@
       "variants": [
         {
           "answer": true,
-          "Variant": "Relaxation of the muscles involved in the respiratory system"
+          "variant": "Relaxation of the muscles involved in the respiratory system"
         },
         {
           "answer": false,
-          "Variant": "Changes in resistance between the two sides of the nose"
+          "variant": "Changes in resistance between the two sides of the nose"
         },
         {
           "answer": false,
-          "Variant": "Easier airflow in the passages of the upper airway"
+          "variant": "Easier airflow in the passages of the upper airway"
         },
         {
           "answer": false,
-          "Variant": "Absence of certain complex muscle interactions"
+          "variant": "Absence of certain complex muscle interactions"
         }
       ]
     },
@@ -152,19 +140,19 @@
       "variants": [
         {
           "answer": true,
-          "Variant": "There is an immediate, automatic, adaptive increase in breathing effort."
+          "variant": "There is an immediate, automatic, adaptive increase in breathing effort."
         },
         {
           "answer": false,
-          "Variant": "The sleeping person takes several inadequate breaths before the breathing effort is adjusted."
+          "variant": "The sleeping person takes several inadequate breaths before the breathing effort is adjusted."
         },
         {
           "answer": false,
-          "Variant": "The coughing reflex causes the breathing effort to adjust."
+          "variant": "The coughing reflex causes the breathing effort to adjust."
         },
         {
           "answer": false,
-          "Variant": "The airways become cleared as the blood removes irritants."
+          "variant": "The airways become cleared as the blood removes irritants."
         }
       ]
     },
@@ -174,19 +162,19 @@
       "variants": [
         {
           "answer": true,
-          "Variant": "Because breathing is more shallow and irregular in REM than in NREM, less air is exchanged in REM."
+          "variant": "Because breathing is more shallow and irregular in REM than in NREM, less air is exchanged in REM."
         },
         {
           "answer": false,
-          "Variant": "Breathing in NREM is less effective than breathing in REM because of irregular episodes of rapid breathing during NREM."
+          "variant": "Breathing in NREM is less effective than breathing in REM because of irregular episodes of rapid breathing during NREM."
         },
         {
           "answer": false,
-          "Variant": "Because breathing is more rapid in NREM sleep than in REM sleep, breathing often becomes shallow."
+          "variant": "Because breathing is more rapid in NREM sleep than in REM sleep, breathing often becomes shallow."
         },
         {
           "answer": false,
-          "Variant": "Although REM has brief episodes of shallow breathing or lack of breathing, breathing is more rapid than in NREM."
+          "variant": "Although REM has brief episodes of shallow breathing or lack of breathing, breathing is more rapid than in NREM."
         }
       ]
     },
@@ -197,19 +185,19 @@
       "variants": [
         {
           "answer": false,
-          "Variant": "A"
+          "variant": "A"
         },
         {
           "answer": false,
-          "Variant": "B"
+          "variant": "B"
         },
         {
           "answer": true,
-          "Variant": "C"
+          "variant": "C"
         },
         {
           "answer": false,
-          "Variant": "D"
+          "variant": "D"
         }
       ]
     }
