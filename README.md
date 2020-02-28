@@ -32,3 +32,5 @@ Development mode will:
 ```bash
 npm run dev
 ```
+### Demo
+https://soixiio.github.io/english-tutor-app/
