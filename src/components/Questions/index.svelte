@@ -58,24 +58,14 @@
       </div>
     </div>    
     <div slot="main">
-
       <QuestionArea 
         {active} 
         {answers} 
-        question={test.questions[active]}        
+        question={test.questions[active]} 
+        questonsCount={test.questions.length}       
         on:click={changeActive} 
         on:select={changeAnswers}
       />
-
-      {#if active < test.questions.length}
-        <div class="flex p-8 justify-center md:justify-end">
-          <Button type="secondary" disabled={active === 0} on:click={() => active -=1}>Previous</Button>
-          <Button type="primary" on:click={() => active +=1}>
-            {active === (test.questions.length - 1) ? "Finish" : "Next"} 
-          </Button>   
-        </div>
-      {/if} 
-
     </div>
   </Layout>
 {:catch error}
