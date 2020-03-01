@@ -48,7 +48,7 @@ collections:
             fields:
               - label: Question
                 name: title
-                widget: string
+                widget: text
               - label: variants
                 name: variants
                 widget: list
@@ -89,8 +89,8 @@ collections:
             widget: object
             fields:
               - label: Question
-                name: question
-                widget: string
+                name: title
+                widget: text
                 default: >-
                   Examine in the selection below and indicate at which block the
                   following sentence could be inserted into the passage
@@ -109,6 +109,65 @@ collections:
                     widget: boolean
                     requied: false
                     default: false
+          - label: Choose column v1
+            name: columnv1
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: text
+                default: >-
+                  From the seven statements below, select the statements that 
+                  correctly characterize breathing during wakefulness and those statements that correctly 
+                  characterize breathing during sleep
+              - label: Column 1
+                name: column1
+                widget: string
+              - label: Column 2
+                name: column2
+                widget: string         
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Column number
+                    name: answer
+                    widget: number
+                    requied: false
+                    default: false
+          - label: Choose column v2
+            name: columnv2
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: text
+                default: >-
+                  From the seven statements below, select the statements that 
+                  correctly characterize breathing during wakefulness and those statements that correctly 
+                  characterize breathing during sleep
+              - label: columns
+                name: columns
+                widget: list
+                fields:
+                  - label: column
+                    name: column
+                    widget: string            
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Column number
+                    name: answer
+                    widget: number
+                    requied: false
+                    default: false                                         
       - label: Body
         name: text
         widget: markdown
