@@ -1,7 +1,8 @@
 <script>
-  // import { onMount } from "svelte"; 
-  import Button from "components/UI/Button.svelte";
+  // import { onMount } from "svelte";
+  import { writable } from 'svelte/store'; 
   import Layout from "src/routes/_layout.svelte";
+  import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
   import { pop } from 'svelte-spa-router';
@@ -19,6 +20,17 @@
       throw new Error(err);
     }
   }
+
+  let active = 0;
+  let answers = new Map();
+
+  function changeActive({ detail }){
+    active = detail.newActive;
+  };
+
+  function changeAnswers({ detail }){
+    answers = answers.set(...detail.newAnswers);
+  };
 </script>
 
 {#await promise then test}
@@ -36,11 +48,34 @@
         <div class="font-semibold text-black px-4 py-2">
           {params.lesson} plan
         </div>
-        <QuestionsNav nav={test.questions} title={test.title}/>
+        <QuestionsNav          
+          {active} 
+          {answers}
+          nav={test.questions} 
+          title={test.title}          
+          on:click={changeActive}
+        />
       </div>
     </div>    
     <div slot="main">
-     <QuestionArea {test} />
+
+      <QuestionArea 
+        {active} 
+        {answers} 
+        question={test.questions[active]}        
+        on:click={changeActive} 
+        on:select={changeAnswers}
+      />
+
+      {#if active < test.questions.length}
+        <div class="flex p-8 justify-center md:justify-end">
+          <Button type="secondary" disabled={active === 0} on:click={() => active -=1}>Previous</Button>
+          <Button type="primary" on:click={() => active +=1}>
+            {active === (test.questions.length - 1) ? "Finish" : "Next"} 
+          </Button>   
+        </div>
+      {/if} 
+
     </div>
   </Layout>
 {:catch error}

@@ -4,7 +4,7 @@
 
 <div class="container py-12">
   <p>
-    Enter the <a href="/lesson" use:link class="text-primary"> App </a>
+    Enter the <a href="/Lesson" use:link class="text-primary"> App </a>
   </p> 
   <div>
     <form action="">
