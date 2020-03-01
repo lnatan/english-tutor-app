@@ -47,7 +47,7 @@
     },
     {
       "type": "word",
-      "question": "The word \"exclusive\" in the passage is closest in meaning to",
+      "title": "The word \"exclusive\" in the passage is closest in meaning to",
       "word": "exclusive",
       "variants": [
         {
@@ -180,7 +180,7 @@
     },
     {
       "type": "insert",
-      "question": "Examine in the selection below and indicate where the following sentence could be added to the passage.",
+      "title": "Examine in the selection below and indicate where the following sentence could be added to the passage.",
       "sentence": "To better understand breathing during sleep, it is, however, helpful to first understand how respiration works in general.",
       "variants": [
         {
