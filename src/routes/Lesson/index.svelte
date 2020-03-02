@@ -18,7 +18,7 @@
     <Nav links={links} />
   </div>
   <div slot="main">
-    <h2 class="title">{params.activities}</h2>
+    <h2 class="title">{params.lesson}</h2>
     <div class="tasks_active">
       {#each tests as test}
         <button on:click={() => push(`/${params.lesson}/${test}`)}>{test}</button>

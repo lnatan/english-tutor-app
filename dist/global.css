@@ -14701,6 +14701,10 @@ nav a.active {
   content: url('images/icons/arrow-left.svg')
 }
 
+.icon-check {
+  content: url('images/icons/check.svg')
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

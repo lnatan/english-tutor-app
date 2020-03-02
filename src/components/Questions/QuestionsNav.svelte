@@ -10,13 +10,13 @@
   const shortTitle = (title) => {
     return title.split(" ").slice(0, 6).join(" ");
   };
-  
-  $: questionStatus = (questionKey) => {
-    return answers.has(questionKey) ? "+" : " ";
+
+  $: hasAnswer = (questionIndex) => {
+    return answers.has(questionIndex);
   };
 
-  function handleClick(i){
-    dispatch("click",  {newActive: i});
+  function changeQuestion(i){
+    dispatch("click", {newActive: i});
   };
 </script>
 
@@ -27,12 +27,18 @@
         <span class="icon"><i class="icon-arrow-up" /></span>
       </button> -->
   </div>
-  <div class="pr-4 pl-2 py-2">  
+  <div class="pr-2 pl-2 py-2">  
     {#each nav as item, i}
-      <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => handleClick(i)}>
+      <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => changeQuestion(i)}>
         <span class="px-2">{i+1}</span>
         <span>{shortTitle(item.title)}...</span> 
-        <span class="float-right px-2">{questionStatus(i)}</span>     
+        <span class="float-right px-2">
+          {#if hasAnswer(i)}
+            <span class="icon">
+              <i class="icon-check"></i>
+            </span>
+          {/if}
+        </span>     
       </a>
     {/each}
   </div>    

@@ -62,7 +62,6 @@ nav a.active {
 }
 
 /* Icons */
-
 .icon {
   align-items: center;
   display: inline-flex;
@@ -70,10 +69,12 @@ nav a.active {
   height: 1.5rem;
   width: 1.5rem;
 }
-
 .icon-arrow-up {
   content: url('images/icons/arrow-up.svg')
 }
 .icon-arrow-left {
   content: url('images/icons/arrow-left.svg')
+}
+.icon-check {
+  content: url('images/icons/check.svg')
 }

@@ -23,10 +23,10 @@ module.exports = {
       "blue-1": "#E6F7FF"
     },
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
     },
     container: {
       center: true
@@ -45,7 +45,7 @@ module.exports = {
     }
   },
   variants: {
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    opacity: ["responsive", "hover", "focus", "disabled"],
   },
   plugins: []
 };

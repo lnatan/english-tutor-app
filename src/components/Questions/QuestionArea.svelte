@@ -1,8 +1,8 @@
 <script>
-  import { onMount } from "svelte"; 
+  // import { onMount } from "svelte"; 
   import { createEventDispatcher } from 'svelte';
   import Button from "components/UI/Button.svelte";
-  import { link, push, pop, replace, location, querystring } from "svelte-spa-router";
+  import Controls from "./types/index.svelte";
   export let question = {};
   export let questonsCount;
   export let active;
@@ -10,8 +10,9 @@
   const dispatch = createEventDispatcher();
   
   $: selected = answers.get(active);
+  // $: console.log(answers);
 
-  function handleInput(variant) {
+  function selectVariant(variant) {    
     dispatch("select", {newAnswers: [active, variant]});
   };
   function nextQuestion() {
@@ -25,23 +26,16 @@
 <div class="container rounded border bg-white p-8">
   {#if active < questonsCount}
     <h1 class="text-black text-xl mb-6">{question.title}</h1>
-      <div>
-        {#each question.variants as v, i}
-          <label for={i} class="custom-label block py-2">
-            <span>
-              <input id={i} checked={i === selected} value={i} type=radio on:input={() => handleInput(i)}>
-              <span class="custom-radio"></span>
-            </span>           
-            <span>{v.variant}</span>
-          </label>
-        {/each}
-      </div>
+    <Controls      
+      selected={selected} 
+      type={question.type} 
+      variants={question.variants} 
+      on:select={(e) => selectVariant(e.detail)}/>
     <div class="mt-4">Context</div>
   {:else}  
     <p>Score:</p>
   {/if}
 </div>
-
 
 {#if active < questonsCount}
   <div class="flex p-8 justify-center md:justify-end">
@@ -50,11 +44,4 @@
       {active === (questonsCount - 1) ? "Finish" : "Next"} 
     </Button>   
   </div>
-{/if} 
-
-
-<style>
-   .custom-label {
-     cursor: pointer;
-   }
-</style>
+{/if}
