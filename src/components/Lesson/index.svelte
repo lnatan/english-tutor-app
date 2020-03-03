@@ -5,10 +5,7 @@
   import active from 'svelte-spa-router/active';
   export let params = {};
 
-  const links = [
-    ["/lesson", "Lesson", "book"],
-    ["/hometask", "Hometask", "deck"]
-  ];
+  const links = ["lesson", "hometask"];
 
   const slug = (title) => {
     return title
@@ -39,13 +36,13 @@
       Welcome, {params.name ? params.name : "Xiao"}!</div>
     <nav>
       <ul>
-        {#each links as [path, name, icon]}
+        {#each links as item}
           <li>
-            <a href={path} use:link use:active>
+            <a href="/{item}" use:link use:active>
               <span class="icon pr-2">
-                <i class="icon-{icon}" />
+                <i class="icon-{item}" />
               </span>
-              {name}
+              {item}
             </a>
           </li>
         {/each}

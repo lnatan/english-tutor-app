@@ -45,7 +45,7 @@ body {
 }
 
 nav a {
-  @apply flex p-2 rounded;
+  @apply flex p-2 rounded capitalize;
 } 
 
 nav a.active {
@@ -70,8 +70,8 @@ nav a.active {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  /* height: 1.5rem;
-  width: 1.5rem; */
+  height: 1.5rem;
+  width: 1.5rem;
 }
 .icon-arrow-up {
   content: url('images/icons/arrow-up.svg')
@@ -82,11 +82,11 @@ nav a.active {
 .icon-check {
   content: url('images/icons/check.svg')
 }
-.icon-deck {
-  content: url('images/icons/deck.svg')
+.icon-lesson {
+  content: url('images/icons/lesson.svg')
 }
-.icon-book {
-  content: url('images/icons/book.svg')
+.icon-hometask {
+  content: url('images/icons/hometask.svg')
 }
 .icon-girl {
   content: url('images/icons/girl.png');

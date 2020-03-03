@@ -45,7 +45,7 @@
         </Button>        
        </div>
       <div class="sidebar-panel">
-        <div class="font-semibold text-black px-4 py-2">
+        <div class="font-semibold capitalize text-black px-4 py-2">
           {params.lesson} plan
         </div>
         <QuestionsNav          
