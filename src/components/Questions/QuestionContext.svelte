@@ -5,15 +5,18 @@
   export let context;
 
   let fragment;
-  $: if (type !== "check") {
-    fragment = getActiveFragment(context, active + 1);
-  }
+  $: fragment = getActiveFragment(context, active + 1);
   
   function getActiveFragment(text, key){
     const regexp = new RegExp('(?<=' + key + '>)(.*?)(?=<\/' + key + '>)');
-    let rezult;
-    rezult = text.match(regexp)[0];
-    rezult = rezult.replace(/(?=<)(.*?)(?:>)/g, "");
+    let rezult = text.match(regexp);
+
+    if (rezult === null) {
+      console.log("No context provided or context should be markuped");
+      return;
+    }
+
+    rezult = rezult[0].replace(/(?=<)(.*?)(?:>)/g, "");
     return rezult;
   };
 
@@ -25,7 +28,7 @@
   // };
 </script>
 
-{#if type !== "check"}
+{#if fragment}
   <div class="mt-4 text-xl text-justify">{fragment}</div>
 {/if}
 
