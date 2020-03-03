@@ -1,5 +1,5 @@
 <script>
-  // import { onMount } from "svelte";
+  import { onMount } from "svelte";
   import { writable } from 'svelte/store'; 
   import Layout from "src/routes/_layout.svelte";
   import Button from "components/UI/Button.svelte";  
@@ -52,7 +52,7 @@
           {active} 
           {answers}
           nav={test.questions} 
-          title={test.title}          
+          title={test.title}
           on:click={changeActive}
         />
       </div>
@@ -62,13 +62,13 @@
         {active} 
         {answers} 
         question={test.questions[active]} 
-        questonsCount={test.questions.length}       
+        context={test.context}    
+        questionsCount={test.questions.length}           
         on:click={changeActive} 
         on:select={changeAnswers}
       />
     </div>
   </Layout>
 {:catch error}
-<!-- _error.svelte -->
   <p>{error}</p>
 {/await}

@@ -3,8 +3,7 @@
   import Check from "./Check.svelte";
   import Insert from "./Insert.svelte";
   import Column from "./Column.svelte";
-  export let type;
-  export let variants;
+  export let question;
   export let selected;
 
   const controls = {
@@ -16,6 +15,4 @@
   };
 </script>
 
-<div class="controls">
-  <svelte:component this={controls[type]} {selected} {variants} on:select />
-</div>
+<svelte:component this={controls[question.type]} {selected} {question} on:select />

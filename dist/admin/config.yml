@@ -169,7 +169,7 @@ collections:
                     requied: false
                     default: false                                         
       - label: Body
-        name: text
+        name: context
         widget: markdown
   - name: Users
     label: Users

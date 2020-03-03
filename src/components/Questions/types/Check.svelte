@@ -1,8 +1,9 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  export let variants; 
+  export let question; 
   export let selected;
   const dispatch = createEventDispatcher();  
+  // const { variants } = question;
 
   $: isChecked = (index) => { 
     if (selected === undefined) return false;
@@ -22,10 +23,10 @@
   }
 </script>
 
-{#each variants as {variant}, i}
+{#each question.variants as {variant}, i}
   <label for={i} class="flex cursor-pointer py-2">
     <span class="custom-checkbox pr-2" class:checked={isChecked(i)}>
-      <input class="hidden-checkbox" id={i} type="checkbox" on:click={() => handleClick(i)}>
+      <input class="checkbox-input" id={i} type="checkbox" on:click={() => handleClick(i)}>
       <span class="custom-checkbox-inner"></span>
     </span>           
     <span>{variant}</span>
@@ -33,7 +34,7 @@
 {/each}
 
 <style>
-  .hidden-checkbox {
+  .checkbox-input {
     position: absolute;
     top: 0;
     right: 0;

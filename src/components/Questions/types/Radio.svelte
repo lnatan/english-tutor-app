@@ -1,18 +1,19 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  export let variants; 
   export let selected;
+  export let question; 
   const dispatch = createEventDispatcher();  
+  // const { variants } = question;
 
   function handleClick(index){
     dispatch("select", index);
   }
 </script>
 
-{#each variants as {variant}, i}
+{#each question.variants as {variant}, i }
   <label for={i} class="label py-2">
     <span class="custom-radio pr-2" class:checked={i === selected}>
-      <input class="hidden-radio" id={i} value={i} type="radio" on:click={() => handleClick(i)}>
+      <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleClick(i)}>
       <span class="custom-radio-inner" ></span>
     </span>           
     <span>{variant}</span>
@@ -25,7 +26,7 @@
     display: flex;
     align-items: center  
   }
-  .hidden-radio {
+  .radio-input {
     position: absolute;
     top: 0;
     right: 0;
