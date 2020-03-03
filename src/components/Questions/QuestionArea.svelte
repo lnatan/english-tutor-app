@@ -2,7 +2,6 @@
   // import { onMount } from "svelte"; 
   import { createEventDispatcher } from 'svelte';
   import Button from "components/UI/Button.svelte";
-  import Context from "./QuestionContext.svelte";
   import Controls from "./types/index.svelte";
   export let question = {};
   export let questionsCount;
@@ -13,14 +12,14 @@
   
   $: selected = answers.get(active);
 
-  const score = [];
-  let finish = false;
-  $: if (active === questionsCount && !finish) {
-    finish = true;
-    for (let [key, value] of answers) {
-      score.push([key + 1]);
-    }
-  }
+  // const score = [];
+  // let finish = false;
+  // $: if (active === questionsCount && !finish) {
+  //   finish = true;
+  //   for (let [key, value] of answers) {
+  //     score.push([key + 1]);
+  //   }
+  // }
 
   function selectVariant(variant) {    
     dispatch("select", {newAnswers: [active, variant]});
@@ -38,25 +37,21 @@
     <h1 class="text-black text-xl mb-6">{question.title}</h1>
     <Controls      
       {selected} 
-      {question} 
+      {question}
+      {context}
       on:select={(e) => selectVariant(e.detail)}
     />
-    {#if context}
+    <!-- {#if context}
       <Context
         {active}
         {selected} 
         {context}
         type={question.type}
       />
-    {/if}
+    {/if} -->
   {:else}  
     <p class="p-8 text-xl">That`s all! This test has been finished.</p>
     <p>Summary:</p>
-    <ul>
-      {#each score as [key]}
-        <li>question {key}</li>
-      {/each}      
-    </ul>
   {/if}
 </div>
 

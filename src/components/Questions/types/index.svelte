@@ -5,6 +5,7 @@
   import Column from "./Column.svelte";
   export let question;
   export let selected;
+  export let context;
 
   const controls = {
     select: Radio,
@@ -15,4 +16,10 @@
   };
 </script>
 
-<svelte:component this={controls[question.type]} {selected} {question} on:select />
+<svelte:component  
+  this={controls[question.type]}
+  {context} 
+  {selected} 
+  {...question} 
+  on:select 
+/>

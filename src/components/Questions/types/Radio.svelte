@@ -1,16 +1,25 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   export let selected;
-  export let question; 
+  export let variants; 
+  export let context; 
+  export let word;
+  export let type; 
   const dispatch = createEventDispatcher();  
-  // const { variants } = question;
+
+  $: if (word) {
+    const regexp = new RegExp("<[0-9]+A>[\s]*" + word + "[\s]*<\/[0-9]+A>", "gi");
+    const highlight = ` <span class="highlight">${word}</span> `;
+    context = context.replace(regexp, highlight);
+    // return rezult
+  };
 
   function handleClick(index){
     dispatch("select", index);
   }
 </script>
 
-{#each question.variants as {variant}, i }
+{#each variants as {variant}, i }
   <label for={i} class="label py-2">
     <span class="custom-radio pr-2" class:checked={i === selected}>
       <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleClick(i)}>
@@ -19,6 +28,8 @@
     <span>{variant}</span>
   </label>
 {/each}
+
+<div class="mt-4 text-xl text-justify">{@html context}</div>
 
 <style> 
   .label {
@@ -36,7 +47,6 @@
     cursor: pointer;
     opacity: 0;
   }
-
   .custom-radio {
     position: relative;
   }
@@ -69,5 +79,9 @@
     opacity: 1;
     transform: scale(1);
     transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  :global(.highlight) {
+    @apply bg-primary text-white p-1;
   }
 </style>

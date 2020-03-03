@@ -15,8 +15,8 @@
   }
 </script>
 
-<div class="bg-primary text-xl text-white rounded p-2">{question.sentence}</div>
-<div class="flex flex-col mt-6">
+<!-- <div class="bg-primary text-xl text-white rounded p-2">{question.sentence}</div> -->
+<!-- <div class="flex flex-col mt-6">
   {#each question.variants as {variant}, i}
     <label for={i} class="label py-2">
       <span class="custom-radio pr-2" class:checked={i === selected}>
@@ -26,7 +26,7 @@
       <span>{variant}</span>
     </label>
   {/each}
-</div>
+</div> -->
 
 <style> 
   .label {

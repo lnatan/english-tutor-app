@@ -1,25 +1,22 @@
 <script>
   import { onMount } from "svelte";
-  import { writable } from 'svelte/store'; 
+  // import { writable } from 'svelte/store'; 
   import Layout from "src/routes/_layout.svelte";
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
+  import parse from "src/utils/parse-test-data.js";
   import { pop } from 'svelte-spa-router';
   export let params = {};
 
   const URL = `./data/tests/${params.test}.json`;
-  const promise = getTest();
+  let test;
 
- 	async function getTest(){
-    try {
-      const res = await fetch(URL);
-      const data = await res.json();
-      return data;
-    } catch(err) {   
-      throw new Error(err);
-    }
-  }
+  onMount(async () => await fetch(URL)
+    .then(response => response.json())
+    .then(data => test = parse(data))
+    .catch(error => console.error("error", error))
+  );
 
   let active = 0;
   let answers = new Map();
@@ -33,7 +30,7 @@
   };
 </script>
 
-{#await promise then test}
+{#if test}
   <Layout>
     <div slot="sidebar">  
       <div class="sidebar-panel px-4 py-2 mb-6">
@@ -62,13 +59,15 @@
         {active} 
         {answers} 
         question={test.questions[active]} 
-        context={test.context}    
+        context={test.fragments[active]}    
         questionsCount={test.questions.length}           
         on:click={changeActive} 
         on:select={changeAnswers}
       />
+      <!-- Score -->
+      <!-- Buttons -->
     </div>
   </Layout>
-{:catch error}
-  <p>{error}</p>
-{/await}
+{:else}
+  <p>Error: </p>
+{/if}
