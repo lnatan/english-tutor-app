@@ -14660,9 +14660,16 @@ body {
   background-color: #F5F5F5;
 }
 
+nav a {
+  display: flex;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
 nav a.active {
   font-weight: 700;
   color: #262626;
+  background-color: #fff;
 }
 
 .sidebar {
@@ -14703,6 +14710,14 @@ nav a.active {
 
 .icon-check {
   content: url('images/icons/check.svg')
+}
+
+.icon-deck {
+  content: url('images/icons/deck.svg')
+}
+
+.icon-book {
+  content: url('images/icons/book.svg')
 }
 
 @media (min-width: 640px) {

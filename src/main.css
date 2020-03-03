@@ -44,8 +44,12 @@ body {
   @apply text-textcolor bg-bgcolor;
 }
 
+nav a {
+  @apply flex p-2 rounded;
+} 
+
 nav a.active {
-  @apply font-bold text-black;
+  @apply font-bold text-black bg-white;
 }
 
 .sidebar {
@@ -77,4 +81,10 @@ nav a.active {
 }
 .icon-check {
   content: url('images/icons/check.svg')
+}
+.icon-deck {
+  content: url('images/icons/deck.svg')
+}
+.icon-book {
+  content: url('images/icons/book.svg')
 }

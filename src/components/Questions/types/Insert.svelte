@@ -15,7 +15,7 @@
   }
 </script>
 
-<span class="bg-primary text-xl text-white px-2">{question.sentence}</span>
+<span class="bg-primary text-xl text-white px-2 py-1">{question.sentence}</span>
 <div class="flex flex-col mt-6">
   {#each question.variants as {variant}, i}
     <label for={i} class="label py-2">

@@ -18,7 +18,7 @@
 
 <nav>
   <ul>
-    {#each links as [path, name]}
+    {#each links as [path, name, icon]}
       <li><a href={path} use:link use:active>{name}</a></li>
     {/each}
   </ul>

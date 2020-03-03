@@ -226,7 +226,7 @@ collections:
         fields:
             - {
                 label: "Reading test",
-                name: "alltests",
+                name: "tests",
                 widget: "relation", # Relate to data from collection categories
                 collection: "Tests",
                 searchFields: "questions",
@@ -236,7 +236,7 @@ collections:
               }
             - {
                 label: "Users list",
-                name: "allusers",
+                name: "users",
                 widget: "relation", # Relate to data from collection categories
                 collection: "Users",
                 searchFields: ["name", "login"],

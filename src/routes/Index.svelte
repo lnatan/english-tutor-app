@@ -16,5 +16,5 @@
     </form>
   </div>
   <br/>
-  <a href="/Lesson" use:link class="text-primary">Enter</a>
+  <a href="/lesson" use:link class="text-primary">Enter</a>
 </div>

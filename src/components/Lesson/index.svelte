@@ -2,14 +2,13 @@
   import Layout from "src/routes/_layout.svelte";
   import Nav from  "components/Nav.svelte";
   import { link, push } from 'svelte-spa-router'; 
+  import active from 'svelte-spa-router/active';
   export let params = {};
 
   const links = [
-    ["/Lesson", "Lesson"],
-    ["/Hometask", "Hometask"]
+    ["/lesson", "Lesson", "book"],
+    ["/hometask", "Hometask", "deck"]
   ];
-  // Get the tests (done/undone, by users)
-  // const tests = ["the-moons-of-jupiter", "the-jupiters-of-moon"];
 
   const slug = (title) => {
     return title
@@ -17,10 +16,10 @@
       .replace(/\s/g, "-");   
   };
 
-  const URL = `./data/journal.json`;
-  const promise = getTestsList();
+  const URL = "./data/journal.json";
+  const journal = getJournal();
   
- 	async function getTestsList(){
+ 	async function getJournal(){
     try {
       const res = await fetch(URL);
       const data = await res.json();
@@ -34,14 +33,27 @@
 <Layout>
   <div slot="sidebar">
     <div class="mb-6">Welcome, {params.name ? params.name : "Xiao"}!</div>
-    <Nav links={links} />
+    <nav>
+      <ul>
+        {#each links as [path, name, icon]}
+          <li>
+            <a href={path} use:link use:active>
+              <span class="icon pr-2">
+                <i class="icon-{icon}" />
+              </span>
+              {name}
+            </a>
+          </li>
+        {/each}
+      </ul>
+    </nav>
   </div>
   <div slot="main">
-    <h2 class="title">{params.lesson}</h2>
-    {#await promise then journal}
+    <h2 class="title">Active</h2>
+    {#await journal then data}
     <div class="rounded border bg-white p-6">
       <ul>
-        {#each journal.alltests as item}
+        {#each data.tests as item}
           <button on:click={() => push(`/${params.lesson}/${slug(item)}`)}>{item}</button>
           <br/>
         {/each}
