@@ -65,6 +65,9 @@ nav a.active {
   @apply capitalize;
 }
 
+input::placeholder {
+  @apply text-grey-6;
+}
 /* Icons */
 .icon {
   align-items: center;
@@ -87,6 +90,12 @@ nav a.active {
 }
 .icon-hometask {
   content: url('images/icons/hometask.svg')
+}
+.icon-login {
+  content: url('images/icons/login.svg')
+}
+.icon-password {
+  content: url('images/icons/password.svg')
 }
 .icon-girl {
   content: url('images/icons/girl.png');
