@@ -12,7 +12,7 @@
 
 <style>
   .btn {
-    @apply px-4 py-2;
+    @apply px-2 py-1;
     @apply text-white;
     @apply rounded;
   }
