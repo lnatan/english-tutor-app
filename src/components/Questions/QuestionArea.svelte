@@ -13,6 +13,15 @@
   
   $: selected = answers.get(active);
 
+  const score = [];
+  let finish = false;
+  $: if (active === questionsCount && !finish) {
+    finish = true;
+    for (let [key, value] of answers) {
+      score.push([key + 1]);
+    }
+  }
+
   function selectVariant(variant) {    
     dispatch("select", {newAnswers: [active, variant]});
   };
@@ -42,6 +51,12 @@
     {/if}
   {:else}  
     <p class="p-8 text-xl">That`s all! This test has been finished.</p>
+    <p>Summary:</p>
+    <ul>
+      {#each score as [key]}
+        <li>question {key}</li>
+      {/each}      
+    </ul>
   {/if}
 </div>
 
