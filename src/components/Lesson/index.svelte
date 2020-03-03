@@ -29,7 +29,7 @@
 
 <Layout>
   <div slot="sidebar">
-    <div class="flex items-center text-lg leading-loose px-2">
+    <div class="flex items-center text-lg leading-loose pb-4 px-2">
       <span class="icon pr-2">
         <i class="icon-girl" />
       </span>
@@ -50,7 +50,7 @@
     </nav>
   </div>
   <div slot="main">
-    <h2 class="title">Active</h2>
+    <h2 class="title pb-4">Active</h2>
     {#await journal then data}
     <div class="rounded border bg-white p-6">
       <ul>
