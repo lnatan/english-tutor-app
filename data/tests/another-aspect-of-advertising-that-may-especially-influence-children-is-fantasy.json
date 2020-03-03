@@ -1,0 +1,16 @@
+{
+  "title": "Another aspect of advertising that may especially influence children is fantasy.",
+  "questions": [
+    {
+      "type": "check",
+      "title": "Another aspect of advertising that may especially influence children is fantasy.",
+      "variants": [
+        {
+          "answer": true,
+          "variant": "Another aspect of advertising that may especially influence children is fantasy."
+        }
+      ]
+    }
+  ],
+  "context": "<!--StartFragment-->\n\n**Another aspect of advertising that may especially influence children is fantasy.**\n\n<!--EndFragment--><!--StartFragment-->\n\n**Another aspect of advertising that may especially influence children is fantasy.**\n\n<!--EndFragment--><!--StartFragment-->\n\n**Another aspect of advertising that may especially influence children is fantasy.**\n\n<!--EndFragment--><!--StartFragment-->\n\n**Another aspect of advertising that may especially influence children is fantasy.**\n\n<!--EndFragment-->"
+}
