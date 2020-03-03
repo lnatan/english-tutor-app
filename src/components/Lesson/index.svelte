@@ -32,7 +32,11 @@
 
 <Layout>
   <div slot="sidebar">
-    <div class="mb-6">Welcome, {params.name ? params.name : "Xiao"}!</div>
+    <div class="text-lg leading-loose px-2">
+      <span class="icon pr-2">
+        <i class="icon-girl" />
+      </span>
+      Welcome, {params.name ? params.name : "Xiao"}!</div>
     <nav>
       <ul>
         {#each links as [path, name, icon]}

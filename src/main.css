@@ -70,8 +70,8 @@ nav a.active {
   align-items: center;
   display: inline-flex;
   justify-content: center;
-  height: 1.5rem;
-  width: 1.5rem;
+  /* height: 1.5rem;
+  width: 1.5rem; */
 }
 .icon-arrow-up {
   content: url('images/icons/arrow-up.svg')
@@ -87,4 +87,8 @@ nav a.active {
 }
 .icon-book {
   content: url('images/icons/book.svg')
+}
+.icon-girl {
+  content: url('images/icons/girl.png');
+  width: 1.5rem;
 }

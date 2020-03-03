@@ -38,7 +38,7 @@
     <div slot="sidebar">  
       <div class="sidebar-panel px-4 py-2 mb-6">
         <Button type="link" on:click={pop}>
-          <span class="icon">
+          <span class="icon pr-2">
             <i class="icon-arrow-left"/>
           </span>  
           Back
