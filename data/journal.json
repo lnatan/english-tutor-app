@@ -1,16 +1,10 @@
 {
   "tests": [
-    "The Moons of Jupiter"
-  ],
-  "users": [
-    "makarenalog"
-  ],
-  "alltests": [
     "Breathing During Sleep",
     "Another aspect of advertising that may especially influence children is fantasy",
     "The Moons of Jupiter"
   ],
-  "allusers": [
+  "users": [
     "makarenalog"
   ]
 }
