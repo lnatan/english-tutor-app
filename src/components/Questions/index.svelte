@@ -5,8 +5,8 @@
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import parse from "src/utils/parse-test-data.js";
-  import { pop } from 'svelte-spa-router';
+  import prepareTest from "./utils/test.js";
+  import { pop, push } from 'svelte-spa-router';
   export let params = {};
 
   const URL = `./data/tests/${params.test}.json`;
@@ -14,9 +14,8 @@
 
   onMount(async () => await fetch(URL)
     .then(response => response.json())
-    .then(data => test = parse(data))
-    .catch(error => console.error("error", error))
-  );
+    .then(data => test = prepareTest(data))
+    .catch(error => console.log(error)));
 
   let active = 0;
   let answers = new Map();
@@ -68,6 +67,4 @@
       <!-- Buttons -->
     </div>
   </Layout>
-{:else}
-  <p>Error: </p>
 {/if}

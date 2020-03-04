@@ -1,9 +1,11 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import parseContext from "../utils/context.js";
   export let selected;
-  export let variants; 
-  export let context = " ";
-  const dispatch = createEventDispatcher();  
+  export let variants = []; 
+  export let context = "";
+  export let word = "";
+  const dispatch = createEventDispatcher(); 
 
   function handleClick(index){
     dispatch("select", index);
@@ -19,8 +21,7 @@
     <span>{variant}</span>
   </label>
 {/each}
-
-<div class="mt-4 text-xl text-justify">{@html context}</div>
+<div class="mt-4 text-xl text-justify">{@html parseContext("word", context, word)}</div>
 
 <style> 
   .label {
@@ -70,5 +71,9 @@
     opacity: 1;
     transform: scale(1);
     transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  :global(.highlight) {
+    @apply bg-primary text-white p-1;
   }
 </style>

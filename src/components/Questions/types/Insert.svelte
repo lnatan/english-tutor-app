@@ -1,9 +1,11 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import parseContext from "../utils/context.js";
   export let selected;
-  export let question;
+  export let variants;
+  export let sentence
+  export let context = "";
   const dispatch = createEventDispatcher();  
-  // const { variants, sentence } = question;
 
   $: isChecked = (index) => { 
     if (selected === undefined) return false;
@@ -15,9 +17,9 @@
   }
 </script>
 
-<!-- <div class="bg-primary text-xl text-white rounded p-2">{question.sentence}</div> -->
-<!-- <div class="flex flex-col mt-6">
-  {#each question.variants as {variant}, i}
+<div class="bg-primary text-xl text-white rounded p-2">{sentence}</div>
+<div class="flex flex-col mt-6">
+  {#each variants as {variant}, i}
     <label for={i} class="label py-2">
       <span class="custom-radio pr-2" class:checked={i === selected}>
         <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleClick(i)}>
@@ -26,7 +28,8 @@
       <span>{variant}</span>
     </label>
   {/each}
-</div> -->
+</div>
+<div class="mt-4 text-xl text-justify">{@html parseContext("insert", context)}</div>
 
 <style> 
   .label {
@@ -78,5 +81,13 @@
     opacity: 1;
     transform: scale(1);
     transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+  }
+
+  :global(.slot) {
+    @apply rounded border border-blue-6 bg-blue-1 text-blue-6 text-sm leading-7;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    cursor: pointer;
   }
 </style>

@@ -41,14 +41,6 @@
       {context}
       on:select={(e) => selectVariant(e.detail)}
     />
-    <!-- {#if context}
-      <Context
-        {active}
-        {selected} 
-        {context}
-        type={question.type}
-      />
-    {/if} -->
   {:else}  
     <p class="p-8 text-xl">That`s all! This test has been finished.</p>
     <p>Summary:</p>
