@@ -1,11 +1,12 @@
 const tagTemplate = /<\/*\d+\w*>/g;
-const slotTemplate = /(?<=<[0-9]+B>)(.*?)(?=<\/[0-9]+B>)/g;
-// const highlightTemplate = /(?<=<[0-9]+A>)(.*?)(?=<\/[0-9]+A>)/g;
+const slotTemplate = /(?<=<[0-9]+B>)([0-9]+)(\w)(?=<\/[0-9]+B>)/g;
 
 function makeFragments(text, fragmentsCount){
   let fragments = [];
 
-  const newText = text.replace(slotTemplate, " <span class=\"slot hidden\">$1</span> ");
+  const newText = text.replace(slotTemplate, (match, index, value) => 
+  ` <span class="slot hidden" data-index=${index-1}>${value}</span><span class="slot-sentence hidden" data-index=${index-1}>${value}</span> `
+  );
 
   for (let i = 1; i <= fragmentsCount; i++) {
     const fragmentTemplate = new RegExp("(?<=" + i + ">)(.*?)(?=<\/" + i + ">)");
@@ -32,7 +33,7 @@ function showHighlight(text, element){
 }
 
 function showSlots(text){
-  return text.replace(/slot hidden/g, "slot inline-block");
+  return text.replace(/slot hidden/g, "slot");
 }
 
 function prepareTest(test){
