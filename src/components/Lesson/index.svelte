@@ -7,11 +7,7 @@
 
   const links = ["lesson", "hometask"];
 
-  const slug = (title) => {
-    return title
-      .toLowerCase()
-      .replace(/\s/g, "-");   
-  };
+  const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
 
   const URL = "./data/journal.json";
   const journal = getJournal();

@@ -1,5 +1,4 @@
 <script>
-  import { writable } from 'svelte/store';
   import Radio from "./Radio.svelte";
   import Word from "./Word.svelte"; 
   import Check from "./Check.svelte";

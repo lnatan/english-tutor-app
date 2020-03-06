@@ -5,7 +5,7 @@
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import prepareTest from "./utils/test.js";
+  import { prepareTest } from "./utils/parse.js";
   import { pop, push } from 'svelte-spa-router';
   export let params = {};
 
@@ -15,7 +15,7 @@
   onMount(async () => await fetch(URL)
     .then(response => response.json())
     .then(data => test = prepareTest(data))
-    .catch(error => console.log(error)));
+    .catch(error => console.error(error)));
 
   let active = 0;
   let answers = new Map();

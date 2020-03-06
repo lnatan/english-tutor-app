@@ -1,16 +1,11 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import parseContext from "../utils/context.js";
+  import { showSlots } from "../utils/parse.js";
   export let selected;
   export let variants;
   export let sentence
   export let context = "";
   const dispatch = createEventDispatcher();  
-
-  $: isChecked = (index) => { 
-    if (selected === undefined) return false;
-    return selected.includes(index);
-  };
 
   function handleClick(index){
     dispatch("select", index);
@@ -29,7 +24,7 @@
     </label>
   {/each}
 </div>
-<div class="mt-4 text-xl text-justify">{@html parseContext("insert", context)}</div>
+<div class="mt-4 text-xl text-justify">{@html showSlots(context)}</div>
 
 <style> 
   .label {
