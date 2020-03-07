@@ -238,7 +238,7 @@
       ]
     },
     {
-      "type": "columnv2",
+      "type": "column",
       "title": "From the seven statements below, select the statements that  correctly characterize breathing during wakefulness and those statements that correctly  characterize breathing during sleep",
       "columns": [
         {
