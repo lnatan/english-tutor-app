@@ -10,7 +10,6 @@
 
   let slots = [];
   let slotSentence = [];
-  // let sentenceWidth;
 
   onMount(() => { 
     slots = document.querySelectorAll(".slot");
@@ -34,10 +33,14 @@
     slots.forEach((slot, index) => {
       if (activeIndex === index) {
         slot.classList.add("active");
-        slotSentence[index].classList.remove("hidden");              
+        slotSentence[index].classList.remove("hidden");
+        setTimeout(() => {
+          slotSentence[index].style.opacity = "1";
+        }, 150);        
       } else {
         slot.classList.remove("active");
-        slotSentence[index].classList.add("hidden");   
+        slotSentence[index].classList.add("hidden");
+        slotSentence[index].style.opacity = "0"; 
       }
     })
   };
@@ -130,6 +133,7 @@
     pointer-events: auto;
     z-index: 1;
     position: relative;
+    top: -3px;
   }
   :global(.slot.active) {
     @apply bg-blue-1 border-blue-6 text-blue-6;
@@ -138,18 +142,17 @@
     @apply bg-primary text-xl text-white rounded;
   }
   :global(.slot-sentence) {
-    @apply rounded-l-none inline-flex;
-    height: 32px;
-    z-index: 0;
+    @apply rounded-l-none;
+    height: 32px;   
     position: relative;
-    top: 2px;
-    padding-left: 8px;
-    left: -5px;
-    /* opacity: 1; */
-    /* transition: opacity .3s linear; */
+    top: 0px; 
+    left: -2px;
+    padding: 4px 0 4px 10px;   
+    z-index: 0;
+    opacity: 0;
+    transition: all .3s ease-out;
   }
-  :global(.slot-sentence.hidden) {
-    /* opacity: 0; */
+  :global(.slot.hidden,.slot-sentence.hidden) {
     @apply hidden;
   }
 </style>
