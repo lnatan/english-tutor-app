@@ -22,6 +22,7 @@
     if (selected) {
       slots[selected].classList.add("active");
       slotSentence[selected].classList.remove("hidden");
+      slotSentence[selected].style.opacity = "1";
     }
   });
 
@@ -36,7 +37,7 @@
         slotSentence[index].classList.remove("hidden");
         setTimeout(() => {
           slotSentence[index].style.opacity = "1";
-        }, 150);        
+        }, 0);        
       } else {
         slot.classList.remove("active");
         slotSentence[index].classList.add("hidden");
@@ -101,7 +102,7 @@
   }
   .selected > .custom-radio-inner {
     @apply border-primary;
-    transition: all 0.3s;
+    transition: all 0.3s linear;
   }  
   .custom-radio-inner:after {
     content: "";
@@ -137,6 +138,7 @@
   }
   :global(.slot.active) {
     @apply bg-blue-1 border-blue-6 text-blue-6;
+    transition: all 0.3s linear;
   }
   :global(.sentence, .slot-sentence) {
     @apply bg-primary text-xl text-white rounded;
@@ -150,7 +152,7 @@
     padding: 4px 0 4px 10px;   
     z-index: 0;
     opacity: 0;
-    transition: all .3s ease-out;
+    transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   }
   :global(.slot.hidden,.slot-sentence.hidden) {
     @apply hidden;

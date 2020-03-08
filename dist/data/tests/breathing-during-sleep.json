@@ -3,10 +3,13 @@
   "questions": [
     {
       "type": "column",
-      "title": "From the seven statements below, select the statements that  correctly characterize breathing during wakefulness and those statements that correctly  characterize breathing during sleep",
+      "title": "From the seven statements below, select the statements that  correctly characterize breathing during wakefulness and those statements that correctly  characterize breathing during sleep.  Two of the answer choices will NOT be used. This question is worth 3 points.",
       "columns": [
         {
           "column": "Wakefulness"
+        },
+        {
+          "column": "None"
         },
         {
           "column": "Sleep"
