@@ -2,6 +2,51 @@
   "title": "Breathing During Sleep",
   "questions": [
     {
+      "type": "column",
+      "title": "From the seven statements below, select the statements that  correctly characterize breathing during wakefulness and those statements that correctly  characterize breathing during sleep.  Two of the answer choices will NOT be used. This question is worth 3 points.",
+      "columns": [
+        {
+          "column": "Wakefulness"
+        },
+        {
+          "column": "None"
+        },
+        {
+          "column": "Sleep"
+        }
+      ],
+      "variants": [
+        {
+          "answer": 1,
+          "variant": "The role of the rib cage increases and the role of the diaphragm decreases."
+        },
+        {
+          "answer": 1,
+          "variant": "Carbon dioxide in blood rises and oxygen drops."
+        },
+        {
+          "answer": 2,
+          "variant": "The coughing reflex is extremely complex."
+        },
+        {
+          "answer": 1,
+          "variant": "A great deal of effort is used for breathing."
+        },
+        {
+          "answer": 1,
+          "variant": "Upper airways are resistant to colds and allergies."
+        },
+        {
+          "answer": 2,
+          "variant": "There is a drop in the volume of air that is exchanged."
+        },
+        {
+          "answer": 2,
+          "variant": "Automatic and voluntary respiratory systems are both involved"
+        }
+      ]
+    },
+    {
       "type": "select",
       "title": "Which of the following can be inferred about the diaphragm during sleep?",
       "variants": [
@@ -229,48 +274,6 @@
         },
         {
           "answer": 1,
-          "variant": "There is a drop in the volume of air that is exchanged."
-        },
-        {
-          "answer": 2,
-          "variant": "Automatic and voluntary respiratory systems are both involved"
-        }
-      ]
-    },
-    {
-      "type": "column",
-      "title": "From the seven statements below, select the statements that  correctly characterize breathing during wakefulness and those statements that correctly  characterize breathing during sleep",
-      "columns": [
-        {
-          "column": "Wakefulness"
-        },
-        {
-          "column": "Sleep"
-        }
-      ],
-      "variants": [
-        {
-          "answer": 1,
-          "variant": "The role of the rib cage increases and the role of the diaphragm decreases."
-        },
-        {
-          "answer": 1,
-          "variant": "Carbon dioxide in blood rises and oxygen drops."
-        },
-        {
-          "answer": 2,
-          "variant": "The coughing reflex is extremely complex."
-        },
-        {
-          "answer": 1,
-          "variant": "A great deal of effort is used for breathing."
-        },
-        {
-          "answer": 1,
-          "variant": "Upper airways are resistant to colds and allergies."
-        },
-        {
-          "answer": 2,
           "variant": "There is a drop in the volume of air that is exchanged."
         },
         {
