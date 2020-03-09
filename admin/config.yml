@@ -185,8 +185,8 @@ collections:
           - label: Hometask
             name: hometask
             widget: list
-            fields: 
-              - {label: Due date, name: date, widget: date}
+            # slug: "{{fields[0].name}}"
+            fields:              
               - {
                 label: "Hometask plan",
                 name: "plan",
@@ -197,11 +197,11 @@ collections:
                 displayFields: "title",
                 multiple: true,
               }
+              - {label: Due date, name: date, widget: date}
           - label: Lesson
             name: lesson
             widget: list
-            fields: 
-              - {label: Date, name: date, widget: date}
+            fields:              
               - {
                 label: "Lesson plan",
                 name: "plan",
@@ -212,6 +212,7 @@ collections:
                 displayFields: "title",
                 multiple: true,
               }
+              - {label: Date, name: date, widget: date}
           - { label: "Password", name: "password", widget: "string" }
           - { label: "Role", name: "role", widget: "select",   options: ["student", "tutor", "master"] }    
   - name: "Journal"
