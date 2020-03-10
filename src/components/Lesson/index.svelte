@@ -68,7 +68,7 @@
     <div class="rounded border bg-white p-6">
       <ul>
         {#each data.hometask as item}
-          <button on:click={() => push(`/${params.lesson}/${slug(item.plan)}`)}>{item.plan}</button>
+          <button on:click={() => push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
           <br/>
         {/each}
       </ul>

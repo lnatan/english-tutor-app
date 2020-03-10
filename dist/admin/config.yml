@@ -185,17 +185,15 @@ collections:
           - label: Hometask
             name: hometask
             widget: list
-            # slug: "{{fields[0].name}}"
             fields:              
               - {
                 label: "Hometask plan",
-                name: "plan",
+                name: "title",
                 widget: "relation", # Relate to data from collection categories
                 collection: "Tests",
                 searchFields: "questions",
                 valueField: "title",
-                displayFields: "title",
-                multiple: true,
+                displayFields: "title"
               }
               - {label: Due date, name: date, widget: date}
           - label: Lesson
@@ -204,13 +202,12 @@ collections:
             fields:              
               - {
                 label: "Lesson plan",
-                name: "plan",
+                name: "title",
                 widget: "relation", # Relate to data from collection categories
                 collection: "Tests",
                 searchFields: "questions",
                 valueField: "title",
-                displayFields: "title",
-                multiple: true,
+                displayFields: "title"
               }
               - {label: Date, name: date, widget: date}
           - { label: "Password", name: "password", widget: "string" }
