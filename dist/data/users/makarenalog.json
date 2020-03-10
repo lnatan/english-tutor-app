@@ -4,11 +4,11 @@
   "hometask": [
     {
       "date": "2020-02-27T08:15:32.256Z",
-      "plan": "Breathing During Sleep"
+      "title": "Breathing During Sleep"
     },
     {
       "date": "2020-03-05T13:16:44.939Z",
-      "plan": "Another aspect of advertising that may especially influence children is fantasy."
+      "title": "Another aspect of advertising that may especially influence children is fantasy."
     }
   ],
   "password": "123456",
@@ -16,7 +16,7 @@
   "lesson": [
     {
       "date": "2020-03-09T09:39:24.763Z",
-      "plan": "The Moons of Jupiter"
+      "title": "The Moons of Jupiter"
     }
   ]
 }

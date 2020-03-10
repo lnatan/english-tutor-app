@@ -4,7 +4,7 @@
   "hometask": [
     {
       "date": "2020-02-27T08:15:32.256Z",
-      "plan": "Breathing During Sleep"
+      "title": "Breathing During Sleep"
     }
   ],
   "password": "1",
@@ -12,7 +12,7 @@
   "lesson": [
     {
       "date": "2020-03-10T11:46:10.260Z",
-      "plan": "Another aspect of advertising that may especially influence children is fantasy."
+      "title": "Another aspect of advertising that may especially influence children is fantasy."
     }
   ]
 }
