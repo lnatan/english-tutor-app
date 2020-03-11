@@ -1,5 +1,4 @@
 import { writable } from "svelte/store";
-// import { writable, get } from "svelte-persistent-store/local";
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
 
 const setUserAuthorized = () => {
@@ -26,19 +25,6 @@ const createPersistStore = (name, value) => {
 }
 
 const userStore = createPersistStore("app-user",{});
-
-// const getUserStore = (key) => {
-//   console.log(get(userStore));
-//   const store = get(userStore);
-//   // const json = JSON.parse();
-//   if (key === undefined) {
-//     return store;
-//   }
-
-//   if (store[key] !== undefined) {
-//     return store[key];   
-//   } 
-// }
 
 export { 
   userStore,
