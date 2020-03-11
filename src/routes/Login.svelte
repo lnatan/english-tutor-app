@@ -23,7 +23,7 @@
      return;
     }
 
-    const URL = `/data/users/${login}.json`;
+    const URL = `./data/users/${login}.json`;
 
     fetch(URL)
       .then(res => {
