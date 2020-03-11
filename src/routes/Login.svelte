@@ -36,14 +36,7 @@
       })
       .then(userData => {
         if (userData.password === password) {   
-          userStore.set({            
-            login: login,
-            name: userData.name,
-            role: userData.role,
-            hometask: userData.hometask,
-            lesson: userData.lesson,
-          });
-          // userStore.useLocalStorage();
+          userStore.set(userData);
           setUserAuthorized();
           push("/lesson");
         } else {

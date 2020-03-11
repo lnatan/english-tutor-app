@@ -3,10 +3,9 @@
   import Button from "components/UI/Button.svelte";
   import active from 'svelte-spa-router/active';  
   import { link, push } from 'svelte-spa-router'; 
-  import { getUserStore, deleteUserAuthorized } from "src/stores/userStore.js";
+  import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
   export let params = {};
 
-  const userData = getUserStore();
   const links = ["lesson", "hometask"];
   const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
 
@@ -22,7 +21,7 @@
       <span class="icon pr-2">
         <i class="icon-girl" />
       </span>
-      Welcome, {userData.name}!
+      Welcome, {$userStore.name}!
       <span class="ml-auto">
         <Button type="link" on:click={logOut}>
           <span class="icon ">
@@ -51,7 +50,7 @@
     <!-- {#await userData then data} -->
     <div class="rounded border bg-white p-6">
       <ul>
-        {#each userData[params.lesson] as item}
+        {#each $userStore[params.lesson] as item}
           <button on:click={push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
           <br/>
         {/each}
