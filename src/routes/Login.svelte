@@ -1,55 +1,54 @@
 <script>
-  import { link, push } from 'svelte-spa-router';
-  import { fade } from "svelte/transition";
   import Button from "components/UI/Button.svelte";
-  import { userName, userLogin } from "../store/userStore.js";
+  import { push } from 'svelte-spa-router';
+  import { fade } from "svelte/transition";
+  import { userStore, setUserAuthorized } from "src/stores/userStore.js";
 
-  let login;
-  let password;
+  let login = "";
+  let password = "";
   let message = "";
   let errorLogin = false;
   let errorPassword = false;
 
-  $: console.log(login);
-
   function checkUser(e){
-    e.preventDefault();
-    login = login && login.trim();
-    password = password && password.trim();
+    e.preventDefault();    
 
-    if (!login) {
-      // message += "Empty login field";
-      errorLogin = true;
+    login = login.trim();
+    password = password.trim();
+
+    errorLogin = !login.length;
+    errorPassword = !password.length;
+  
+    if (errorLogin || errorPassword) {
+     return;
     }
-
-    if (!password) {
-      // message += " Empty password field";
-      errorPassword = true;
-    }
-
-    if (!login || !password) return;
-
-    errorLogin = false;
-    errorPassword = false;
 
     const URL = `/data/users/${login}.json`;
+
     fetch(URL)
       .then(res => {
         if (!res.ok) {
-          console.log(res.status);
-          throw Error(`user '${login}' not found`);
+          errorLogin = true;
+          throw new Error(`User '${login}' not found`);
         } else {
           return res.json();
         }
       })
       .then(userData => {
-        if (userData.password === password) {
-          // document.cookie = `user=${login}`;
-          userName.update(n => n = userData.name);
-          userLogin.update(l => l = userData.login);
-          push('/lesson');
+        if (userData.password === password) {   
+          userStore.set({            
+            login: login,
+            name: userData.name,
+            role: userData.role,
+            hometask: userData.hometask,
+            lesson: userData.lesson,
+          });
+          userStore.useLocalStorage();
+          setUserAuthorized();
+          push("/lesson");
         } else {
-          throw Error("Password not correct");
+          errorPassword = true;
+          throw new Error("Password not correct");
         }     
       })
       .catch(error => message = error);
@@ -58,20 +57,20 @@
 
 <div class="flex flex-col justify-center items-center min-h-screen py-16">
   <div class="rounded border bg-white py-12 px-16 inline-block text-center">
-    <div class="text-black text-2xl mb-8">Sign in</div>
-    <form action="">
+    <div class="text-black text-2xl mb-8">Log in</div>
+    <form action="" on:submit={checkUser}>
       <div class="custom-input mb-8" class:error={errorLogin}>
         <span class="icon"><i class="icon-login"></i></span>
-        <input type="text" class="input" bind:value={login} autocomplete="nickname" placeholder="Login">
+        <input type="text" class="input" bind:value={login} maxlength="15" autocomplete="nickname" placeholder="Login">
       </div>
       <div class="custom-input mb-8" class:error={errorPassword}>
         <span class="icon"><i class="icon-password"></i></span>
-        <input type="password" class="input" bind:value={password} autocomplete="current-password" placeholder="Password">
+        <input type="password" class="input" bind:value={password} maxlength="15" autocomplete="current-password" placeholder="Password">
       </div>
       {#if message}
         <div class="mb-4 text-red-600" in:fade={{ duration: 300 }}>{message}</div> 
       {/if}     
-      <Button type="primary" on:click={checkUser}>Log In</Button>     
+      <Button type="primary" on:click={checkUser}>Enter</Button>     
     </form>
   </div>
   <br/>

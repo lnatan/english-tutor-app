@@ -1,12 +1,12 @@
 <script>
   import { onMount } from "svelte";
   // import { writable } from 'svelte/store'; 
-  import Layout from "src/routes/_layout.svelte";
+  import Layout from "src/routes/Layout.svelte";
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import { prepareTest } from "./utils/parse.js";
-  import { pop, push } from 'svelte-spa-router';
+  import { prepareTest } from "src/utils/parse.js";
+  import { pop, push } from "svelte-spa-router";
   export let params = {};
 
   const URL = `./data/tests/${params.test}.json`;

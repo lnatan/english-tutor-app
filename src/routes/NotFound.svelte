@@ -1,5 +1,5 @@
 <script>
-  import Layout from "./_layout.svelte";
+  import Layout from "src/routes/Layout.svelte";
   import { link } from 'svelte-spa-router'; 
 </script>
 

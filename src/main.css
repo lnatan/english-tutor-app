@@ -68,6 +68,7 @@ nav a.active {
 input::placeholder {
   @apply text-grey-6;
 }
+
 /* Icons */
 .icon {
   align-items: center;
@@ -93,6 +94,9 @@ input::placeholder {
 }
 .icon-login {
   content: url('images/icons/login.svg')
+}
+.icon-logout {
+  content: url('images/icons/logout.svg')
 }
 .icon-password {
   content: url('images/icons/password.svg')

@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import { showHighlight } from "../utils/parse.js";
+  import { showHighlight } from "src/utils/parse.js";
   export let selected;
   export let variants = []; 
   export let context = "";

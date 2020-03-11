@@ -1,19 +1,24 @@
 <script>
-  import Layout from "src/routes/_layout.svelte";
-  import Nav from  "components/Nav.svelte";
+  import Layout from "src/routes/Layout.svelte";
+  import Button from "components/UI/Button.svelte";
+  import active from 'svelte-spa-router/active';  
   import { link, push } from 'svelte-spa-router'; 
-  import active from 'svelte-spa-router/active';
-  import { userName, userLogin } from "src/store/userStore.js";
+  import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
   export let params = {};
 
-  const links = ["lesson", "hometask"];
+  userStore.useLocalStorage();
 
+  const links = ["lesson", "hometask"];
   const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
 
-  // const URL = "./data/journal.json";
-  // const journal = getJournal();
-  
- 	// async function getJournal(){
+  function logOut(){
+    deleteUserAuthorized();
+    push("/");
+  };
+
+  // const URL = `./data/users/${$userStore.login}.json`;
+  // const userData = getUserData();  
+ 	// async function getUserData(){
   //   try {
   //     const res = await fetch(URL);
   //     const data = await res.json();
@@ -22,22 +27,6 @@
   //     throw new Error(err);
   //   }
   // }
-
-   if (!$userLogin) {
-    push("/");
-  }
-
-  const URL = `./data/users/${$userLogin}.json`;
-  const userData = getUserData();  
- 	async function getUserData(){
-    try {
-      const res = await fetch(URL);
-      const data = await res.json();
-      return data;
-    } catch(err) {   
-      throw new Error(err);
-    }
-  }
 </script>
 
 <Layout>
@@ -46,7 +35,15 @@
       <span class="icon pr-2">
         <i class="icon-girl" />
       </span>
-      Welcome, {$userName}!</div>
+      Welcome, {$userStore.name}!
+      <span class="ml-auto">
+        <Button type="link" on:click={logOut}>
+          <span class="icon ">
+            <i class="icon-logout" />
+          </span>
+        </Button>
+      </span>      
+      </div>
     <nav>
       <ul>
         {#each links as item}
@@ -55,7 +52,7 @@
               <span class="icon pr-2">
                 <i class="icon-{item}" />
               </span>
-              {item}
+              {item}              
             </a>
           </li>
         {/each}
@@ -64,19 +61,19 @@
   </div>
   <div slot="main">
     <h2 class="title pb-4">Active</h2>
-    {#await userData then data}
+    <!-- {#await userData then data} -->
     <div class="rounded border bg-white p-6">
       <ul>
-        {#each data.hometask as item}
-          <button on:click={() => push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
+        {#each $userStore[params.lesson] as item}
+          <button on:click={push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
           <br/>
         {/each}
       </ul>
     </div>
-    {:catch error}
+    <!-- {:catch error}
       <!-- promise was rejected -->
-      Error
-    {/await}
+      <!-- {error}
+    {/await}  -->
     <!-- <h2 class="title">Completed</h2>
     <div class="tasks_comleted">
       Here done cards
