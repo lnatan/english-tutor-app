@@ -43,7 +43,7 @@
             hometask: userData.hometask,
             lesson: userData.lesson,
           });
-          userStore.useLocalStorage();
+          // userStore.useLocalStorage();
           setUserAuthorized();
           push("/lesson");
         } else {

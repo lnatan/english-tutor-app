@@ -48,5 +48,7 @@
       "svelte-spa-router": "^2.0.0",
       "tailwindcss": "^1.2.0"
    },
-   "dependencies": {}
+   "dependencies": {
+      "svelte-persistent-store": "^0.1.1"
+   }
 }

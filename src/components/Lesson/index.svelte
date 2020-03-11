@@ -3,11 +3,10 @@
   import Button from "components/UI/Button.svelte";
   import active from 'svelte-spa-router/active';  
   import { link, push } from 'svelte-spa-router'; 
-  import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
+  import { getUserStore, deleteUserAuthorized } from "src/stores/userStore.js";
   export let params = {};
 
-  userStore.useLocalStorage();
-
+  const userData = getUserStore();
   const links = ["lesson", "hometask"];
   const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
 
@@ -15,18 +14,6 @@
     deleteUserAuthorized();
     push("/");
   };
-
-  // const URL = `./data/users/${$userStore.login}.json`;
-  // const userData = getUserData();  
- 	// async function getUserData(){
-  //   try {
-  //     const res = await fetch(URL);
-  //     const data = await res.json();
-  //     return data;
-  //   } catch(err) {   
-  //     throw new Error(err);
-  //   }
-  // }
 </script>
 
 <Layout>
@@ -35,7 +22,7 @@
       <span class="icon pr-2">
         <i class="icon-girl" />
       </span>
-      Welcome, {$userStore.name}!
+      Welcome, {userData.name}!
       <span class="ml-auto">
         <Button type="link" on:click={logOut}>
           <span class="icon ">
@@ -64,7 +51,7 @@
     <!-- {#await userData then data} -->
     <div class="rounded border bg-white p-6">
       <ul>
-        {#each $userStore[params.lesson] as item}
+        {#each userData[params.lesson] as item}
           <button on:click={push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
           <br/>
         {/each}

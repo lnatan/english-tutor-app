@@ -1,4 +1,5 @@
-import { writable } from "svelte/store";
+// import { writable } from "svelte/store";
+import { writable, get } from "svelte-persistent-store/local";
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie"
 
 const setUserAuthorized = () => {
@@ -13,25 +14,24 @@ const isUserAuthorized = () => {
   return getCookie("user");
 };
 
-const createUserStore = (key, startValue) => {
-  const { subscribe, set } = writable(startValue);
-  
-	return {
-    subscribe,
-    set,
-    useLocalStorage: () => {
-      const json = localStorage.getItem(key);
-      if (json) {
-        set(JSON.parse(json));
-      }
-      
-      subscribe(current => {
-        localStorage.setItem(key, JSON.stringify(current));
-      });
-    }
-  };
+const userStore = writable("app-user",{});
+
+const getUserStore = (key) => {
+  const jsonUserStore = JSON.parse(get(userStore));
+
+  if (key === undefined) {
+    return jsonUserStore;
+  }
+
+  if (jsonUserStore[key] !== undefined) {
+    return jsonUserStore[key];   
+  } 
 }
 
-const userStore = createUserStore("app-user",{});
-
-export { userStore, setUserAuthorized, deleteUserAuthorized, isUserAuthorized };
+export { 
+  userStore, 
+  getUserStore, 
+  setUserAuthorized, 
+  deleteUserAuthorized, 
+  isUserAuthorized 
+};
