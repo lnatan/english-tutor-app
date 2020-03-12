@@ -211,7 +211,7 @@ collections:
               }
               - {label: Date, name: date, widget: date}
           - { label: "Password", name: "password", widget: "string" }
-          - { label: "Role", name: "role", widget: "select",   options: ["student", "tutor", "master"] }    
+          - { label: "Role", name: "role", widget: "select",   options: ["student", "teacher", "master"] }    
   - name: "Journal"
     editor:
       preview: false
