@@ -2,6 +2,7 @@
   import { link } from 'svelte-spa-router'; 
   import active from 'svelte-spa-router/active';
   export let links = [];
+  export let icon = false;
 </script>
 
 <!-- Navigation links, using the "link" action -->
@@ -18,8 +19,17 @@
 
 <nav>
   <ul>
-    {#each links as [path, name, icon]}
-      <li><a href={path} use:link use:active>{name}</a></li>
+    {#each links as item}
+      <li>
+        <a href="/{item}" use:link use:active>
+          {#if icon}
+            <span class="icon pr-2">
+              <i class="icon-{item}" />
+            </span>
+          {/if}          
+          {item}              
+        </a>
+      </li>
     {/each}
   </ul>
 </nav>

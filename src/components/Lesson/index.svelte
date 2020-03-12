@@ -1,13 +1,47 @@
 <script>
   import Layout from "src/routes/Layout.svelte";
+  import LessonsList from "./LessonsList.svelte";
+  import Nav from "components/Nav.svelte";
   import Button from "components/UI/Button.svelte";
-  import active from 'svelte-spa-router/active';  
-  import { link, push } from 'svelte-spa-router'; 
+  import Select from "components/UI/Select.svelte";
+  import active from "svelte-spa-router/active";  
+  import { link, push } from "svelte-spa-router"; 
   import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
   export let params = {};
 
-  const links = ["lesson", "hometask"];
-  const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
+  $: activeLessons = $userStore[params.lesson] || [];
+  const completedLessons = []; // fetch
+  
+  const URL = "./data/journal.json";
+  const journal = getJournal();
+  
+ 	async function getJournal(){
+    try {
+      const res = await fetch(URL);
+      const data = await res.json();
+      return data;
+    } catch(err) {   
+      throw new Error(err);
+    }
+  }
+
+  function selectUser({ detail }){
+    const user = detail.selected;
+
+    const URL = `./data/users/${user}.json`;
+    fetch(URL)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`User '${user}' not found`);
+        } else {
+          return res.json();
+        }
+      })
+      .then(userData => {
+        activeLessons = userData[params.lesson];
+      })
+      .catch(error =>console.log(error));   
+  }
 
   function logOut(){
     deleteUserAuthorized();
@@ -24,45 +58,21 @@
       Welcome, {$userStore.name}!
       <span class="ml-auto">
         <Button type="link" on:click={logOut}>
-          <span class="icon ">
+          <span class="icon">
             <i class="icon-logout" />
           </span>
         </Button>
       </span>      
       </div>
-    <nav>
-      <ul>
-        {#each links as item}
-          <li>
-            <a href="/{item}" use:link use:active>
-              <span class="icon pr-2">
-                <i class="icon-{item}" />
-              </span>
-              {item}              
-            </a>
-          </li>
-        {/each}
-      </ul>
-    </nav>
+    <Nav links={["lesson", "hometask"]} icon={true}/>
   </div>
   <div slot="main">
-    <h2 class="title pb-4">Active</h2>
-    <!-- {#await userData then data} -->
-    <div class="rounded border bg-white p-6">
-      <ul>
-        {#each $userStore[params.lesson] as item}
-          <button on:click={push(`/${params.lesson}/${slug(item.title)}`)}>{item.title}</button>
-          <br/>
-        {/each}
-      </ul>
-    </div>
-    <!-- {:catch error}
-      <!-- promise was rejected -->
-      <!-- {error}
-    {/await}  -->
-    <!-- <h2 class="title">Completed</h2>
-    <div class="tasks_comleted">
-      Here done cards
-    </div> -->
+    {#if $userStore.role === "teacher"}
+      {#await journal then data}
+        <Select options={data.users} on:select={selectUser}/>
+      {/await}   
+    {/if} 
+    <LessonsList title="Active" lessons={activeLessons} params={params.lesson} />
+    <LessonsList title="Completed" lessons={completedLessons} params={params.lesson} />
   </div>
 </Layout>

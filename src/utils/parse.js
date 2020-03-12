@@ -36,11 +36,11 @@ function showSlots(text){
   return text.replace(/slot hidden/g, "slot");
 }
 
-function prepareTest(test){
+function parseTest(test){
   return {
     ...test,
     fragments: makeFragments(test.context, test.questions.length)
   }
 }
 
-export { showHighlight, showSlots, prepareTest };
+export { showHighlight, showSlots, parseTest };

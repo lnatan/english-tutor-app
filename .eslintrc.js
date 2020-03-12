@@ -4,7 +4,7 @@ module.exports = {
     sourceType: "module"
   },
   extends: "eslint:recommended",
-  // parser: "babel-eslint", // https://github.com/babel/babel-eslint
+  parser: "babel-eslint", // https://github.com/babel/babel-eslint
   env: {
     es6: true,
     node: true,

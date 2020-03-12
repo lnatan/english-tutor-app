@@ -48,6 +48,7 @@ module.exports = {
   },
   variants: {
     opacity: ["responsive", "hover", "focus", "disabled"],
+    borderWidth: ["responsive", "last", "hover", "focus"],
   },
   plugins: []
 };

@@ -1,22 +1,30 @@
 <script>
   import { onMount } from "svelte";
-  // import { writable } from 'svelte/store'; 
   import Layout from "src/routes/Layout.svelte";
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import { prepareTest } from "src/utils/parse.js";
-  import { pop, push } from "svelte-spa-router";
+  import { parseTest } from "src/utils/parse.js";
+  import { testStore, answersStore, addAnswer, getAnswers } from "src/stores/testStore.js";
+  import { pop } from "svelte-spa-router";
   export let params = {};
 
-  const URL = `./data/tests/${params.test}.json`;
   let test;
+  const URL = `./data/tests/${params.test}.json`;  
 
   onMount(async () => await fetch(URL)
     .then(response => response.json())
-    .then(data => test = prepareTest(data))
+    .then(data => test = parseTest(data))
     .catch(error => console.error(error)));
 
+  testStore.set({
+    testId: params.test,
+    lesson: params.lesson
+  });
+ 
+  // $: console.log($testStore);
+  // $: getAnswers();
+  
   let active = 0;
   let answers = new Map();
 
@@ -26,6 +34,7 @@
 
   function changeAnswers({ detail }){
     answers = answers.set(...detail.newAnswers);
+    addAnswer(detail.newAnswers);
   };
 </script>
 

@@ -52,9 +52,9 @@ nav a.active {
   @apply font-bold text-black bg-white;
 }
 
-.sidebar {
+/* .sidebar {
   @apply mr-8;
-}
+} */
 
 .sidebar-panel {
   @apply bg-white block border rounded;
