@@ -20,7 +20,7 @@
         {#each lessons as item}
           <div class="py-4 border-b last:border-b-0">
             <button class="text-lg" on:click={push(`/${params}/${slug(item.title)}`)}>{item.title}</button>
-            <button class="text-primary px-2" on:click={push(`/${params.lesson}/${slug(item.title)}`)}>Start</button>
+            <button class="text-primary px-2" on:click={push(`/${params}/${slug(item.title)}`)}>Start</button>
             <br/>
             <span>{formatDate(item.date)}</span>
           </div>

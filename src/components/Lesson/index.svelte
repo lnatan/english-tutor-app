@@ -33,7 +33,7 @@
   }
 
   function getUserActiveLessons(user, lesson){
-    if (user === undefined) {
+    if (user === "" || user === undefined) {
       return;
     }
     const URL = `./data/users/${user}.json`;
@@ -77,7 +77,7 @@
   <div slot="main">
     {#if $userStore.role === "teacher"}
       {#await journal then data}
-        <Select options={data.users} on:select={selectUser}/>
+        <Select placeholder="Select student" options={data.users} on:select={selectUser}/>
       {/await}   
     {/if} 
     <LessonsList title="Active" lessons={activeLessons} params={params.lesson} />

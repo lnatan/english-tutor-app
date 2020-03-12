@@ -1,18 +1,18 @@
 <script>
   import { createEventDispatcher } from "svelte";    
   export let options;
+  export let placeholder = "Select..."
   const dispatch = createEventDispatcher();
   let selected = "";
 
   function handleChange(){
-    if (selected === "default") return;
     dispatch("select", {selected});
   }
 </script>
 
 <div class="pb-4">
   <select class="custom-select" bind:value={selected} on:change={handleChange}>
-   <option value="default">Choose...</option>
+   <option value="">{placeholder}</option>
    {#each options as option}
       <option value={option}>
         {option}
