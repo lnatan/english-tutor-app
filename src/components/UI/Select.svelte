@@ -5,6 +5,7 @@
   let selected = "";
 
   function handleChange(){
+    if (selected === "default") return;
     dispatch("select", {selected});
   }
 </script>

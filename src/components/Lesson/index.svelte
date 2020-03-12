@@ -9,11 +9,13 @@
   import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
   export let params = {};
 
-  $: activeLessons = $userStore[params.lesson] || [];
+  $: activeLessons = $userStore[params.lesson] || getUserActiveLessons(selectedUser, params.lesson) || [];
   const completedLessons = []; // fetch
   
+  // teachers feature
   const URL = "./data/journal.json";
   const journal = getJournal();
+  let selectedUser;
   
  	async function getJournal(){
     try {
@@ -26,8 +28,14 @@
   }
 
   function selectUser({ detail }){
-    const user = detail.selected;
+    selectedUser = detail.selected;
+    // getUserActiveLessons(selectedUser, params.lesson);
+  }
 
+  function getUserActiveLessons(user, lesson){
+    if (user === undefined) {
+      return;
+    }
     const URL = `./data/users/${user}.json`;
     fetch(URL)
       .then(res => {
@@ -38,10 +46,10 @@
         }
       })
       .then(userData => {
-        activeLessons = userData[params.lesson];
+        activeLessons = userData[lesson];
       })
-      .catch(error =>console.log(error));   
-  }
+      .catch(error => console.log(error));   
+  };
 
   function logOut(){
     deleteUserAuthorized();
