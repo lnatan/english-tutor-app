@@ -65,8 +65,16 @@ nav a.active {
   @apply capitalize;
 }
 
+.variant {
+  @apply relative;
+  z-index: 1;
+}
 .correct-variant {
-  @apply bg-green-200 h-2 block relative;
+  @apply bg-green-200 block absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 input::placeholder {

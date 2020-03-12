@@ -28,7 +28,7 @@
       <input class="checkbox-input" id={i} type="checkbox" on:click={() => handleClick(i)}>
       <span class="custom-checkbox-inner"></span>
     </span>           
-    <span>
+    <span class="variant">
       {item.variant}
       {#if item.answer}
         <span class="correct-variant"></span>

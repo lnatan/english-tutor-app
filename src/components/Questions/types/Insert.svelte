@@ -66,7 +66,7 @@
         <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleRadioClick(i)}>
         <span class="custom-radio-inner" ></span>
       </span>           
-      <span>
+      <span class="variant">
         {item.variant}
         {#if item.answer}
           <span class="correct-variant"></span>

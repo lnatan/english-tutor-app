@@ -19,7 +19,7 @@
       <span class="custom-radio-inner" ></span>
     </span>           
     <!-- <span>{variant}</span> -->
-    <span>
+    <span class="variant">
       {item.variant}
       {#if item.answer}
         <span class="correct-variant"></span>
