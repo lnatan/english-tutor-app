@@ -65,6 +65,10 @@ nav a.active {
   @apply capitalize;
 }
 
+.correct-variant {
+  @apply bg-green-200 h-2 block relative;
+}
+
 input::placeholder {
   @apply text-grey-6;
 }

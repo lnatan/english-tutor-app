@@ -60,13 +60,18 @@
 
 <div class="sentence p-2">{sentence}</div>
 <div class="flex flex-col mt-6">
-  {#each variants as {variant}, i}
+  {#each variants as item, i}
     <label for={i} class="label py-2">
       <span class="custom-radio pr-2" class:selected={i === selected}>
         <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleRadioClick(i)}>
         <span class="custom-radio-inner" ></span>
       </span>           
-      <span>{variant}</span>
+      <span>
+        {item.variant}
+        {#if item.answer}
+          <span class="correct-variant"></span>
+        {/if}   
+      </span>
     </label>
   {/each}
 </div>

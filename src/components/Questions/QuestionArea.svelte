@@ -1,6 +1,7 @@
 <script>
   // import { onMount } from "svelte"; 
   import { createEventDispatcher } from 'svelte';
+  import { userStore } from "src/stores/userStore.js";
   import Button from "components/UI/Button.svelte";
   import Controls from "./types/index.svelte";
   export let question = {};
@@ -11,6 +12,10 @@
   const dispatch = createEventDispatcher();
   
   $: selected = answers.get(active);
+  $: if ($userStore.role === "student") {
+    const variants = deleteAnswers(question.variants);
+    question = { ...question, variants};
+  }
 
   // const score = [];
   // let finish = false;
@@ -20,6 +25,10 @@
   //     score.push([key + 1]);
   //   }
   // }
+
+  function deleteAnswers(variants){
+   return variants.map(({variant}) => { return { variant }});
+  };
 
   function selectVariant(variant) {    
     dispatch("select", {newAnswers: [active, variant]});

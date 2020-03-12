@@ -22,13 +22,18 @@
   }
 </script>
 
-{#each variants as {variant}, i}
+{#each variants as item, i}
   <label for={i} class="flex cursor-pointer py-2">
     <span class="custom-checkbox pr-2" class:checked={isChecked(i)}>
       <input class="checkbox-input" id={i} type="checkbox" on:click={() => handleClick(i)}>
       <span class="custom-checkbox-inner"></span>
     </span>           
-    <span>{variant}</span>
+    <span>
+      {item.variant}
+      {#if item.answer}
+        <span class="correct-variant"></span>
+      {/if}   
+    </span>
   </label>
 {/each}
 

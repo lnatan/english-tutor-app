@@ -10,19 +10,24 @@
   }
 </script>
 
-{#each variants as {variant}, i }
+{#each variants as item, i }
   <label for={i} class="label py-2">
     <span class="custom-radio pr-2" class:checked={i === selected}>
       <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleClick(i)}>
       <span class="custom-radio-inner" ></span>
-    </span>           
-    <span>{variant}</span>
+    </span>        
+    <span>
+      {item.variant}
+      {#if item.answer}
+        <span class="correct-variant"></span>
+      {/if}   
+    </span>
   </label>
 {/each}
 
 <div class="mt-4 text-xl text-justify">{@html context}</div>
 
-<style> 
+<style>
   .label {
     cursor: pointer;  
     display: flex;
