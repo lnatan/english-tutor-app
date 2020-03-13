@@ -1,6 +1,5 @@
 <script>
   import { push } from "svelte-spa-router";
-  import { fade } from "svelte/transition";
   export let title = "";
   export let params = "";
   export let lessons = [];  
@@ -8,7 +7,6 @@
   const slug = (title) => title.toLowerCase().replace(/\s/g, "-");
   const formatDate = (date) => new Date(date).toLocaleDateString("en-US");
 </script>
-
 
 <div class="pb-4">
   <h2 class="title pb-4 px-6">{title}</h2>

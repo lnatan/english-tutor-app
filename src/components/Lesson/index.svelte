@@ -1,65 +1,24 @@
 <script>
+  // import { onMount } from "svelte";
   import Layout from "src/routes/Layout.svelte";
   import LessonsList from "./LessonsList.svelte";
   import Nav from "components/Nav.svelte";
   import Button from "components/UI/Button.svelte";
   import Select from "components/UI/Select.svelte";
-  import active from "svelte-spa-router/active";  
-  import { link, push } from "svelte-spa-router"; 
-  import { userStore, deleteUserAuthorized } from "src/stores/userStore.js";
+  import { logOut } from "src/actions/loginAction.js";
+  import { getAllUsers, getUserActiveLessons, getUserComplitedLessons } from "src/actions/userAction.js";
+  import { userStore, activeLessons, completedLessons } from "src/stores/index.js";  
   export let params = {};
-
-  let activeLessons = [];
-  let completedLessons = [];
-  let selectedUser; // for teacher 
-
-  $: if (selectedUser) {
-    getUserActiveLessons(selectedUser, params.lesson) || [];
-  } else {
-    activeLessons = $userStore[params.lesson] || [];
-  }
-  
-  // teachers feature
-  const URL = "./data/journal.json";
-  const journal = getJournal();
-  
- 	async function getJournal(){
-    try {
-      const res = await fetch(URL);
-      const data = await res.json();
-      return data;
-    } catch(err) {   
-      throw new Error(err);
-    }
-  }
+ 
+  const users = $userStore.role === "teacher" ? getAllUsers() : null;
+  $: selectedUser = $activeLessons.user || null;
+  $: active = $activeLessons[params.lesson] || [];
+  // $: completedLessons = [];
 
   function selectUser({ detail }){
-    selectedUser = detail.selected;
+    let selectedUser = detail.selected;
+    getUserActiveLessons(selectedUser);
   }
-
-  function getUserActiveLessons(user, lesson){
-    if (user === "" || user === undefined) {
-      return;
-    }
-    const URL = `./data/users/${user}.json`;
-    fetch(URL)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(`User '${user}' not found`);
-        } else {
-          return res.json();
-        }
-      })
-      .then(userData => {
-        activeLessons = userData[lesson];
-      })
-      .catch(error => console.log(error));   
-  };
-
-  function logOut(){
-    deleteUserAuthorized();
-    push("/");
-  };
 </script>
 
 <Layout>
@@ -81,11 +40,15 @@
   </div>
   <div slot="main">
     {#if $userStore.role === "teacher"}
-      {#await journal then data}
-        <Select placeholder="Select student" options={data.users} on:select={selectUser}/>
+      {#await users then data}
+        <Select 
+          placeholder="Select student" 
+          options={data} 
+          selected={selectedUser}
+          on:select={selectUser}/>
       {/await}   
     {/if} 
-    <LessonsList title="Active" lessons={activeLessons} params={params.lesson} />
+    <LessonsList title="Active" lessons={active} params={params.lesson} />
     <LessonsList title="Completed" lessons={completedLessons} params={params.lesson} />
   </div>
 </Layout>

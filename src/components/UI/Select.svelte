@@ -2,8 +2,8 @@
   import { createEventDispatcher } from "svelte";    
   export let options;
   export let placeholder = "Select..."
+  export let selected = "";
   const dispatch = createEventDispatcher();
-  let selected = "";
 
   function handleChange(){
     dispatch("select", {selected});
