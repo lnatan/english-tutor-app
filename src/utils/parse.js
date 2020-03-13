@@ -1,5 +1,5 @@
 const tagTemplate = /<\/*\d+\w*>/g;
-const slotTemplate = /(?<=<[0-9]+B>)([0-9]+)(\w)(?=<\/[0-9]+B>)/g;
+const slotTemplate = /<[0-9]+B>([0-9]+)(\w)<\/[0-9]+B>/g;
 
 function makeFragments(text, fragmentsCount){
   let fragments = [];
@@ -9,8 +9,9 @@ function makeFragments(text, fragmentsCount){
   );
 
   for (let i = 1; i <= fragmentsCount; i++) {
-    const fragmentTemplate = new RegExp("(?<=" + i + ">)(.*?)(?=<\/" + i + ">)");
-    const highlightTemplate = new RegExp("(?<=<" + i + "A>)(.*?)(?=<\/" + i + "A>)");
+    // const fragmentTemplate = new RegExp("(?<=" + i + ">)(.*?)(?=<\/" + i + ">)");
+    const fragmentTemplate = new RegExp("<" + i + ">.*<\/" + i + ">");
+    const highlightTemplate = new RegExp("<" + i + "A>(.*)<\/" + i + "A>");
     let fragment = newText.match(fragmentTemplate);
     
     if (!fragment) {
@@ -18,7 +19,7 @@ function makeFragments(text, fragmentsCount){
       fragments.push(null);
     } else {
       fragment = fragment[0];
-      fragment = fragment.replace(highlightTemplate, " <span class=\"highlight-hidden\">$1</span>")
+      fragment = fragment.replace(highlightTemplate, " <span class=\"highlight-hidden\">$1</span> ")
       fragment = fragment.replace(tagTemplate, " ");
       fragments.push(fragment);
     }
