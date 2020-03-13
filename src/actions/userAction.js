@@ -4,16 +4,12 @@ const USER_PATH = "./data/users/";
 
 async function getUser(login){
   const URL = USER_PATH + login + ".json";
-  try {
-    const res = await fetch(URL);
-    if (!res.ok) {
-      throw new Error(res.statusText);
-    }
-    const userData = await res.json();
-    return userData;
-  } catch (error){
-    console.log(error);
+  const res = await fetch(URL);
+  if (!res.ok) {
+    throw new Error(res.status);
   }
+  const userData = await res.json();
+  return userData;
 };
 
 async function getAllUsers(){
@@ -34,7 +30,6 @@ async function getUserActiveLessons(login){
     lesson: userData.lesson || [],
     hometask: userData.hometask || []
   });
-  return;
 };
 
 function getUserCompletedLessons(user, lesson){

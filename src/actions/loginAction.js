@@ -1,25 +1,36 @@
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
+import { userStore } from "src/stores/index.js"
+import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
 
-const setUserAuthorized = () => {
-  setCookie("user", 1);
+const setUserLogged = () => setCookie("user", 1);
+const deleteUserLogged = () => deleteCookie("user");
+const isUserLogged = () => getCookie("user");
+
+async function logIn(login, password){
+  const userData = await getUser(login);
+
+  if (userData.password !== password) {
+    throw new Error("Password not correct");
+  }
+
+  userStore.set({
+    name: userData.name,
+    login: userData.login,
+    role: userData.role
+  });
+  setUserLogged();
+  
+  return userData;
 };
 
-const deleteUserAuthorized = () => {
-  deleteCookie("user");
-};
-
-const isUserAuthorized = () => {
-  return getCookie("user");
-};
-
-const logOut = () => {
-  deleteUserAuthorized();
+function logOut(){
+  deleteUserLogged();
   push("/");
 };
 
 export { 
-  setUserAuthorized, 
-  isUserAuthorized,
+  isUserLogged,
+  logIn,
   logOut
 };

@@ -2,11 +2,12 @@
   import Router from "svelte-spa-router"; 
   import Login from "src/routes/Login.svelte";
   import routes from "./routes.js";
-  import { isUserAuthorized } from "src/actions/loginAction.js";
+  import { isUserLogged } from "src/actions/loginAction.js";
   import { push } from 'svelte-spa-router';
 
   function checkAutorization(){
-    const isLogin = isUserAuthorized();
+    console.log('routeLoaded');
+    const isLogin = isUserLogged();
     if (!isLogin) {
       push("/");
     }
