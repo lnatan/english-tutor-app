@@ -32,7 +32,7 @@
       <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => changeQuestion(i)}>
         <span class="px-2">{i+1}</span>
         <span>{shortTitle(item.title)}...</span> 
-        <span class="float-right mr-2 w-5">
+        <span class="check mr-2">
           {#if hasAnswer(i)}
             <span class="icon" in:fade={{ duration: 300 }}>
               <i class="icon-check"></i>
@@ -49,12 +49,17 @@
     @apply px-4 py-2;
   }
   .item {
-    @apply block py-2 text-sm;
+    @apply block py-2 text-sm relative;
   }
   .item.active {
     @apply bg-blue-1 rounded;
   }
   .item:hover {    
     @apply text-primary;
+  }
+  .check {
+    position: absolute;
+    top: 9px;
+    right: 0;
   }
 </style>
