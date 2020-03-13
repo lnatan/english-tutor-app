@@ -6,7 +6,7 @@
   import Button from "components/UI/Button.svelte";
   import Select from "components/UI/Select.svelte";
   import { logOut } from "src/actions/loginAction.js";
-  import { getAllUsers, getUserActiveLessons, getUserComplitedLessons } from "src/actions/userAction.js";
+  import { getAllUsers, getUserActiveLessons, getUserCompletedLessons } from "src/actions/userAction.js";
   import { userStore, activeLessons, completedLessons } from "src/stores/index.js";  
   export let params = {};
  

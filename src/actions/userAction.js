@@ -37,7 +37,7 @@ async function getUserActiveLessons(login){
   return;
 };
 
-function getUserComplitedLessons(user, lesson){
+function getUserCompletedLessons(user, lesson){
 
 };
 
@@ -45,5 +45,5 @@ export {
   getUser,
   getAllUsers,
   getUserActiveLessons,
-  getUserComplitedLessons
+  getUserCompletedLessons
 };
