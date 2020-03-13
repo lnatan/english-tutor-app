@@ -23,22 +23,30 @@ async function getAllUsers(){
   }
 };
 
-async function getUserActiveLessons(login){
-  const userData = await getUser(login); 
-  activeLessons.set({
-    user: login,
-    lesson: userData.lesson || [],
-    hometask: userData.hometask || []
-  });
+async function setUserActiveLessons(login){
+  try {
+    const userData = await getUser(login); 
+    activeLessons.set({
+      user: login,
+      lesson: userData.lesson || [],
+      hometask: userData.hometask || []
+    });
+  } catch(error) {
+    activeLessons.set({
+      user: " ",
+      lesson: [],
+      hometask: []
+    });
+  }
 };
 
-function getUserCompletedLessons(user, lesson){
+function setUserCompletedLessons(user){
 
 };
 
 export {
   getUser,
   getAllUsers,
-  getUserActiveLessons,
-  getUserCompletedLessons
+  setUserActiveLessons,
+  setUserCompletedLessons
 };

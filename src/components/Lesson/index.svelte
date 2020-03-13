@@ -1,23 +1,27 @@
 <script>
-  // import { onMount } from "svelte";
+  import { onMount } from "svelte";
   import Layout from "src/routes/Layout.svelte";
   import LessonsList from "./LessonsList.svelte";
   import Nav from "components/Nav.svelte";
   import Button from "components/UI/Button.svelte";
   import Select from "components/UI/Select.svelte";
   import { logOut } from "src/actions/loginAction.js";
-  import { getAllUsers, getUserActiveLessons, getUserCompletedLessons } from "src/actions/userAction.js";
+  import { getAllUsers, setUserActiveLessons, setUserCompletedLessons } from "src/actions/userAction.js";
   import { userStore, activeLessons, completedLessons } from "src/stores/index.js";  
   export let params = {};
  
-  const users = $userStore.role === "teacher" ? getAllUsers() : null;
-  $: selectedUser = $activeLessons.user || null;
-  $: active = $activeLessons[params.lesson] || [];
-  // $: completedLessons = [];
+  onMount(() => {
+    if ($userStore.role === "student") {
+      setUserActiveLessons($userStore.login);
+    }
+  });
+
+  // teacher feature
+  const users = $userStore.role === "teacher" ? getAllUsers() : [];
 
   function selectUser({ detail }){
     let selectedUser = detail.selected;
-    getUserActiveLessons(selectedUser);
+    setUserActiveLessons(selectedUser);
   }
 </script>
 
@@ -44,11 +48,11 @@
         <Select 
           placeholder="Select student" 
           options={data} 
-          selected={selectedUser}
+          selected={$activeLessons.user}
           on:select={selectUser}/>
       {/await}   
     {/if} 
-    <LessonsList title="Active" lessons={active} params={params.lesson} />
+    <LessonsList title="Active" lessons={$activeLessons[params.lesson]} params={params.lesson} />
     <LessonsList title="Completed" lessons={completedLessons} params={params.lesson} />
   </div>
 </Layout>

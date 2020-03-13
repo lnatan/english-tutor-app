@@ -3,8 +3,6 @@ import { userStore } from "src/stores/index.js"
 import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
 
-const setUserLogged = () => setCookie("user", 1);
-const deleteUserLogged = () => deleteCookie("user");
 const isUserLogged = () => getCookie("user");
 
 async function logIn(login, password){
@@ -19,13 +17,13 @@ async function logIn(login, password){
     login: userData.login,
     role: userData.role
   });
-  setUserLogged();
-  
-  return userData;
+
+  setCookie("user", 1); 
 };
 
 function logOut(){
-  deleteUserLogged();
+  // delete store
+  deleteCookie("user");
   push("/");
 };
 

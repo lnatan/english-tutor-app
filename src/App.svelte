@@ -6,7 +6,6 @@
   import { push } from 'svelte-spa-router';
 
   function checkAutorization(){
-    console.log('routeLoaded');
     const isLogin = isUserLogged();
     if (!isLogin) {
       push("/");

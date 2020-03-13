@@ -2,7 +2,6 @@
   import Button from "components/UI/Button.svelte";
   import { push } from 'svelte-spa-router';
   import { fade } from "svelte/transition";
-  import { userStore } from "src/stores/index.js";
   import { logIn } from "src/actions/loginAction.js";
 
   let login = "";
