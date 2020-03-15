@@ -41,6 +41,9 @@
         </span>  
       </a>
     {/each}
+      <a class="item" class:active={active === nav.length} href="/#last" on:click|preventDefault={() => changeQuestion(nav.length)}>
+        <span class="pl-2">Finish test</span> 
+      </a>
   </div>    
 </div>
 

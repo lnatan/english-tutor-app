@@ -117,3 +117,7 @@ input::placeholder {
   content: url('images/icons/girl.png');
   width: 1.5rem;
 }
+.icon-loading {
+  content: url('images/icons/loader.svg');
+  width: 50px;
+}

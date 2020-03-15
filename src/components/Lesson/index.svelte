@@ -8,7 +8,7 @@
   import { logOut } from "src/actions/loginAction.js";
   import { getAllUsers, setUserActiveLessons, setUserCompletedLessons } from "src/actions/userAction.js";
   import { activeLessons, completedLessons } from "src/stores/lessonsStore.js";
-  import {  userStore } from "src/stores/userStore.js"; 
+  import { userStore } from "src/stores/userStore.js"; 
   export let params = {};
  
   onMount(() => {

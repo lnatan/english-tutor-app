@@ -1,23 +1,8 @@
 import { parse } from "src/utils/parse.js";
 const TEST_PATH = "./data/tests/";
+const TEST_RESULT_PATH = "https://gila.cf/mvp/kv";
 
-async function getTest(testName, isAnswers = false ){
-  const URL = TEST_PATH + testName + ".json";
-  const res = await fetch(URL);
-  if (!res.ok) {
-    throw new Error(res.status);
-  }
-  let data = await res.json();
-  let test = parse(data); 
-
-  if (!isAnswers) {
-    test = deleteTestAnswers(test);
-  }
-  
-  return test;
-};
-
-function deleteTestAnswers(test){
+function deleteAnswersFromTest(test){
   let { questions } = test;
   questions = questions.map(({variants, ...rest}) => {
     const noAnswerVariants = variants.map(({variant, answer}) => { 
@@ -36,7 +21,49 @@ function deleteTestAnswers(test){
   }
 };
 
+async function getTest(testName, isAnswers = false ){
+  const URL = TEST_PATH + testName + ".json";
+  const response = await fetch(URL);
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+  let data = await response.json();
+  let test = parse(data); 
+
+  if (!isAnswers) {
+    test = deleteAnswersFromTest(test);
+  }
+  
+  return test;
+};
+
+  async function addTestResult(testResult, userId){
+    const { testId, lesson, ...answers } = testResult;
+    const data = {
+      id: userId,
+      testId,
+      lesson,
+      answers
+    };
+    const requestOptions = {
+      method: "POST",
+      redirect: "follow",
+      headers: { "Content-Type": "text/plain" },
+      mode: "no-cors",
+      body: JSON.stringify(data)
+    };
+
+    const response = await fetch(TEST_RESULT_PATH, requestOptions);
+    if (!response.ok) {
+      console.log(response);
+      throw new Error("Sending is failed! Try again...");
+    }
+    const result = await response.text();
+    return result;
+  };
+
 
 export {
-  getTest
+  getTest,
+  addTestResult
 };

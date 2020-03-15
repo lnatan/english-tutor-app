@@ -21,8 +21,27 @@ const initAnswersStore = (testId, lesson) => {
   }
 };
 
+const getNotAnswered = (questionsCount) => {
+  const stored = get(answersStore);
+  const notAnswered = [];
+
+  const findNoAnswered = (question) => {
+    if (question === questionsCount) {
+      return notAnswered;
+    }
+    if (!stored.hasOwnProperty(question)) {
+      notAnswered.push(question);
+    }
+
+    return findNoAnswered(question + 1);
+  };
+
+  return findNoAnswered(0);
+};
+
 export { 
   answersStore,
   initAnswersStore,
+  getNotAnswered,
   addAnswer 
 };
