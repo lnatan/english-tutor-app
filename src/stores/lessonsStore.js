@@ -1,4 +1,4 @@
-import createPersistStore from "src/utils/persist-store.js";
+import { createPersistStore } from "src/utils/persist-store.js";
 
-export const activeLessons = createPersistStore("app-lesson-active", "");
-export const completedLessons = createPersistStore("app-lesson-completed", "");
+export const activeLessons = createPersistStore("app-lessons-active", {});
+export const completedLessons = createPersistStore("app-lessons-completed", {});

@@ -217,7 +217,7 @@
       ],
       "variants": [
         {
-          "answer": 1,
+          "answer": 0,
           "variant": "The role of the rib cage increases and the role of the diaphragm decreases."
         },
         {
@@ -233,7 +233,7 @@
           "variant": "A great deal of effort is used for breathing."
         },
         {
-          "answer": 1,
+          "answer": 0,
           "variant": "Upper airways are resistant to colds and allergies."
         },
         {

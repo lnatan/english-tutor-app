@@ -11,8 +11,8 @@
     return title.split(" ").slice(0, 6).join(" ");
   };
 
-  $: hasAnswer = (questionIndex) => {
-    return answers.has(questionIndex);
+  $: isAnswered = (questionIndex) => {
+    return answers.hasOwnProperty(questionIndex);
   };
 
   function changeQuestion(i){
@@ -33,7 +33,7 @@
         <span class="px-2">{i+1}</span>
         <span>{shortTitle(item.title)}...</span> 
         <span class="check mr-2">
-          {#if hasAnswer(i)}
+          {#if isAnswered(i)}
             <span class="icon" in:fade={{ duration: 300 }}>
               <i class="icon-check"></i>
             </span>

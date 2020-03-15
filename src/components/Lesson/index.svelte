@@ -7,12 +7,14 @@
   import Select from "components/UI/Select.svelte";
   import { logOut } from "src/actions/loginAction.js";
   import { getAllUsers, setUserActiveLessons, setUserCompletedLessons } from "src/actions/userAction.js";
-  import { userStore, activeLessons, completedLessons } from "src/stores/index.js";  
+  import { activeLessons, completedLessons } from "src/stores/lessonsStore.js";
+  import {  userStore } from "src/stores/userStore.js"; 
   export let params = {};
  
   onMount(() => {
     if ($userStore.role === "student") {
       setUserActiveLessons($userStore.login);
+      //setUserCompletedLessons($userStore.login);
     }
   });
 
@@ -22,6 +24,7 @@
   function selectUser({ detail }){
     let selectedUser = detail.selected;
     setUserActiveLessons(selectedUser);
+    //setUserCompletedLessons(selectedUser);
   }
 </script>
 

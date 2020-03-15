@@ -4,37 +4,30 @@
   import Button from "components/UI/Button.svelte";  
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import { parseTest } from "src/utils/parse.js";
-  import { testStore, answersStore, addAnswer, getAnswers } from "src/stores/testStore.js";
+  import { getTest } from "src/actions/testAction.js";
+  import { userStore } from "src/stores/userStore.js";
+  import { answersStore, initAnswersStore, addAnswer } from "src/stores/answersStore.js";
   import { pop } from "svelte-spa-router";
   export let params = {};
 
   let test;
-  const URL = `./data/tests/${params.test}.json`;  
+  let active = 0;
 
-  onMount(async () => await fetch(URL)
-    .then(response => response.json())
-    .then(data => test = parseTest(data))
-    .catch(error => console.error(error)));
+  console.log($answersStore);
 
-  testStore.set({
-    testId: params.test,
-    lesson: params.lesson
+  onMount(async () => {
+    const withAnswers = $userStore.role === "teacher";
+    test = await getTest(params.test, withAnswers);    
   });
 
-  // $: console.log($testStore);
-  // $: getAnswers();
+  initAnswersStore(params.test, params.lesson);
   
-  let active = 0;
-  let answers = new Map();
-
   function changeActive({ detail }){
     active = detail.newActive;
   };
 
   function changeAnswers({ detail }){
-    answers = answers.set(...detail.newAnswers);
-    addAnswer(detail.newAnswers);
+    addAnswer(detail.newAnswer);
   };
 </script>
 
@@ -55,7 +48,7 @@
         </div>
         <QuestionsNav          
           {active} 
-          {answers}
+          answers={$answersStore}
           nav={test.questions} 
           title={test.title}
           on:click={changeActive}
@@ -65,7 +58,7 @@
     <div slot="main">
       <QuestionArea 
         {active} 
-        {answers} 
+        answers={$answersStore}
         question={test.questions[active]} 
         context={test.fragments[active]}    
         questionsCount={test.questions.length}           

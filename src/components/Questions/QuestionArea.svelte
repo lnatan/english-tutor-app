@@ -1,7 +1,6 @@
 <script>
   // import { onMount } from "svelte"; 
   import { createEventDispatcher } from 'svelte';
-  import { userStore } from "src/stores/userStore.js";
   import Button from "components/UI/Button.svelte";
   import Controls from "./types/index.svelte";
   export let question = {};
@@ -11,11 +10,7 @@
   export let answers;
   const dispatch = createEventDispatcher();
   
-  $: selected = answers.get(active);
-  $: if ($userStore.role === "student") {
-    const variants = deleteAnswers(question.variants);
-    question = { ...question, variants};
-  }
+  $: selected = answers[active];
 
   // const score = [];
   // let finish = false;
@@ -26,12 +21,8 @@
   //   }
   // }
 
-  function deleteAnswers(variants){
-   return variants.map(({variant}) => { return { variant }});
-  };
-
   function selectVariant(variant) {    
-    dispatch("select", {newAnswers: [active, variant]});
+    dispatch("select", {newAnswer: [active, variant]});
   };
   function nextQuestion() {
     dispatch("click", {newActive: active + 1});
@@ -51,8 +42,8 @@
       on:select={(e) => selectVariant(e.detail)}
     />
   {:else}  
-    <p class="p-8 text-xl">That`s all! This test has been finished.</p>
-    <p>Summary:</p>
+    <p class="p-8 text-xl">You are going to finish the test.</p>
+    <p>You did not answer questions: </p>
   {/if}
 </div>
 

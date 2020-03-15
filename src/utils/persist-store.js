@@ -11,4 +11,16 @@ const createPersistStore = (name, value) => {
   return value;
 }
 
-export default createPersistStore;
+const deletePersistStore = (name) => {
+  localStorage.removeItem(name);
+};
+
+const deleteAllStores = () => {
+  localStorage.clear();
+};
+
+export {
+  createPersistStore,
+  deletePersistStore,
+  deleteAllStores
+};

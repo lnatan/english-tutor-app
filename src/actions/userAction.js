@@ -1,6 +1,7 @@
-import { activeLessons, completedLessons } from "src/stores/index.js";
+import { activeLessons, completedLessons } from "src/stores/lessonsStore.js";
 const JOURNAL_PATH = "./data/journal.json";
 const USER_PATH = "./data/users/";
+const COMPLETED_LESSON_PATH = "https://gila.cf/mvp/kv/";
 
 async function getUser(login){
   const URL = USER_PATH + login + ".json";
@@ -37,11 +38,28 @@ async function setUserActiveLessons(login){
       lesson: [],
       hometask: []
     });
+    console.log(error);
   }
 };
 
-function setUserCompletedLessons(user){
-
+async function setUserCompletedLessons(login){
+  const URL = COMPLETED_LESSON_PATH + login;
+  try {
+    const res = await fetch(URL);
+    const data = await res.json();
+    completedLessons.set({
+      user: login,
+      lesson: data.lesson || [],
+      hometask: data.hometask || []
+    });
+  } catch(error) {
+    completedLessons.set({
+      user: " ",
+      lesson: [],
+      hometask: []
+    });
+    console.log(error);
+  }
 };
 
 export {
