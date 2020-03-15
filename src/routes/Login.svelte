@@ -7,6 +7,7 @@
   let login = "";
   let password = "";
   let message = "";
+  let isLoginFocused = true;
   let validLogin = true;
   let validPassword = true;
 
@@ -49,11 +50,13 @@
     <form action="" on:submit={submitForm}>
       <div class="custom-input mb-8" class:error={!validLogin}>
         <span class="icon"><i class="icon-login"></i></span>
-        <input type="text" class="input" bind:value={login} maxlength="15" autocomplete="nickname" placeholder="Login">
+        <input type="text" class="input" autofocus bind:value={login} maxlength="15" autocomplete="nickname" placeholder="Login">
+        <span class="focus"></span>
       </div>
       <div class="custom-input mb-8" class:error={!validPassword}>
         <span class="icon"><i class="icon-password"></i></span>
         <input type="password" class="input" bind:value={password} maxlength="15" autocomplete="current-password" placeholder="Password">
+        <span class="focus"></span>
       </div>
       {#if message}
         <div class="mb-4 text-red-600" in:fade={{ duration: 300 }}>{message}</div> 
@@ -67,7 +70,7 @@
 
 <style>
   .custom-input {
-    @apply border border-grey-5 rounded pl-2 py-2;
+    @apply border border-grey-5 rounded pl-2 py-2 relative;
   }
   .input {
     padding: 0;
@@ -76,5 +79,9 @@
   }
   .error {
     @apply border-red-600;
+  }
+  .custom-input:not(.error) .input:focus + .focus {
+    @apply absolute border rounded border-blue-5 top-0 left-0 bottom-0 right-0;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
   }
 </style>
