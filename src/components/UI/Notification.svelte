@@ -1,20 +1,20 @@
 <script>
   import { fly } from "svelte/transition";
-  // export let type = "";
+  // export let visible = false;
 </script>
 
 <div class="notification" transition:fly="{{ y: -200, duration: 500 }}">
-  <slot/>
+  <div class="flex items-center">
+    <slot/>
+  </div>
 </div>
-
-<!-- <span class="icon"><i class="icon-loading"></i></span> -->
 
 <style>
 .notification {
-  @apply p-6 rounded bg-white absolute;
+  @apply p-6 rounded bg-white absolute text-lg;
   top: 25px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 25px;
+  /* width: 270px; */
   box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 }
 </style>

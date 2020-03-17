@@ -1,6 +1,6 @@
 import { parse } from "src/utils/parse.js";
 const TEST_PATH = "./data/tests/";
-const TEST_RESULT_PATH = "https://gila.cf/mvp/kv";
+const TEST_RESULT_PATH = "https://gila.cf/mvp/test";
 
 function deleteAnswersFromTest(test){
   let { questions } = test;
@@ -37,10 +37,10 @@ async function getTest(testName, isAnswers = false ){
   return test;
 };
 
-  async function addTestResult(testResult, userId){
+  async function sendTestResult(testResult, userId){
     const { testId, lesson, ...answers } = testResult;
     const data = {
-      id: userId,
+      userId,
       testId,
       lesson,
       answers
@@ -48,22 +48,24 @@ async function getTest(testName, isAnswers = false ){
     const requestOptions = {
       method: "POST",
       redirect: "follow",
-      headers: { "Content-Type": "text/plain" },
-      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     };
 
     const response = await fetch(TEST_RESULT_PATH, requestOptions);
+
     if (!response.ok) {
       console.log(response);
-      throw new Error("Sending is failed! Try again...");
+      throw new Error(response.status);
     }
+    
     const result = await response.text();
+    console.log(result);
     return result;
   };
 
 
 export {
   getTest,
-  addTestResult
+  sendTestResult
 };

@@ -13,7 +13,7 @@ const addAnswer = ([question, variant]) => {
   }); 
 };
 
-const initAnswersStore = (testId, lesson) => {
+const setAnswersStore = (testId, lesson) => {
   const stored = get(answersStore);
 
   if (stored.testId !== testId){
@@ -21,27 +21,36 @@ const initAnswersStore = (testId, lesson) => {
   }
 };
 
+const clearAnswersStore = () => {
+  answersStore.set({});
+};
+
 const getNotAnswered = (questionsCount) => {
+  if (questionsCount === undefined) {
+    console.error("`questionsCount` is not defined");
+    return;
+  }
+
   const stored = get(answersStore);
   const notAnswered = [];
 
-  const findNoAnswered = (question) => {
+  const findNotAnswered = (question) => {
     if (question === questionsCount) {
       return notAnswered;
     }
     if (!stored.hasOwnProperty(question)) {
       notAnswered.push(question);
     }
-
-    return findNoAnswered(question + 1);
+    return findNotAnswered(question + 1);
   };
 
-  return findNoAnswered(0);
+  return findNotAnswered(0);
 };
 
 export { 
   answersStore,
-  initAnswersStore,
-  getNotAnswered,
-  addAnswer 
+  addAnswer,
+  clearAnswersStore,
+  setAnswersStore,  
+  getNotAnswered   
 };

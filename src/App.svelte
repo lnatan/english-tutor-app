@@ -5,13 +5,12 @@
   import { isUserLogged } from "src/actions/loginAction.js";
   import { push } from 'svelte-spa-router';
 
-  function checkAutorization(){
-    const isLogin = isUserLogged();
-    if (!isLogin) {
+  function checkUser(){
+    if (!isUserLogged()) {
       push("/");
     }
   };
 </script>
 
 
-<Router {routes} on:routeLoaded={checkAutorization}/>
+<Router {routes} on:routeLoaded={checkUser}/>
