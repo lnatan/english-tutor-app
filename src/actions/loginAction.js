@@ -1,6 +1,6 @@
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
 import { userStore } from "src/stores/userStore.js"
-import { deleteAllStores } from "src/utils/persist-store.js"
+import { deleteAllStores } from "src/utils/persistStore.js"
 import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
 

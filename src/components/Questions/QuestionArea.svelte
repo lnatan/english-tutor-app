@@ -14,11 +14,13 @@
 
   $: selected = answers[active];
 
-  let notAnsweredQuestion;
-  $: if (active === questionsCount) {
-    notAnsweredQuestion = getNotAnswered(questionsCount);
-    notAnsweredQuestion = notAnsweredQuestion.map(i => i + 1).join(" , ");
-  }
+  let notAnsweredQuestions;
+  let ishalfAnswered = false;
+
+  $: if (active === questionsCount) {    
+    notAnsweredQuestions = getNotAnswered(questionsCount);
+    ishalfAnswered = questionsCount/notAnsweredQuestions.length > 2;
+  }  
 
   function selectVariant(variant) {    
     dispatch("select", {newAnswer: [active, variant]});
@@ -46,15 +48,18 @@
   {:else}  
     <h1 class="text-black text-xl mb-6">Finish test</h1>
     <p class="">You are close to finish the test and send rezults. </p>
-    {#if notAnsweredQuestion}
-      <p>You did not answer the questions: {notAnsweredQuestion}</p>
-    {/if}    
+    {#if notAnsweredQuestions}
+      <p>Not answered questions: {notAnsweredQuestions.map(q => q+1).join(" , ")}</p>
+    {/if}
+    {#if !ishalfAnswered}
+      <p>You did not answer more than half.</p>
+    {/if}     
   {/if}
 </div>
 
   <div class="flex p-8 justify-center md:justify-end">
     <Button type="secondary" disabled={active === 0} on:click={prevQuestion}>Previous</Button>
-    <Button type="primary" on:click={active === questionsCount ? handleSendClick : nextQuestion}>
+    <Button type="primary" disabled={active === questionsCount && !ishalfAnswered} on:click={active === questionsCount ? handleSendClick : nextQuestion}>
       {active === questionsCount ? "Send" : "Next"} 
     </Button>   
   </div>

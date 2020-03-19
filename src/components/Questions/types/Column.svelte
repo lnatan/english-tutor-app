@@ -10,7 +10,6 @@
     selected[variantIndex] = radioIndex;
     dispatch("select", selected);
   }
-
 </script>
 
 {#each variants as item, i}

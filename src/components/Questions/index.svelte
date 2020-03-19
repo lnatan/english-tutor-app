@@ -5,9 +5,9 @@
   import Notification from "components/UI/Notification.svelte";
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
-  import { getTest, sendTestResult } from "src/actions/testAction.js";
+  import { getTest, addTestResult } from "src/actions/testAction.js";
   import { userStore } from "src/stores/userStore.js";
-  import { answersStore, getNotAnswered, setAnswersStore, clearAnswersStore, addAnswer } from "src/stores/answersStore.js";
+  import { answersStore, addParamsToAnswersStore, addAnswerToAnswersStore, clearAnswersStore } from "src/stores/answersStore.js";
   import { pop } from "svelte-spa-router";
   export let params = {};
 
@@ -20,65 +20,47 @@
 
   onMount(async () => {
     const withAnswers = $userStore.role === "teacher";
-    test = await getTest(params.test, withAnswers);    
-  });
-
-  setAnswersStore(params.test, params.lesson);
-
+    test = await getTest(params.test, withAnswers);  
+    addParamsToAnswersStore(test.title, params.lesson);     
+  });   
+  
   function changeActive({ detail }){
     active = detail.newActive;
   };
 
   function changeAnswers({ detail }){
-    addAnswer(detail.newAnswer);
+    addAnswerToAnswersStore(detail.newAnswer);
   };
 
   async function showNotification(message){ 
-    await new Promise(resolve => {       
-      isNotification = false;     
-      setTimeout(resolve, 300);
-    });
-
-    await new Promise(resolve => {
+    await new Promise(resolve => { 
       notificationMessage = message;  
       isNotification = true;
-      setTimeout(resolve, 1500);
+      setTimeout(resolve, 2500);
     });
-  };
-
-  async function hideNotification(){ 
-    await new Promise(resolve => {       
-      isNotification = false;     
+    await new Promise(resolve => {   
+      isNotification = false;
       setTimeout(resolve, 300);
     });
   };
 
-  async function sendAnswers(){
+  function sendAnswers(){
     document.body.classList.add("pointer-events-none");
-    
-    const notAnsweredQuestions = getNotAnswered(test.questions.length);
-    if (test.questions.length/notAnsweredQuestions.length < 2) {
-      showNotification("Too early to send results")
-      .then(() => {
-        hideNotification();
-        document.body.classList.remove("pointer-events-none");
-      });
-      return;
-    }
 
-    await showNotification("<span class='icon'><i class='icon-loading'></i></span>Test is sending...")
-      .then(() => sendTestResult($answersStore, $userStore.login))
-      .then(() => showNotification("Congratulations! Test results successfully send!"))
-      .then(() => hideNotification())
-      .then(() => (async () => {
+    (async () => {
+      try {
+        await Promise.all([
+          showNotification("<span class='icon'><i class='icon-loading'></i></span>Test is sending..."),
+          addTestResult($answersStore, $userStore.login)
+        ]);
+        await showNotification("Congratulations! Test results successfully send!");
         clearAnswersStore();
         pop();
-      })())
-      .catch(() => (async () => {
+      } catch(error) {
         await showNotification("Sending is failed! Please, try again.");
-        await hideNotification();
-      })());    
-      
+      }
+    })();
+  
     document.body.classList.remove("pointer-events-none");
   };
 

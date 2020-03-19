@@ -6,25 +6,27 @@
   import Button from "components/UI/Button.svelte";
   import Select from "components/UI/Select.svelte";
   import { logOut } from "src/actions/loginAction.js";
-  import { getAllUsers, setUserActiveLessons, setUserCompletedLessons } from "src/actions/userAction.js";
-  import { activeLessons, completedLessons } from "src/stores/lessonsStore.js";
+  import { getAllUsers, getUserLessons } from "src/actions/userAction.js";
+  import { activeLessons, completedLessons, isLessonsStoreEmpty } from "src/stores/lessonsStore.js";
   import { userStore } from "src/stores/userStore.js"; 
   export let params = {};
  
   onMount(() => {
-    if ($userStore.role === "student") {
-      setUserActiveLessons($userStore.login);
-      //setUserCompletedLessons($userStore.login);
+    if ($userStore.role === "student" && isLessonsStoreEmpty()) {
+      getUserLessons($userStore.login);
     }
   });
 
   // teacher feature
   const users = $userStore.role === "teacher" ? getAllUsers() : [];
 
+  function updateComplited(){
+    getUserLessons($userStore.login);
+  };
+
   function selectUser({ detail }){
     let selectedUser = detail.selected;
-    setUserActiveLessons(selectedUser);
-    //setUserCompletedLessons(selectedUser);
+    getUserLessons(selectedUser);
   }
 </script>
 
@@ -47,7 +49,7 @@
   </div>
   <div slot="main">
     {#if $userStore.role === "teacher"}
-      {#await users then data}
+      {#await users then data}     
         <Select 
           placeholder="Select student" 
           options={data} 
@@ -55,7 +57,11 @@
           on:select={selectUser}/>
       {/await}   
     {/if} 
-    <LessonsList title="Active" lessons={$activeLessons[params.lesson]} params={params.lesson} />
-    <LessonsList title="Completed" lessons={completedLessons} params={params.lesson} />
+    <LessonsList
+      on:update={updateComplited}
+      params={params.lesson} 
+      complited={$completedLessons[params.lesson]} 
+      active={$activeLessons[params.lesson]}     
+    />    
   </div>
 </Layout>

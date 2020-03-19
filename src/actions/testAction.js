@@ -1,34 +1,18 @@
-import { parse } from "src/utils/parse.js";
+import { parseTestContext, deleteAnswersFromTest } from "src/utils/parseTest.js";
+import { jsonToUrlencoded } from "src/utils/jsonToUrlencoded.js";
 const TEST_PATH = "./data/tests/";
 const TEST_RESULT_PATH = "https://gila.cf/mvp/test";
 
-function deleteAnswersFromTest(test){
-  let { questions } = test;
-  questions = questions.map(({variants, ...rest}) => {
-    const noAnswerVariants = variants.map(({variant, answer}) => { 
-      return { variant }
-    });
-
-    return {
-      variants: noAnswerVariants,
-      ...rest
-    }
-  });
-  
-  return {
-    ...test,
-    questions
-  }
-};
-
-async function getTest(testName, isAnswers = false ){
-  const URL = TEST_PATH + testName + ".json";
+async function getTest(testSlug, isAnswers = false ){
+  const URL = TEST_PATH + testSlug + ".json";
   const response = await fetch(URL);
+
   if (!response.ok) {
     throw new Error(response.status);
   }
+
   let data = await response.json();
-  let test = parse(data); 
+  let test = parseTestContext(data); 
 
   if (!isAnswers) {
     test = deleteAnswersFromTest(test);
@@ -37,35 +21,38 @@ async function getTest(testName, isAnswers = false ){
   return test;
 };
 
-  async function sendTestResult(testResult, userId){
-    const { testId, lesson, ...answers } = testResult;
-    const data = {
-      userId,
-      testId,
-      lesson,
-      answers
-    };
-    const requestOptions = {
-      method: "POST",
-      redirect: "follow",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    };
-
-    const response = await fetch(TEST_RESULT_PATH, requestOptions);
-
-    if (!response.ok) {
-      console.log(response);
-      throw new Error(response.status);
-    }
-    
-    const result = await response.text();
-    console.log(result);
-    return result;
+async function addTestResult(results, login){
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  
+  const data = { 
+    testId: +new Date(),
+    date: new Date().toString(),
+    login,
+    ...results 
   };
+  
+  const urlencoded = jsonToUrlencoded(data);
+
+  const requestOptions = {
+    method: "POST",
+    redirect: "follow",
+    headers: myHeaders,
+    body: urlencoded
+  };
+
+  const response = await fetch(TEST_RESULT_PATH, requestOptions);
+
+  if (!response.ok) {
+    throw new Error(response.status);
+  }
+
+  const result = await response.text();
+  return result;
+};
 
 
 export {
   getTest,
-  sendTestResult
+  addTestResult
 };

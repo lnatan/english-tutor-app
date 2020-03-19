@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import { showHighlight } from "src/utils/parse.js";
+  import { showHighlight } from "src/utils/parseTest.js";
   export let selected;
   export let variants = []; 
   export let context = "";
@@ -27,7 +27,7 @@
     </span>
   </label>
 {/each}
-<div class="mt-4 text-xl text-justify">{@html showHighlight(context, word)}</div>
+<div class="mt-4 text-xl text-justify">{@html showHighlight(word, context)}</div>
 
 <style> 
   .label {

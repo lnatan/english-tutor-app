@@ -1,7 +1,7 @@
 import { activeLessons, completedLessons } from "src/stores/lessonsStore.js";
 const JOURNAL_PATH = "./data/journal.json";
 const USER_PATH = "./data/users/";
-const COMPLETED_LESSON_PATH = "https://gila.cf/mvp/kv/";
+const COMPLETED_LESSON_PATH = "https://gila.cf/mvp/user/";
 
 async function getUser(login){
   const URL = USER_PATH + login + ".json";
@@ -24,9 +24,31 @@ async function getAllUsers(){
   }
 };
 
+async function getUserLessons(login){
+  try {
+    const userData = await getUser(login);
+    const { passedTests } = await getCompletedTests(login);
+
+    activeLessons.set({
+      login: login,
+      lesson: userData.lesson || [],
+      hometask: userData.hometask || []
+    });
+
+    completedLessons.set({
+      login: login,
+      lesson: passedTests.filter(test => test.lesson === "lesson") || [],
+      hometask: passedTests.filter(test => test.lesson === "hometask") || []
+    });
+  } catch(error) {
+    console.log(error);
+  }
+};
+
 async function setUserActiveLessons(login){
   try {
     const userData = await getUser(login); 
+
     activeLessons.set({
       user: login,
       lesson: userData.lesson || [],
@@ -42,22 +64,13 @@ async function setUserActiveLessons(login){
   }
 };
 
-async function setUserCompletedLessons(login){
+async function getCompletedTests(login){
   const URL = COMPLETED_LESSON_PATH + login;
   try {
     const res = await fetch(URL);
     const data = await res.json();
-    completedLessons.set({
-      user: login,
-      lesson: data.lesson || [],
-      hometask: data.hometask || []
-    });
+    return data;
   } catch(error) {
-    completedLessons.set({
-      user: " ",
-      lesson: [],
-      hometask: []
-    });
     console.log(error);
   }
 };
@@ -65,6 +78,7 @@ async function setUserCompletedLessons(login){
 export {
   getUser,
   getAllUsers,
-  setUserActiveLessons,
-  setUserCompletedLessons
+  getUserLessons,
+  // setUserActiveLessons,
+  //setUserCompletedLessons
 };

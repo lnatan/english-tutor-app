@@ -1,29 +1,25 @@
-import { createPersistStore } from "src/utils/persist-store.js";
+import { createPersistStore } from "src/utils/persistStore.js"
 import { get } from "svelte/store";
 
-const answersStore = createPersistStore("app-test-answers", {});
-// const answersStore = createPersistStore("app-answers", {});
+const answersStore = createPersistStore("app-answers", {});
 
-const addAnswer = ([question, variant]) => {
+const addParamsToAnswersStore = (title, lesson) => {
+  const stored = get(answersStore);
+  
+  if (stored.title !== title){
+    answersStore.set({ title, lesson });
+  }
+};
+
+const addAnswerToAnswersStore = ([questionIndex, variantIndex]) => {
   answersStore.update((store) => {
     return  {
       ...store,
-      [question]: variant
+      [questionIndex]: variantIndex
     }
   }); 
 };
 
-const setAnswersStore = (testId, lesson) => {
-  const stored = get(answersStore);
-
-  if (stored.testId !== testId){
-    answersStore.set({ testId, lesson });
-  }
-};
-
-const clearAnswersStore = () => {
-  answersStore.set({});
-};
 
 const getNotAnswered = (questionsCount) => {
   if (questionsCount === undefined) {
@@ -34,23 +30,27 @@ const getNotAnswered = (questionsCount) => {
   const stored = get(answersStore);
   const notAnswered = [];
 
-  const findNotAnswered = (question) => {
-    if (question === questionsCount) {
+  const findNotAnswered = (questionIndex) => {
+    if (questionIndex === questionsCount) {
       return notAnswered;
     }
-    if (!stored.hasOwnProperty(question)) {
-      notAnswered.push(question);
+    if (!stored.hasOwnProperty(questionIndex)) {
+      notAnswered.push(questionIndex);
     }
-    return findNotAnswered(question + 1);
+    return findNotAnswered(questionIndex + 1);
   };
 
   return findNotAnswered(0);
 };
 
+const clearAnswersStore = () => {
+  answersStore.set({});
+};
+
 export { 
   answersStore,
-  addAnswer,
+  addParamsToAnswersStore,
+  addAnswerToAnswersStore,
   clearAnswersStore,
-  setAnswersStore,  
-  getNotAnswered   
+  getNotAnswered,  
 };

@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { createEventDispatcher } from 'svelte';
-  import { showSlots } from "src/utils/parse.js";
+  import { showSlots } from "src/utils/parseTest.js";
   export let selected;
   export let variants;
   export let sentence;
