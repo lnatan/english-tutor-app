@@ -2,7 +2,7 @@
   import { createEventDispatcher } from 'svelte';
   import { push } from "svelte-spa-router";
   export let params = "";
-  export let complited = [];
+  export let completed = [];
   export let active = []; 
   const dispatch = createEventDispatcher();
 
@@ -33,17 +33,17 @@
   </div>
 </div>
 
-<!-- Complited lessons -->
+<!-- Completed lessons -->
 <div class="mt-4 pb-4">
   <div class="flex justify-between items-center px-6 pb-4">
-    <h2 class="title">Complited</h2>
+    <h2 class="title">Completed</h2>
     <button on:click={handleUpdateClick}>Update</button>
   </div>
   <div class="rounded border bg-white p-6">
-    {#if !complited.length}
-      No complited
+    {#if !completed.length}
+      No completed
     {:else}
-        {#each complited as item}
+        {#each completed as item}
           <div class="py-4 border-b last:border-b-0" >
             <button class="text-lg" on:click={push(`/${params}/${slug(item.title)}`)}>{item.title}</button>
             <button class="text-primary px-2" on:click={push(`/${params}/${slug(item.title)}`)}>View</button>

@@ -20,7 +20,6 @@ const addAnswerToAnswersStore = ([questionIndex, variantIndex]) => {
   }); 
 };
 
-
 const getNotAnswered = (questionsCount) => {
   if (questionsCount === undefined) {
     console.error("`questionsCount` is not defined");

@@ -1,5 +1,5 @@
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
-import { userStore } from "src/stores/userStore.js"
+import { updateUserStore } from "src/stores/userStore.js"
 import { deleteAllStores } from "src/utils/persistStore.js"
 import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
@@ -13,7 +13,7 @@ async function logIn(login, password){
     throw new Error("Password not correct");
   }
 
-  userStore.set({
+  updateUserStore({
     name: userData.name,
     login: userData.login,
     role: userData.role

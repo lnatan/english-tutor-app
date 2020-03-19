@@ -20,7 +20,7 @@
   // teacher feature
   const users = $userStore.role === "teacher" ? getAllUsers() : [];
 
-  function updateComplited(){
+  function updateLessons(){
     getUserLessons($userStore.login);
   };
 
@@ -58,9 +58,9 @@
       {/await}   
     {/if} 
     <LessonsList
-      on:update={updateComplited}
+      on:update={updateLessons}
       params={params.lesson} 
-      complited={$completedLessons[params.lesson]} 
+      completed={$completedLessons[params.lesson]} 
       active={$activeLessons[params.lesson]}     
     />    
   </div>
