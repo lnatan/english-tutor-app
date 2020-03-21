@@ -5,6 +5,7 @@
   export let nav = [];
   export let active;
   export let answers;
+  export let view;
   const dispatch = createEventDispatcher();
     
   const shortTitle = (title) => {

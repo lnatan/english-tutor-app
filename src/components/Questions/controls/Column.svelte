@@ -18,9 +18,6 @@
     <div class="flex">
       {#each columns as { column }, k}
         <label class="label" for="{i}-{k}" class:checked={selected[i] === k}>
-          {#if item.answer === k}
-            <span class="correct-variant"></span>
-          {/if} 
           <span class="custom-radio-button" >
             <input class="radio-input" id="{i}-{k}" type="radio" on:click={() => handleClick(i,k)}>
             <span>{column}</span>

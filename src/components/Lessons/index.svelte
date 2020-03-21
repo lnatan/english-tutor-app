@@ -6,27 +6,35 @@
   import Button from "components/UI/Button.svelte";
   import Select from "components/UI/Select.svelte";
   import { logOut } from "src/actions/loginAction.js";
-  import { getAllUsers, getUserLessons } from "src/actions/userAction.js";
-  import { activeLessons, completedLessons, isLessonsStoreEmpty } from "src/stores/lessonsStore.js";
+  import { getAllUsers, getUserTests } from "src/actions/userAction.js";
+  import { activeTests, completedTests, isTestStoreEmpty } from "src/stores/testStore.js";
+  import { clearAnswersStore } from "src/stores/answersStore.js";
   import { userStore } from "src/stores/userStore.js"; 
   export let params = {};
  
   onMount(() => {
-    if ($userStore.role === "student" && isLessonsStoreEmpty()) {
-      getUserLessons($userStore.login);
+    if ($userStore.role === "student" && isTestStoreEmpty()) {
+      getUserTests($userStore.login);
     }
   });
 
-  // teacher feature
-  const users = $userStore.role === "teacher" ? getAllUsers() : [];
+  let users;
+  if ($userStore.role === "teacher") {
+    users = getAllUsers();
+  }
 
-  function updateLessons(){
-    getUserLessons($userStore.login);
+  function updateLessonsList(){
+    if ($userStore.role === "teacher") {
+      getUserTests($activeTests.login);
+    } else {
+      getUserTests($userStore.login);
+    }    
   };
 
   function selectUser({ detail }){
     let selectedUser = detail.selected;
-    getUserLessons(selectedUser);
+    getUserTests(selectedUser);
+    clearAnswersStore();
   }
 </script>
 
@@ -53,15 +61,16 @@
         <Select 
           placeholder="Select student" 
           options={data} 
-          selected={$activeLessons.user}
-          on:select={selectUser}/>
+          selected={$activeTests.login}
+          on:select={selectUser}
+        />
       {/await}   
     {/if} 
-    <LessonsList
-      on:update={updateLessons}
-      params={params.lesson} 
-      completed={$completedLessons[params.lesson]} 
-      active={$activeLessons[params.lesson]}     
-    />    
+    <LessonsList   
+      route={params} 
+      completed={$completedTests[params.lesson]} 
+      active={$activeTests[params.lesson]} 
+      on:update={updateLessonsList}    
+    />  
   </div>
 </Layout>

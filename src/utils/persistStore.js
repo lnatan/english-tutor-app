@@ -11,22 +11,11 @@ const createPersistStore = (name, value) => {
   return value;
 }
 
-const isStoreEmpty = (name) => {
-  const store = localStorage.getItem(name);
-  return store === JSON.stringify({});
-};
-
-const deletePersistStore = (name) => {
-  localStorage.removeItem(name);
-};
-
-const deleteAllStores = () => {
+const deleteLocalStorage = () => {
   localStorage.clear();
 };
 
 export {
   createPersistStore,
-  deletePersistStore,
-  deleteAllStores,
-  isStoreEmpty
+  deleteLocalStorage,
 };

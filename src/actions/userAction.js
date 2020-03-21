@@ -1,7 +1,7 @@
-import { updateCompletedLessons, updateActiveLessons } from "src/stores/lessonsStore.js";
+import { updateActiveTests, updateCompletedTests, clearTestStore } from "src/stores/testStore.js";
+import { getTestResult } from "src/actions/testAction.js";
 const JOURNAL_PATH = "./data/journal.json";
 const USER_PATH = "./data/users/";
-const USER_COMPLETED_TESTS_PATH = "https://gila.cf/mvp/user/";
 
 async function getUser(login){
   const URL = USER_PATH + login + ".json";
@@ -11,7 +11,7 @@ async function getUser(login){
   }
   const userData = await res.json();
   return userData;
-};
+}
 
 async function getAllUsers(){
   try {
@@ -22,46 +22,37 @@ async function getAllUsers(){
   } catch (error){
     console.log(error);
   }
-};
+}
 
-async function getUserLessons(login){
+async function getUserTests(login){
   try {
     const userData = await getUser(login);
-    const { passedTests } = await getCompletedTests(login);
+    const { passedTests } = await getTestResult(login); 
 
-    const activeLessons = {
+    const activeTests = {
       login: login,
       lesson: userData.lesson || [],
       hometask: userData.hometask || []
     };
 
-    const completedLessons = {
+    const completedTests = {
       login: login,
       lesson: passedTests.filter(test => test.lesson === "lesson") || [],
       hometask: passedTests.filter(test => test.lesson === "hometask") || []
     };
 
-    updateActiveLessons(activeLessons);
-    updateCompletedLessons(completedLessons);
-
+    updateActiveTests(activeTests);
+    updateCompletedTests(completedTests);
   } catch(error) {
-    console.log(error);
+    console.log(error.message);
+    if (error.message == 404) {
+      clearTestStore();
+    }    
   }
-};
-
-async function getCompletedTests(login){
-  const URL = USER_COMPLETED_TESTS_PATH + login;
-  try {
-    const res = await fetch(URL);
-    const data = await res.json();
-    return data;
-  } catch(error) {
-    console.log(error);
-  }
-};
+}
 
 export {
   getUser,
   getAllUsers,
-  getUserLessons
+  getUserTests
 };

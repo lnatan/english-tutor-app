@@ -2,8 +2,9 @@ import { parseTestContext, deleteAnswersFromTest } from "src/utils/parseTest.js"
 import { jsonToUrlencoded } from "src/utils/jsonToUrlencoded.js";
 const TEST_PATH = "./data/tests/";
 const TEST_RESULT_PATH = "https://gila.cf/mvp/test";
+const TEST_RESULT_PATH_BY_USER = "https://gila.cf/mvp/user/";
 
-async function getTest(testSlug, isAnswers = false ){
+async function getTest(testSlug, showAnswers = false ){
   const URL = TEST_PATH + testSlug + ".json";
   const response = await fetch(URL);
 
@@ -14,12 +15,12 @@ async function getTest(testSlug, isAnswers = false ){
   let data = await response.json();
   let test = parseTestContext(data); 
 
-  if (!isAnswers) {
+  if (!showAnswers) {
     test = deleteAnswersFromTest(test);
   }
   
   return test;
-};
+}
 
 async function addTestResult(results, login){
   const myHeaders = new Headers();
@@ -27,7 +28,7 @@ async function addTestResult(results, login){
   
   const data = { 
     testId: +new Date(),
-    date: new Date().toString(),
+    date: new Date().toDateString(),
     login,
     ...results 
   };
@@ -49,10 +50,22 @@ async function addTestResult(results, login){
 
   const result = await response.text();
   return result;
-};
+}
+
+async function getTestResult(login){
+  const URL = TEST_RESULT_PATH_BY_USER + login;
+  try {
+    const res = await fetch(URL);
+    const data = await res.json();
+    return data;
+  } catch(error) {
+    console.log(error);
+  }
+}
 
 
 export {
   getTest,
-  addTestResult
+  addTestResult,
+  getTestResult
 };

@@ -40,7 +40,7 @@
           "variant": "It is able to bypass the automatic system."
         },
         {
-          "answer": true,
+          "answer": false,
           "variant": "It produces an irregular breathing pattern."
         }
       ]
@@ -51,7 +51,7 @@
       "word": "exclusive",
       "variants": [
         {
-          "answer": true,
+          "answer": false,
           "variant": "Consistent"
         },
         {
@@ -59,7 +59,7 @@
           "variant": "Perfect"
         },
         {
-          "answer": false,
+          "answer": true,
           "variant": "Partial"
         },
         {

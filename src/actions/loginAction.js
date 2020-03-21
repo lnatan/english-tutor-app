@@ -1,6 +1,6 @@
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
-import { updateUserStore } from "src/stores/userStore.js"
-import { deleteAllStores } from "src/utils/persistStore.js"
+import { updateUserStore } from "src/stores/userStore.js";
+import { deleteLocalStorage } from "src/utils/persistStore.js"
 import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
 
@@ -18,15 +18,15 @@ async function logIn(login, password){
     login: userData.login,
     role: userData.role
   });
-
+  
   setCookie("user", 1); 
-};
+}
 
-function logOut(){
-  deleteAllStores();
-  deleteCookie("user");
+function logOut(){ 
+  deleteLocalStorage();
+  deleteCookie("user");   
   push("/");
-};
+}
 
 export { 
   isUserLogged,

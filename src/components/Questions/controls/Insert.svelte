@@ -68,14 +68,14 @@
       </span>           
       <span class="variant">
         {item.variant}
-        {#if item.answer}
+        <!-- {#if item.answer}
           <span class="correct-variant"></span>
-        {/if}   
+        {/if}    -->
       </span>
     </label>
   {/each}
 </div>
-<div class="mt-4 text-xl text-justify">{@html showSlots(context, sentence)}</div>
+<div class="mt-4 text-xl text-justify">{@html showSlots(context)}</div>
 
 <style> 
   .label {

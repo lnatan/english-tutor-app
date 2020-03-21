@@ -47,20 +47,26 @@ function deleteAnswersFromTest(test){
     ...test,
     questions
   }
-};
+}
 
 function insertSlots(template, text){
   return text.replace(template, (match, index, value) => 
   ` <span class="slot hidden" data-index=${index-1}>${value}</span><span class="slot-sentence hidden" data-index=${index-1}>${value}</span> `
   );
-};
+}
 
 function showHighlight(element, text){
+  if (text === null) {
+    return "No text provided";
+  }
   const template = new RegExp("-hidden(?=\">" + element + ")");
   return text.replace(template, "");
 }
 
 function showSlots(text){
+  if (text === null) {
+    return "No text provided";
+  }
   return text.replace(/slot hidden/g, "slot");
 }
 

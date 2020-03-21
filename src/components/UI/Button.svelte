@@ -22,6 +22,7 @@
   .btn:disabled {
     @apply bg-grey-3 text-grey-6;
     @apply border border-grey-5;
+    cursor: initial;
   }
   /* btn types */
   .btn-primary {

@@ -80,6 +80,9 @@ nav a.active {
 input::placeholder {
   @apply text-grey-6;
 }
+button:focus{
+  outline: 0;
+}
 
 /* Icons */
 .icon {
