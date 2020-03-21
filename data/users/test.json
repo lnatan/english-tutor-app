@@ -3,7 +3,7 @@
   "name": "Test Student",
   "password": "1",
   "role": "student",
-  "hometask": [
+  "lesson": [
     {
       "date": "2020-02-27T08:15:32.256Z",
       "title": "Breathing During Sleep"
@@ -13,7 +13,7 @@
       "title": "The Moons of Jupiter"
     }
   ],
-  "lesson": [
+  "hometask": [
     {
       "date": "2020-03-10T11:46:10.260Z",
       "title": "Another aspect of advertising that may especially influence children is fantasy"
