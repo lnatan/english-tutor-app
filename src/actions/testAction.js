@@ -4,7 +4,7 @@ const TEST_PATH = "./data/tests/";
 const TEST_RESULT_PATH = "https://gila.cf/mvp/test";
 const TEST_RESULT_PATH_BY_USER = "https://gila.cf/mvp/user/";
 
-async function getTest(testSlug, showAnswers = false ){
+async function getTest(testSlug, isAnswers = false ){
   const URL = TEST_PATH + testSlug + ".json";
   const response = await fetch(URL);
 
@@ -15,7 +15,7 @@ async function getTest(testSlug, showAnswers = false ){
   let data = await response.json();
   let test = parseTestContext(data); 
 
-  if (!showAnswers) {
+  if (!isAnswers) {
     test = deleteAnswersFromTest(test);
   }
   

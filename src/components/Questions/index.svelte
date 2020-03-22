@@ -86,7 +86,7 @@
         <QuestionsNav          
           {active}
           answers={$answersStore}
-          nav={test.questions} 
+          questions={test.questions} 
           title={test.title}
           on:click={changeActive}
         />

@@ -1,19 +1,30 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { fade } from "svelte/transition";
+  import { getRightAnswer } from "src/utils/parseAnswer.js";
   export let title;
-  export let nav = [];
+  export let questions;
   export let active;
   export let answers;
-  export let view;
-  const dispatch = createEventDispatcher();
-    
+  const dispatch = createEventDispatcher();  
+  
+  $: isAnswered = (questionIndex) => {
+    return answers.hasOwnProperty(questionIndex);
+  };
+
   const shortTitle = (title) => {
     return title.split(" ").slice(0, 6).join(" ");
   };
 
-  $: isAnswered = (questionIndex) => {
-    return answers.hasOwnProperty(questionIndex);
+  const showAnswer = (question, answer) => {
+    if (answer === undefined) {
+      return " ";
+    }
+
+    const studentAnswer = parseAnswer(answer);
+    const rightAnswer = getRightAnswer(question);
+
+    return studentAnswer.toString() === rightAnswer.toString() ? "is-answer-right" : "is-answer-wrong";
   };
 
   function changeQuestion(i){
@@ -22,27 +33,38 @@
 </script>
 
 <div class="questions-list">
-  <div class="border-t border-b px-4 py-2">
-      {title} 
-      <!-- <button class="float-right">
-        <span class="icon"><i class="icon-arrow-up" /></span>
-      </button> -->
-  </div>
+  <div class="border-t border-b px-4 py-2">{title}</div>
   <div class="pr-2 pl-2 py-2">  
-    {#each nav as item, i (i)}
-      <a class="item" class:active={i === active} href="/#{i}" on:click|preventDefault={() => changeQuestion(i)}>
-        <span class="px-2">{i+1}</span>
-        <span>{shortTitle(item.title)}...</span> 
-        <span class="check mr-2">
-          {#if isAnswered(i)}
-            <span class="icon" in:fade={{ duration: 300 }}>
-              <i class="icon-check"></i>
-            </span>
-          {/if}
-        </span>  
-      </a>
+    {#each questions as question, i (i)}
+      {#if answers.state === "completed"}
+        <a href="/#{i}"
+          class="item {showAnswer(question, answers[i])}"
+          class:is-active={i === active} 
+          on:click|preventDefault={() => changeQuestion(i)}>
+            <span class="px-2">{i+1}</span>
+            <span>{shortTitle(question.title)}...</span> 
+        </a>
+      {:else}
+        <a href="/#{i}"
+          class="item"
+          class:is-active={i === active} 
+          on:click|preventDefault={() => changeQuestion(i)}>
+            <span class="px-2">{i+1}</span>
+            <span>{shortTitle(question.title)}...</span>        
+            {#if isAnswered(i)}
+              <span class="check mr-2">
+                <span class="icon" in:fade={{ duration: 300 }}>
+                  <i class="icon-check"></i>
+                </span>
+              </span>  
+            {/if}
+        </a>
+      {/if}      
     {/each}
-      <a class="item" class:active={active === nav.length} href="/#last" on:click|preventDefault={() => changeQuestion(nav.length)}>
+      <a href="/#finish" 
+        class="item" 
+        class:active={active === questions.length}         
+        on:click|preventDefault={() => changeQuestion(questions.length)}>
         <span class="pl-2">Finish test</span> 
       </a>
   </div>    
@@ -54,12 +76,18 @@
   }
   .item {
     @apply block py-2 text-sm relative;
-  }
-  .item.active {
-    @apply bg-blue-1 rounded;
-  }
+  }  
   .item:hover {    
     @apply text-primary;
+  }
+  .item.is-active {
+    @apply bg-blue-1 rounded;
+  }
+  .item.is-answer-right {
+    @apply border-l-4 border-green-600;
+  }
+  .item.is-answer-wrong {
+    @apply border-l-4 border-red-600;
   }
   .check {
     position: absolute;

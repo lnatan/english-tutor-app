@@ -1,6 +1,8 @@
 import { setCookie, getCookie, deleteCookie } from "src/utils/cookie";
 import { updateUserStore } from "src/stores/userStore.js";
-import { deleteLocalStorage } from "src/utils/persistStore.js"
+import { clearAnswersStore } from "src/stores/answersStore.js";
+import { clearTestStore } from "src/stores/testStore.js";
+import { deleteLocalStorage } from "src/utils/persistStore.js";
 import { getUser } from "src/actions/userAction.js";
 import { push } from "svelte-spa-router"; 
 
@@ -23,6 +25,8 @@ async function logIn(login, password){
 }
 
 function logOut(){ 
+  clearAnswersStore();
+  clearTestStore();
   deleteLocalStorage();
   deleteCookie("user");   
   push("/");

@@ -17,7 +17,7 @@ const initAnswersStore = (title, lesson, state) => {
   if (state === "completed") {    
     const completed = get(completedTests);     
     const answeredTest = completed[lesson].filter(test => test.title === title)[0];
-    answersStore.set(answeredTest);
+    answersStore.set({...answeredTest, state});
   } else {
     answersStore.set({ title, lesson, state });
   }  
