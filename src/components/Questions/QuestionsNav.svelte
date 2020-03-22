@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { fade } from "svelte/transition";
-  import { getRightAnswer } from "src/utils/parseAnswer.js";
+  import { getRightAnswer, parseAnswer } from "src/utils/parseAnswer.js";
   export let title;
   export let questions;
   export let active;

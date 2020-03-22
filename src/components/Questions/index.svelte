@@ -19,8 +19,8 @@
   let isNotification = false;
     
   onMount(async () => {
-    const showRightAnswers = $userStore.role === "teacher";
-    test = await getTest(params.test, showRightAnswers);
+    const showAnswers = $userStore.role === "teacher";
+    test = await getTest(params.test, showAnswers);
     initAnswersStore(test.title, params.lesson, params.state);
   });   
 
