@@ -52,7 +52,7 @@
       "word": "spate",
       "variants": [
         {
-          "answer": true,
+          "answer": false,
           "variant": "A series of events or things in quick succession"
         },
         {
@@ -64,7 +64,7 @@
           "variant": "A rare series of events"
         },
         {
-          "answer": false,
+          "answer": true,
           "variant": "An unlikely scenario"
         }
       ]
