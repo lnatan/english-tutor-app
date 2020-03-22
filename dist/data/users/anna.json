@@ -1,0 +1,12 @@
+{
+  "login": "anna",
+  "name": "Anna Sysoeva",
+  "role": "student",
+  "password": "anna2020",
+  "hometask": [
+    {
+      "date": "2020-03-22T17:15:31.387Z",
+      "title": "Breathing During Sleep"
+    }
+  ]
+}
