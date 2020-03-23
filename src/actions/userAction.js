@@ -31,12 +31,14 @@ async function getUserTests(login){
 
     const activeTests = {
       login: login,
+      name: userData.name,
       lesson: userData.lesson || [],
       hometask: userData.hometask || []
     };
 
     const completedTests = {
       login: login,
+      name: userData.name,
       lesson: passedTests.filter(test => test.lesson === "lesson") || [],
       hometask: passedTests.filter(test => test.lesson === "hometask") || []
     };

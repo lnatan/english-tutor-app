@@ -80,8 +80,11 @@
         </Button>        
        </div>
       <div class="sidebar-panel">
-        <div class="font-semibold capitalize text-black px-4 py-2">
-          {params.lesson} plan
+        <div class="font-semibold text-black px-4 py-2">
+          <span class="capitalize">{params.lesson}</span> plan
+          {#if $userStore.role === "teacher"}
+            for {$completedTests.name}
+          {/if}
         </div>
         <QuestionsNav          
           {active}
