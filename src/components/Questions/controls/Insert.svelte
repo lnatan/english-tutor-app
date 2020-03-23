@@ -75,7 +75,7 @@
     </label>
   {/each}
 </div>
-<div class="mt-4 text-xl text-justify">{@html showSlots(context)}</div>
+<div class="mt-4 text-xl text-justify"><p>{@html showSlots(context)}</p></div>
 
 <style> 
   .label {
@@ -140,6 +140,7 @@
     z-index: 1;
     position: relative;
     top: -3px;
+    text-indent: 0;
   }
   :global(.slot.active) {
     @apply bg-blue-1 border-blue-6 text-blue-6;

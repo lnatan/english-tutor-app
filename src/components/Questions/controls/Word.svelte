@@ -21,7 +21,7 @@
     <span>{item.variant}</span>
   </label>
 {/each}
-<div class="mt-4 text-xl text-justify">{@html showHighlight(word, context)}</div>
+<div class="mt-4 text-xl text-justify"><p>{@html showHighlight(word, context)}</p></div>
 
 <style> 
   .label {
