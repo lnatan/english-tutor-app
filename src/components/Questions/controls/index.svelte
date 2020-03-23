@@ -8,6 +8,8 @@
   export let selected;
   export let context;
 
+  // $: console.log(context);
+
   const components = {
     select: Radio,
     word: Word,   
@@ -22,7 +24,7 @@
     column: "columns"
   };
 
-  function getProps(type){
+  function getProps(type, context){
     let props = {};
 
     if (context !== null) {
@@ -35,7 +37,7 @@
     return props;
   }  
 
-  $: props = getProps(question.type);
+  $: props = getProps(question.type, context);
 </script>
 
 <svelte:component  

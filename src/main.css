@@ -124,3 +124,7 @@ button:focus{
   content: url('images/icons/loader.svg');
   width: 50px;
 }
+.icon-book {
+  content: url('images/icons/book.svg');
+}
+

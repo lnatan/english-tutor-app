@@ -14,15 +14,21 @@
   export let params = {};
   
   let test;
-  let active = 0;
-  let notificationMessage; 
+  let active = 0; 
   let isNotification = false;
-    
+  let notificationMessage;
+  let fullContext = false;
+  // $: console.log(fullContext);
+
   onMount(async () => {
     const showAnswers = $userStore.role === "teacher";
     test = await getTest(params.test, showAnswers);
     initAnswersStore(test.title, params.lesson, params.state);
   });   
+
+  function toggleContext(){
+    fullContext = !fullContext;
+  };
 
   function changeActive({ detail }){
     active = detail.newActive;
@@ -96,14 +102,16 @@
       </div>
     </div>    
     <div slot="main">
+       <!-- context={test.fragments[active]} -->
       {#if active < test.questions.length}
         <QuestionArea       
           {active}
           answers={$answersStore}
-          question={test.questions[active]} 
-          context={test.fragments[active]}
+          context={fullContext? test.context: test.fragments[active]}          
+          question={test.questions[active]}
           on:click={changeActive} 
           on:select={changeAnswers}
+          on:toggle={toggleContext}
         />
       {:else}
         <QuestionScore

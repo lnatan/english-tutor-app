@@ -4,14 +4,17 @@
   import Controls from "./controls/index.svelte";
   import Default from "./controls/Default.svelte"
   import { userStore } from "src/stores/userStore.js";
-  export let question = {};
-  export let context;
+  export let question = {}; 
+  export let context; 
   export let active;
   export let answers;
   const dispatch = createEventDispatcher(); 
 
   $: selected = answers[active]; 
-  
+
+  function toggleContext(){
+    dispatch("toggle");
+  };
   function selectVariant(variant) {    
     dispatch("select", {newAnswer: [active, variant]});
   };
@@ -23,7 +26,10 @@
   };
 </script>
 
-<div class="container rounded border bg-white p-10">
+<div class="relative container rounded border bg-white p-10">
+  <button class="absolute top-0 right-0 p-3" on:click={toggleContext}>
+    <span class="icon"><i class="icon-book"></i></span>
+  </button>
   <h1 class="text-black text-xl mb-6">{question.title}</h1>  
   {#if $userStore.role === "teacher"}
     <Default

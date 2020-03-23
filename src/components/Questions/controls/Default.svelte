@@ -7,12 +7,12 @@
   $: isSelected = (variant, column) => {   
     if (selected === undefined) return false;
 
-    if (question.type === "check") {     
-     return selected.includes(variant);
+    if (question.type === "check") { 
+      return selected.includes(variant);
     }
 
-    if (question.type === "column") {  
-     return JSON.parse(selected)[variant] === column;
+    if (question.type === "column") {
+      return JSON.parse(selected)[variant] === column;
     }
 
     return variant === Number(selected);
@@ -26,7 +26,7 @@
       <div class="flex">
         {#each question.columns as { column }, k}
           <div class="py-2" class:is-correct={item.answer === k} class:is-selected={isSelected(i,k)}>
-           <span class="variant p-2" >
+            <span class="variant p-2" >
               {column}
             </span>         
           </div>   
@@ -36,8 +36,8 @@
   {/each}
 {:else}
   {#each question.variants as item, i}
-    <div class="py-2" >
-      <span class="variant p-2" class:is-correct={item.answer} class:is-selected={isSelected(i)} >
+    <div class="pb-1">
+      <span class="inline-block variant p-2" class:is-correct={item.answer} class:is-selected={isSelected(i)} >
         {item.variant}
       </span>
     </div>
