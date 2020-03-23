@@ -1,9 +1,9 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { userStore } from "src/stores/userStore.js";
-  import { answersStore } from "src/stores/answersStore.js";
   import Button from "components/UI/Button.svelte";
   export let questionsCount;
+  export let answers;
   const dispatch = createEventDispatcher(); 
 
   const notAnswered = findNotAnswered();
@@ -20,7 +20,7 @@
     if (index === questionsCount) {
       return result;
     }
-    if (!Object.prototype.hasOwnProperty.call($answersStore, index)) {
+    if (!answers.hasOwnProperty(index)) {
       result.push(index);
     }
     return findNotAnswered(index + 1, result);

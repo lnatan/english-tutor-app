@@ -107,6 +107,7 @@
         />
       {:else}
         <QuestionScore
+          answers={$answersStore}
           questionsCount={test.questions.length}
           on:click={changeActive} 
           on:send={sendAnswers}

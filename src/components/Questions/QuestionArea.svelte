@@ -3,7 +3,6 @@
   import Button from "components/UI/Button.svelte";
   import Controls from "./controls/index.svelte";
   import Default from "./controls/Default.svelte"
-  import { pop } from "svelte-spa-router";
   import { userStore } from "src/stores/userStore.js";
   export let question = {};
   export let context;
@@ -24,7 +23,7 @@
   };
 </script>
 
-<div class="container rounded border bg-white p-8">
+<div class="container rounded border bg-white p-10">
   <h1 class="text-black text-xl mb-6">{question.title}</h1>  
   {#if $userStore.role === "teacher"}
     <Default
