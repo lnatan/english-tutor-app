@@ -107,7 +107,7 @@
         <QuestionArea       
           {active}
           answers={$answersStore}
-          context={fullContext? test.context: test.fragments[active]}          
+          context={fullContext? test.context_plain: test.fragments[active]}          
           question={test.questions[active]}
           on:click={changeActive} 
           on:select={changeAnswers}

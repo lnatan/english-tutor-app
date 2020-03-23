@@ -77,6 +77,10 @@ nav a.active {
   z-index: -1;
 }
 
+p {
+  text-indent: 1em;
+}
+
 input::placeholder {
   @apply text-grey-6;
 }

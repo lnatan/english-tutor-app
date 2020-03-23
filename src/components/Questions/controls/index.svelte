@@ -24,11 +24,11 @@
     column: "columns"
   };
 
-  function getProps(type, context){
+  function getProps(type, _context){   
     let props = {};
 
-    if (context !== null) {
-      props.context = context;
+    if (_context !== null || _context !== undefined) {
+      props.context = _context;
     }
 
     if (addition[type]) {
