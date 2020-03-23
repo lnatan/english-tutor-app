@@ -10,9 +10,11 @@
   export let answers;
   const dispatch = createEventDispatcher(); 
 
+  let isDisableIcon = true;
   $: selected = answers[active]; 
 
   function toggleContext(){
+    isDisableIcon = !isDisableIcon;
     dispatch("toggle");
   };
   function selectVariant(variant) {    
@@ -28,7 +30,9 @@
 
 <div class="relative container rounded border bg-white p-10">
   <button class="absolute top-0 right-0 p-3" on:click={toggleContext}>
-    <span class="icon"><i class="icon-book"></i></span>
+    <span class="icon">
+      <i class="icon-book" class:icon-book-disable={isDisableIcon}></i>
+    </span>
   </button>
   <h1 class="text-black text-xl mb-6">{question.title}</h1>  
   {#if $userStore.role === "teacher"}

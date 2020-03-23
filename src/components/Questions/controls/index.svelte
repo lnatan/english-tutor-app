@@ -24,16 +24,17 @@
     column: "columns"
   };
 
-  function getProps(type, _context){   
+  function getProps(type, context){   
     let props = {};
 
-    if (_context !== null || _context !== undefined) {
-      props.context = _context;
+    if (context !== null && context !== undefined) {
+      props.context = context;
     }
 
     if (addition[type]) {
       props[addition[type]] = question[addition[type]];
     }
+    
     return props;
   }  
 

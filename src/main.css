@@ -131,4 +131,7 @@ button:focus{
 .icon-book {
   content: url('images/icons/book.svg');
 }
+.icon-book-disable {
+  content: url('images/icons/book-disable.svg');
+}
 
