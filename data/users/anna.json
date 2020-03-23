@@ -1,0 +1,12 @@
+{
+  "login": "anna",
+  "name": "Anna Sysoeva",
+  "role": "student",
+  "password": "anna2020",
+  "hometask": [
+    {
+      "date": "2020-03-22T18:54:32.661Z",
+      "title": "The Moons of Jupiter"
+    }
+  ]
+}
