@@ -29,7 +29,7 @@
 
 <div class="container rounded border bg-white p-8">
   <h1 class="text-black text-xl mb-6">Finish test</h1>
-  <p class="">You are close to finish the test and send rezults. </p>
+  <p class="">You are close to finish the test and send results. </p>
   {#if notAnswered}
     <p>Not answered questions: {notAnswered.map(q => q+1).join(" , ")}</p>
   {/if}
