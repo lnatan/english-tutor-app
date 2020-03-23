@@ -138,7 +138,7 @@ collections:
 #                     widget: number
 #                     requied: false
 #                     default: false
-          - label: Choose column v2
+          - label: Choose column
             name: column
             widget: object
             fields:
@@ -168,8 +168,11 @@ collections:
                     widget: number
                     requied: false
                     default: false                                         
-      - label: Body
+      - label: Context markuped
         name: context
+        widget: markdown
+      - label: Context plain
+        name: context_plain
         widget: markdown
   - name: Users
     label: Users
