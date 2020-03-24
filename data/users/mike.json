@@ -1,0 +1,20 @@
+{
+  "login": "mike",
+  "name": "Mike Munger",
+  "password": "mike2020",
+  "role": "student",
+  "lesson": [
+    {
+      "date": "2020-03-23T13:37:31.535Z",
+      "title": "The Moons of Jupiter"
+    },
+    {
+      "date": "2020-03-26T13:38:39.739Z",
+      "title": "Breathing During Sleep"
+    },
+    {
+      "date": "2020-03-25T13:51:14.926Z",
+      "title": "Тест для проверки"
+    }
+  ]
+}

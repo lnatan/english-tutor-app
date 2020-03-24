@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "type": "word",
+      "title": "This word in this paragraph is closest in meaning to",
+      "word": "whom",
+      "variants": [
+        {
+          "answer": false,
+          "variant": "кому"
+        },
+        {
+          "answer": true,
+          "variant": "чему"
+        }
+      ]
+    }
+  ],
+  "title": "Тест для проверки",
+  "context_plain": "Aside from being known as the largest planet orbiting our sun, Jupiter attracts a lot of attention for other reasons as well. Namely, the large number of moons orbiting the gas giant. The four most famous moons were initially discovered by the famous astronomer Galileo Galilei, for <2A>whom</2A>they're named. Yet, the rest of Jupiter's moons are named for everything from conquests, gods, lovers, and family. Some are a little larger than small asteroids while the Galilean moons would be considered dwarf planets if they orbited the sun instead of Jupiter. For centuries, the allure of the ordered chaos of Jupiter's moons has drawn the eyes of astronomers.  Jupiter's moons have captivated scientists since their discovery, due to their mysterious origin, and because of their diverse characteristics.Aside from being known as the largest planet orbiting our sun, Jupiter attracts a lot of attention for other reasons as well. Namely, the large number of moons orbiting the gas giant. The four most famous moons were initially discovered by the famous astronomer Galileo Galilei, for <2A>whom</2A>they're named. Yet, the rest of Jupiter's moons are named for everything from conquests, gods, lovers, and family. Some are a little larger than small asteroids while the Galilean moons would be considered dwarf planets if they orbited the sun instead of Jupiter. For centuries, the allure of the ordered chaos of Jupiter's moons has drawn the eyes of astronomers.  Jupiter's moons have captivated scientists since their discovery, due to their mysterious origin, and because of their diverse characteristics.",
+  "context": " <1>Aside from being known as the largest planet orbiting our sun, Jupiter attracts a lot of attention for other reasons as well. Namely, the large number of moons orbiting the gas giant. The four most famous moons were initially discovered by the famous astronomer GalileoAside from being known as the largest planet orbiting our sun, Jupiter attracts a lot of attention for other reasons as well. Namely, the large number of moons orbiting the gas giant. The four most famous moons were initially discovered by the famous astronomer Galileo Galilei, for <1A>whom</1A>they're named. Yet, the rest of Jupiter's moons are named for everything from conquests, gods, lovers, and family. Some are a little larger than small asteroids while the Galilean moons would be considered dwarf planets if they orbited the sun instead of Jupiter. For centuries, the allure of the ordered chaos of Jupiter's moons has drawn the eyes of astronomers.  Jupiter's moons have captivated scientists since their discovery, due to their mysterious origin, and because of their diverse characteristics. Galilei, for whomthey're named. Yet, the rest of Jupiter's moons are named for everything from conquests, gods, lovers, and family. Some are a little larger than small asteroids while the Galilean moons would be considered dwarf planets if they orbited the sun instead of Jupiter. For centuries, the allure of the ordered chaos of Jupiter's moons has drawn the eyes of astronomers.  Jupiter's moons have captivated scientists since their discovery, due to their mysterious origin, and because of their diverse characteristics. </1>"
+}
