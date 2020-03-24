@@ -20,7 +20,7 @@
     <span>{item.variant}</span>
   </label>
 {/each}
-<div class="mt-4 text-xl text-justify"><p>{@html context}</p></div>
+<div class="context">{@html context}</div>
 
 <style>
   .label {

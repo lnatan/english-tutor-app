@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from "svelte";
   import { createEventDispatcher } from 'svelte';
-  import { showSlots } from "src/utils/parseTest.js";
+  import { showSlot } from "src/utils/parseTest.js";
   export let selected;
   export let variants;
   export let sentence;
@@ -15,10 +15,7 @@
     slots = document.querySelectorAll(".slot");
     slotSentence = document.querySelectorAll(".slot-sentence");
     slotSentence.forEach(s => s.innerHTML = sentence);
-    slots.forEach(slot => {
-      slot.addEventListener("click", handleSlotClick)
-    });
-
+    slots.forEach(slot => slot.addEventListener("click", handleSlotClick));
     if (selected) {
       slots[selected].classList.add("active");
       slotSentence[selected].classList.remove("hidden");
@@ -65,17 +62,12 @@
       <span class="custom-radio pr-2" class:selected={i === selected}>
         <input class="radio-input" id={i} value={i} type="radio" on:click={() => handleRadioClick(i)}>
         <span class="custom-radio-inner" ></span>
-      </span>           
-      <span class="variant">
-        {item.variant}
-        <!-- {#if item.answer}
-          <span class="correct-variant"></span>
-        {/if}    -->
-      </span>
+      </span>   
+      <span class="variant">{item.variant}</span>        
     </label>
   {/each}
 </div>
-<div class="mt-4 text-xl text-justify"><p>{@html showSlots(context)}</p></div>
+<div class="context">{@html showSlot(context)}</div>
 
 <style> 
   .label {

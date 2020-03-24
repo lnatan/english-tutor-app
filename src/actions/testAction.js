@@ -1,4 +1,4 @@
-import { parseTestContext, deleteAnswersFromTest } from "src/utils/parseTest.js";
+import { parseTest, deleteAnswersFromTest, addAnswersToTest } from "src/utils/parseTest.js";
 import { jsonToUrlencoded } from "src/utils/jsonToUrlencoded.js";
 const TEST_PATH = "./data/tests/";
 const TEST_RESULT_PATH = "https://gila.cf/mvp/test";
@@ -13,12 +13,14 @@ async function getTest(testSlug, isAnswers = false ){
   }
 
   let data = await response.json();
-  let test = parseTestContext(data); 
+  let test = parseTest(data); 
 
   if (!isAnswers) {
     test = deleteAnswersFromTest(test);
+  } else {
+    test = addAnswersToTest(test);
   }
-  
+   
   return test;
 }
 

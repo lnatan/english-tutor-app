@@ -65,28 +65,32 @@ nav a.active {
   @apply capitalize;
 }
 
-.variant {
-  @apply relative;
-  z-index: 1;
-}
-.correct-variant {
-  @apply bg-green-200 block absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: -1;
-}
-
-p {
-  text-indent: 1em;
-}
-
 input::placeholder {
   @apply text-grey-6;
 }
+
 button:focus{
   outline: 0;
 }
+
+/* Test */
+.context {
+  @apply mt-4 text-xl text-justify;
+} 
+.context > .fragment {
+  @apply mb-2;
+}
+.fragment {
+  @apply inline-block;
+}
+.fragment.is-active { 
+  @apply bg-blue-1;
+}
+/* .variant {
+  @apply relative;
+  z-index: 1;
+} */
+
 
 /* Icons */
 .icon {

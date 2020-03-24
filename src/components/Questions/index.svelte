@@ -6,6 +6,7 @@
   import QuestionArea from "components/Questions/QuestionArea.svelte";
   import QuestionsNav from "components/Questions/QuestionsNav.svelte";
   import QuestionScore from "components/Questions/QuestionScore.svelte";
+  import { highlightActiveFragment } from "src/utils/parseTest.js";
   import { getTest, addTestResult } from "src/actions/testAction.js";
   import { userStore } from "src/stores/userStore.js";
   import { completedTests } from "src/stores/testStore.js";
@@ -18,14 +19,13 @@
   let isNotification = false;
   let notificationMessage;
   let fullContext = false;
-  // $: console.log(fullContext);
 
   onMount(async () => {
     const showAnswers = $userStore.role === "teacher";
     test = await getTest(params.test, showAnswers);
     initAnswersStore(test.title, params.lesson, params.state);
-  });   
-
+  }); 
+  
   function toggleContext(){
     fullContext = !fullContext;
   };
@@ -87,7 +87,7 @@
        </div>
       <div class="sidebar-panel">
         <div class="font-semibold text-black px-4 py-2">
-          <span class="capitalize">{params.lesson}</span> plan
+          <span class="capitalize">{params.lesson}</span>
           {#if $userStore.role === "teacher"}
             for {$completedTests.name}
           {/if}
@@ -95,6 +95,7 @@
         <QuestionsNav          
           {active}
           answers={$answersStore}
+          rightAnswers={test.answers}
           questions={test.questions} 
           title={test.title}
           on:click={changeActive}
@@ -102,12 +103,11 @@
       </div>
     </div>    
     <div slot="main">
-       <!-- context={test.fragments[active]} -->
       {#if active < test.questions.length}
         <QuestionArea       
           {active}
           answers={$answersStore}
-          context={fullContext? test.context_plain: test.fragments[active]}          
+          context={fullContext? highlightActiveFragment(test.context, active): test.fragments[active]}          
           question={test.questions[active]}
           on:click={changeActive} 
           on:select={changeAnswers}

@@ -1,11 +1,12 @@
 <script>
   import { createEventDispatcher } from 'svelte';
   import { fade } from "svelte/transition";
-  import { getRightAnswer, parseAnswer } from "src/utils/parseAnswer.js";
+  import { parseAnswer } from "src/utils/parseAnswer.js";
   export let title;
   export let questions;
   export let active;
   export let answers;
+  export let rightAnswers = [];
   const dispatch = createEventDispatcher();  
   
   $: isAnswered = (questionIndex) => {
@@ -16,15 +17,12 @@
     return title.split(" ").slice(0, 6).join(" ");
   };
 
-  const showAnswer = (question, answer) => {
-    if (answer === undefined) {
+  const showAnswer = (rightAnswer, studentAnswer) => {
+    if (studentAnswer === undefined) {
       return " ";
     }
 
-    const studentAnswer = parseAnswer(answer);
-    const rightAnswer = getRightAnswer(question);
-
-    return studentAnswer.toString() === rightAnswer.toString() ? "is-answer-right" : "is-answer-wrong";
+    return parseAnswer(studentAnswer).toString() === rightAnswer.toString() ? "is-answer-right" : "is-answer-wrong";
   };
 
   function changeQuestion(i){
@@ -38,7 +36,7 @@
     {#each questions as question, i (i)}
       {#if answers.state === "completed"}
         <a href="/#{i}"
-          class="item {showAnswer(question, answers[i])}"
+          class="item {showAnswer(rightAnswers[i], answers[i])}"
           class:is-active={i === active} 
           on:click|preventDefault={() => changeQuestion(i)}>
             <span class="px-2">{i+1}</span>

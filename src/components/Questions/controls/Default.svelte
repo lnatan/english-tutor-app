@@ -2,7 +2,7 @@
   export let question;
   export let selected;
   export let context = "";
-  import { showHighlight, showSlots } from "src/utils/parseTest.js";
+  import { showHighlight, showSlot } from "src/utils/parseTest.js";
   
   $: isSelected = (variant, column) => {   
     if (selected === undefined) return false;
@@ -37,7 +37,7 @@
 {:else}
   {#each question.variants as item, i}
     <div class="pb-1">
-      <span class="inline-block variant p-2" class:is-correct={item.answer} class:is-selected={isSelected(i)} >
+      <span class="inline-block p-2" class:is-correct={item.answer} class:is-selected={isSelected(i)} >
         {item.variant}
       </span>
     </div>
@@ -46,12 +46,12 @@
 
 <!-- Context -->
 {#if question.type === "word"}
-  <div class="mt-4 text-xl text-justify">{@html showHighlight(question.word, context)}</div>
+  <div class="context">{@html showHighlight(question.word, context)}</div>
 {:else if  question.type === "insert"}
   <div class="sentence p-2 mt-4">{question.sentence}</div>
-  <div class="mt-4 text-xl text-justify">{@html showSlots(context)}</div>
+  <div class="context">{@html showSlot(context)}</div>
 {:else}
-  <div class="mt-4 text-xl text-justify">{@html context}</div> 
+  <div class="context">{@html context}</div> 
 {/if}
 
 <style>
