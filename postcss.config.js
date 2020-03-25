@@ -7,7 +7,7 @@ module.exports = (production = false) => {
     require("autoprefixer")(),
     production && require("@fullhuman/postcss-purgecss")({
       content: ["./**/*.html", "./**/*.svelte"],
-      whitelist: ["md\:block", "pointer-events-none", "is-active"],
+      whitelist: ["md\:block", "pointer-events-none", "fragment", "is-active"],
       whitelistPatterns: [/^icon-/],
       defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     }),
