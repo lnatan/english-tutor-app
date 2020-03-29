@@ -1,0 +1,244 @@
+backend:
+  name: test-repo
+  repo: soixiio/english-tutor-app
+  branch: master
+  base_url: 'https://myownghuboauthprovider.herokuapp.com/'
+  extension: json
+media_folder: dist/images
+public_folder: /images
+collections:
+  - name: Tests
+    label: Tests
+    editor:
+      preview: false
+    extension: json
+    folder: dist/data/tests
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - label: Text title
+        name: title
+        widget: string
+      - label: Questions
+        name: questions
+        widget: list
+        types:
+          - label: Select one variant
+            name: select
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: string
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Select one or few variants
+            name: check
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: text
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Word meaning
+            name: word
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: string
+                default: This word in this paragraph is closest in meaning to
+              - label: Word
+                name: word
+                widget: string
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+          - label: Insert sentence
+            name: insert
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: text
+                default: >-
+                  Examine in the selection below and indicate at which block the
+                  following sentence could be inserted into the passage
+              - label: Sentence
+                name: sentence
+                widget: string
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Correct answer
+                    name: answer
+                    widget: boolean
+                    requied: false
+                    default: false
+#           - label: Choose column v1
+#             name: columnv1
+#             widget: object
+#             fields:
+#               - label: Question
+#                 name: title
+#                 widget: text
+#                 default: >-
+#                   From the seven statements below, select the statements that 
+#                   correctly characterize breathing during wakefulness and those statements that correctly 
+#                   characterize breathing during sleep
+#               - label: Column 1
+#                 name: column1
+#                 widget: string
+#               - label: Column 2
+#                 name: column2
+#                 widget: string         
+#               - label: variants
+#                 name: variants
+#                 widget: list
+#                 fields:
+#                   - label: variant
+#                     name: variant
+#                     widget: string
+#                   - label: Column number
+#                     name: answer
+#                     widget: number
+#                     requied: false
+#                     default: false
+          - label: Choose column
+            name: column
+            widget: object
+            fields:
+              - label: Question
+                name: title
+                widget: text
+                default: >-
+                  From the seven statements below, select the statements that 
+                  correctly characterize breathing during wakefulness and those statements that correctly 
+                  characterize breathing during sleep
+              - label: columns
+                name: columns
+                widget: list
+                fields:
+                  - label: column
+                    name: column
+                    widget: string            
+              - label: variants
+                name: variants
+                widget: list
+                fields:
+                  - label: variant
+                    name: variant
+                    widget: string
+                  - label: Column number
+                    name: answer
+                    widget: number
+                    requied: false
+                    default: false                                         
+      - label: Context markuped
+        name: context
+        widget: markdown
+  - name: Users
+    label: Users
+    editor:
+      preview: false
+    extension: json
+    folder: "dist/data/users" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    identifier_field: login
+    fields: # The fields for each document, usually in front matter
+          - { label: "Login", name: "login", widget: "string" }
+          - { label: "User name", name: "name", widget: "string" }
+          - label: Hometask
+            name: hometask
+            widget: list
+            fields:              
+              - {
+                label: "Hometask plan",
+                name: "title",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Tests",
+                searchFields: "questions",
+                valueField: "title",
+                displayFields: "title"
+              }
+              - {label: Due date, name: date, widget: date}
+          - label: Lesson
+            name: lesson
+            widget: list
+            fields:              
+              - {
+                label: "Lesson plan",
+                name: "title",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Tests",
+                searchFields: "questions",
+                valueField: "title",
+                displayFields: "title"
+              }
+              - {label: Date, name: date, widget: date}
+          - { label: "Password", name: "password", widget: "string" }
+          - { label: "Role", name: "role", widget: "select",   options: ["student", "teacher", "master"] }    
+  - name: "Journal"
+    editor:
+      preview: false
+    label: "Journal"
+    extension: json
+    files:
+      - file: "dist/data/journal.json"
+        label: "Journal"
+        name: "Journal"
+        fields:
+            - {
+                label: "Reading test",
+                name: "tests",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Tests",
+                searchFields: "questions",
+                valueField: "title",
+                displayFields: "title",
+                multiple: true,
+              }
+            - {
+                label: "Users list",
+                name: "users",
+                widget: "relation", # Relate to data from collection categories
+                collection: "Users",
+                searchFields: ["name", "login"],
+                valueField: "login",
+                displayFields: ["name", "login"],
+                multiple: true,
+              }  
