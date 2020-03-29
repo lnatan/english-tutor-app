@@ -1,8 +1,8 @@
 backend:
   name: test-repo
-  repo: soixiio/english-tutor-app
-  branch: master
-  base_url: 'https://myownghuboauthprovider.herokuapp.com/'
+#   repo: soixiio/english-tutor-app
+#   branch: master
+#   base_url: 'https://myownghuboauthprovider.herokuapp.com/'
   extension: json
 media_folder: dist/images
 public_folder: /images
