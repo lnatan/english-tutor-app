@@ -4,7 +4,7 @@
   export let selected;
   export let variants = []; 
   export let context = "";
-  export let word = "";
+  // export let word = "";
   const dispatch = createEventDispatcher(); 
 
   function handleClick(index){
@@ -21,7 +21,7 @@
     <span>{item.variant}</span>
   </label>
 {/each}
-<div class="context">{@html showHighlight(word, context)}</div>
+<div class="context">{@html showHighlight(context)}</div>
 
 <style> 
   .label {

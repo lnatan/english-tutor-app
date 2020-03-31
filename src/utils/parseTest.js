@@ -19,13 +19,13 @@ function makeFragments(text, fragmentsCount){
     let fragment = newText.match(fragmentTemplate);
     
     if (!fragment) {
-      console.log(`Question ${i}: No fragment or context was not markuped!`);
+      console.log(`Question ${i}: No fragment. Or context was not markuped.`);
       fragments.push(null);
     } else {
       fragment = fragment[0];
-      fragment = fragment.replace(highlightTemplate, " <span class=\"highlight-hidden\">$1</span> ")
+      fragment = fragment.replace(highlightTemplate, ` <span class="highlight-hidden highlight-${i}">$1</span> `);
       fragment = fragment.replace(tagTemplate, " ");
-      fragments.push(fragment);
+      fragments.push(`<div class="fragment fragment-${i}">${fragment}</div>`);
     }
   }
 
@@ -41,7 +41,7 @@ function makeFullContext(text, fragmentsCount){
     const fragmentTemplate = new RegExp("<" + i + ">(.*)<\/" + i + ">");   
     const highlightTemplate = new RegExp("<" + i + "A>(.*)<\/" + i + "A>"); 
     newText = newText.replace(fragmentTemplate, (match) => `<span class="fragment fragment-${i}">${match}</span>`);  
-    newText = newText.replace(highlightTemplate, " <span class=\"highlight-hidden\">$1</span> ");  
+    newText = newText.replace(highlightTemplate, ` <span class="highlight-hidden highlight-${i}">$1</span> `);  
   }
   
   newText = newText.replace(tagTemplate, "");
@@ -96,12 +96,23 @@ function insertHtmlSlot(template, text){
   );
 }
 
-function showHighlight(element, text){
+function showHighlight(text){
   if (text === null) {
     return "No text provided";
   }
-  const template = new RegExp("-hidden(?=\">" + element + ")");
-  return text.replace(template, "");
+
+  const regexIndexFragmentIsActive = /fragment fragment-(\d+) is-active/;
+  const regexIndexFragment = /fragment fragment-(\d+)/;
+  let index;
+
+  if (regexIndexFragmentIsActive.test(text)) {
+    index = regexIndexFragmentIsActive.exec(text)[1];
+  } else {
+    index = regexIndexFragment.exec(text)[1];
+  }
+
+  const regexHighlightHidden = new RegExp(`highlight-hidden highlight-${index}`);
+  return text.replace(regexHighlightHidden, `highlight highlight-${index}`);
 }
 
 function showSlot(text){
@@ -112,10 +123,10 @@ function showSlot(text){
 }
 
 export { 
-  parseTest,
-  highlightActiveFragment, 
+  parseTest,  
   addAnswersToTest, 
   deleteAnswersFromTest,
+  highlightActiveFragment, 
   showHighlight, 
   showSlot
 };

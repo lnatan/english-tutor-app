@@ -19,7 +19,7 @@
   };
 
   const addition = {
-    word: "word",
+    // word: "word",
     insert: "sentence",
     column: "columns"
   };

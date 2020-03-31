@@ -69,9 +69,9 @@ collections:
                 name: title
                 widget: string
                 default: This word in this paragraph is closest in meaning to
-              - label: Word
-                name: word
-                widget: string
+              # - label: Word
+              #   name: word
+              #   widget: string
               - label: variants
                 name: variants
                 widget: list
