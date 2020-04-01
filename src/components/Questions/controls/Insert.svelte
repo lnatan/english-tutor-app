@@ -1,5 +1,5 @@
 <script>
-  import { onMount, onDestroy } from "svelte";
+  import { onDestroy, afterUpdate } from "svelte";
   import { createEventDispatcher } from 'svelte';
   import { showSlot } from "src/utils/parseTest.js";
   export let selected;
@@ -11,20 +11,22 @@
   let slots = [];
   let slotSentence = [];
 
-  onMount(() => { 
+  onDestroy(() => {
+    slots.forEach(slot => slot.removeEventListener("click", handleSlotClick));
+  });
+
+  afterUpdate(() => {
     slots = document.querySelectorAll(".slot");
     slotSentence = document.querySelectorAll(".slot-sentence");
-    slotSentence.forEach(s => s.innerHTML = sentence);
-    slots.forEach(slot => slot.addEventListener("click", handleSlotClick));
-    if (selected) {
+
+    slotSentence.forEach(el => el.innerHTML = sentence);
+    slots.forEach(el => el.addEventListener("click", handleSlotClick));
+
+    if (selected !== undefined) {
       slots[selected].classList.add("active");
       slotSentence[selected].classList.remove("hidden");
       slotSentence[selected].style.opacity = "1";
     }
-  });
-
-  onDestroy(() => {
-    slots.forEach(slot => slot.removeEventListener("click", handleSlotClick));
   });
 
   function showActiveSlot(activeIndex){
