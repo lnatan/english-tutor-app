@@ -133,7 +133,7 @@
     pointer-events: auto;
     z-index: 1;
     position: relative;
-    top: -3px;
+    top: -4px;
     text-indent: 0;
   }
   :global(.slot.active) {
