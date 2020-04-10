@@ -46,7 +46,7 @@
 
 <!-- Context -->
 {#if question.type === "word"}
-  <div class="context">{@html showHighlight(question.word, context)}</div>
+  <div class="context">{@html showHighlight(context)}</div>
 {:else if  question.type === "insert"}
   <div class="sentence p-2 mt-4">{question.sentence}</div>
   <div class="context">{@html showSlot(context)}</div>
